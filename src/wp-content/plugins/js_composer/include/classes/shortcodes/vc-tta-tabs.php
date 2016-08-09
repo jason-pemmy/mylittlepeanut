@@ -1,11 +1,15 @@
 <?php
-require_once "vc-tta-accordion.php";
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Tta_Accordion' );
 
 class WPBakeryShortCode_VC_Tta_Tabs extends WPBakeryShortCode_VC_Tta_Accordion {
 
 	public $layout = 'tabs';
 
 	public function enqueueTtaScript() {
+		wp_register_script( 'vc_tabs_script', vc_asset_url( 'lib/vc_tabs/vc-tabs.min.js' ), array( 'vc_accordion_script' ), WPB_VC_VERSION, true );
 		parent::enqueueTtaScript();
 		wp_enqueue_script( 'vc_tabs_script' );
 	}
@@ -18,7 +22,7 @@ class WPBakeryShortCode_VC_Tta_Tabs extends WPBakeryShortCode_VC_Tta_Accordion {
 		$autoplay = $this->atts['autoplay'];
 		if ( $autoplay && 'none' !== $autoplay && intval( $autoplay ) > 0 ) {
 			$attributes[] = 'data-vc-tta-autoplay="' . esc_attr( json_encode( array(
-					'delay' => intval( $autoplay ) * 1000
+					'delay' => intval( $autoplay ) * 1000,
 				) ) ) . '"';
 		}
 
@@ -28,11 +32,11 @@ class WPBakeryShortCode_VC_Tta_Tabs extends WPBakeryShortCode_VC_Tta_Accordion {
 	public function getTtaGeneralClasses() {
 		$classes = parent::getTtaGeneralClasses();
 
-		if ( $this->atts['no_fill_content_area'] ) {
+		if ( ! empty( $this->atts['no_fill_content_area'] ) ) {
 			$classes .= ' vc_tta-o-no-fill';
 		}
 
-		if ( $this->atts['tab_position'] ) {
+		if ( isset( $this->atts['tab_position'] ) ) {
 			$classes .= ' ' . $this->getTemplateVariable( 'tab_position' );
 		}
 
@@ -142,17 +146,14 @@ class WPBakeryShortCode_VC_Tta_Tabs extends WPBakeryShortCode_VC_Tta_Accordion {
 	 */
 	public function getParamTabsList( $atts, $content ) {
 		$isPageEditabe = vc_is_page_editable();
-
-		$sectionClass = $this->sectionClass;
-
 		$html = array();
 		$html[] = '<div class="vc_tta-tabs-container">';
 		$html[] = '<ul class="vc_tta-tabs-list">';
 		if ( ! $isPageEditabe ) {
-			foreach ( $sectionClass::$section_info as $nth => $section ) {
-				$strict_bounds = ( 'vc_tta_tabs' === $this->shortcode );
-				$active_section = $this->getActiveSection( $atts, $strict_bounds );
+			$strict_bounds = ( 'vc_tta_tabs' === $this->shortcode );
+			$active_section = $this->getActiveSection( $atts, $strict_bounds );
 
+			foreach ( WPBakeryShortCode_VC_Tta_Section::$section_info as $nth => $section ) {
 				$classes = array( 'vc_tta-tab' );
 				if ( ( $nth + 1 ) === $active_section ) {
 					$classes[] = $this->activeClass;
@@ -175,7 +176,7 @@ class WPBakeryShortCode_VC_Tta_Tabs extends WPBakeryShortCode_VC_Tta_Accordion {
 		$html[] = '</ul>';
 		$html[] = '</div>';
 
-		return implode( '', $html );
+		return implode( '', apply_filters( 'vc-tta-get-params-tabs-list', $html, $atts, $content, $this ) );
 	}
 
 	/**

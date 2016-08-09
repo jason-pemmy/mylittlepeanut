@@ -133,23 +133,14 @@
 		 * Convert html into correct element
 		 * @param html
 		 */
-		html2element: function ( html ) {
-			var attributes = {},
-				$template;
-			if ( _.isString( html ) ) {
-				this.template = _.template( html );
-				$template = $( this.template( this.model.toJSON(), vc.templateOptions.default ).trim() );
-			} else {
-				this.template = html;
-				$template = html;
-			}
-			_.each( $template.get( 0 ).attributes, function ( attr ) {
-				attributes[ attr.name ] = attr.value;
-			} );
-			this.$el.attr( attributes ).html( $template.html() );
-			this.setContent();
-			this.renderContent();
-
+		html2element: function(html) {
+			var $template, 
+			attributes = {},
+			template = html;
+			$template = $(template(this.model.toJSON()).trim()), 
+			 _.each($template.get(0).attributes, function(attr) {
+			attributes[attr.name] = attr.value
+		}); this.$el.attr(attributes).html($template.html()), this.setContent(), this.renderContent()
 		},
 		render: function () {
 			var $shortcode_template_el = $( '#vc_shortcode-template-' + this.model.get( 'shortcode' ) );

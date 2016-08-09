@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
 /**
  * Shortcode attributes
  * @var $atts
@@ -24,8 +27,6 @@ $image_block = $image = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-extract( $atts );
-
 if ( 'no' === $render ) {
 	echo '';
 
@@ -36,13 +37,13 @@ if ( 'yes' !== $featured_image && empty( $css ) && empty( $el_class ) && empty( 
 	return;
 }
 $css_class = 'vc_gitem-zone'
-             . ( strlen( $this->zone_name ) ? ' vc_gitem-zone-' . $this->zone_name : '' );
+	. ( strlen( $this->zone_name ) ? ' vc_gitem-zone-' . $this->zone_name : '' );
 $css_class_mini = 'vc_gitem-zone-mini';
 // Autoheight Mode
 // http://jsfiddle.net/tL2pgtyb/4/ {{
 // Set css classes for shortcode main html element wrapper and background block
 $css_class .= vc_shortcode_custom_css_class( $css, ' ' )
-              . ( strlen( $el_class ) ? ' ' . $el_class : '' );
+	. ( strlen( $el_class ) ? ' ' . $el_class : '' );
 preg_match( '/background(\-image)?\s*\:\s*[^\s]*?\s*url\(\'?([^\)]+)\'?\)/', $css, $img_matches );
 $background_image_css_editor = isset( $img_matches[2] ) ? $img_matches[2] : false;
 if ( 'custom' === $height_mode ) {
@@ -54,13 +55,13 @@ if ( 'custom' === $height_mode ) {
 	}
 } elseif ( 'original' !== $height_mode ) {
 	$css_class .= ' vc-gitem-zone-height-mode-auto'
-	              . ( strlen( $height_mode ) > 0 ? ' vc-gitem-zone-height-mode-auto-' . $height_mode : '' );
+		. ( strlen( $height_mode ) > 0 ? ' vc-gitem-zone-height-mode-auto-' . $height_mode : '' );
 }
 if ( 'yes' === $featured_image ) {
-	$css_style .= "{{ post_image_background_image_css }}";
+	$css_style .= '{{ post_image_background_image_css }}';
 	$image = '<img src="{{ post_image_url'
-	         . ( false !== $background_image_css_editor ? ':' . rawurlencode( $background_image_css_editor ) . '' : '' )
-	         . ' }}" class="vc_gitem-zone-img" alt="{{ post_image_alt }}">';
+		. ( false !== $background_image_css_editor ? ':' . rawurlencode( $background_image_css_editor ) . '' : '' )
+		. ' }}" class="vc_gitem-zone-img" alt="{{ post_image_alt }}">';
 } elseif ( false !== $background_image_css_editor ) {
 	$image = '<img src="' . esc_attr( $background_image_css_editor ) . '" class="vc_gitem-zone-img" alt="{{ post_image_alt }}">';
 }
@@ -74,17 +75,17 @@ if ( strlen( $link ) > 0 && 'none' !== $link ) {
 		           . ' title="' . esc_attr( $link_s['title'] ) . '"';
 		*/
 		$image_block = '<a href="' . esc_attr( $link_s['url'] ) . '" title="'
-		               . esc_attr( $link_s['title'] ) . '" target="' . esc_attr( trim( $link_s['target'] ) )
-		               . '" class="vc_gitem-link vc-zone-link"></a>';
+			. esc_attr( $link_s['title'] ) . '" target="' . esc_attr( trim( $link_s['target'] ) )
+			. '" class="vc_gitem-link vc-zone-link"></a>';
 	} elseif ( 'post_link' === $link ) {
-		// $attr = ' data-vc-link="{{ post_link_url }}"';
 		$image_block = '<a href="{{ post_link_url }}" title="{{ post_title }}" class="vc_gitem-link vc-zone-link"></a>';
+	} elseif ( 'post_author' === $link ) {
+		$image_block = '<a href="{{ post_author_href }}" title="{{ post_author }}" class="vc_gitem-link vc-zone-link"></a>';
 	} elseif ( 'image' === $link ) {
-		// $attr = ' data-vc-link="{{ post_image_url }}"';
 		$image_block = '<a href="{{ post_image_url }}" title="{{ post_title }}" class="vc_gitem-link vc-zone-link"></a>';
 	} elseif ( 'image_lightbox' === $link ) {
 		if ( ! isset( $this->prettyphoto_rel ) ) {
-			$this->prettyphoto_rel = ' rel="prettyPhoto[rel-' . get_the_ID() . '-' . rand() . ']"';
+			$this->prettyphoto_rel = ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . rand() . ']"';
 		}
 		$image_block .= '<a href="{{ post_image_url }}" title="{{ post_title }}" ' . $this->prettyphoto_rel . ' data-vc-gitem-zone="prettyphotoLink" class="vc_gitem-link prettyphoto vc-zone-link vc-prettyphoto-link"></a>';
 	}
@@ -96,9 +97,7 @@ echo( empty( $css_style ) ? '' : ' style="' . esc_attr( $css_style ) . '"' )
 ?>>
 	<?php echo $image_block ?>
 	<?php echo $image ?>
-	<div class="<?php echo esc_attr( $css_class_mini ) ?>"<?php
-	echo( empty( $css_style_mini ) ? '' : ' style="' . esc_attr( $css_style_mini ) . '"' )
-	?>>
+	<div class="<?php echo esc_attr( $css_class_mini ) ?>"<?php echo( empty( $css_style_mini ) ? '' : ' style="' . esc_attr( $css_style_mini ) . '"' ) ?>>
 		<?php echo do_shortcode( $content ) ?>
 	</div>
-</div><?php echo $this->endBlockComment( $this->getShortcode() ); ?>
+</div>

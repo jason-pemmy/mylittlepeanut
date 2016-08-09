@@ -19,9 +19,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand" href="#">WebSiteName</a>
+					<a class="navbar-brand navbar-left" href="#">WebSiteName</a>
 				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
+				<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 					<?php
 						wp_nav_menu( array(
 							'container' => false,

@@ -1,11 +1,29 @@
-.footer-menu {
-  list-style-type: none;
+.footer-nav-container {
+  padding-top: 10px;
+  text-align: center;
+}
+.footer-nav-container .footer-menu {
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
-.footer-menu li {
+.footer-nav-container .footer-menu li {
   display: inline;
 }
-.footer-menu li::after {
+.footer-nav-container .footer-menu li:after {
   content: " | ";
+}
+.footer-nav-container .footer-menu li:last-child:after {
+  content: '';
+}
+.footer-nav-container .footer-menu li a:hover {
+  color: mediumvioletred;
+}
+.footer-sm-link-container {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
+.footer-sm-link-container a:hover {
+  color: mediumvioletred;
 }

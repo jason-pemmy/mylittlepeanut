@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
 /**
  * Shortcode attributes
  * @var $atts
@@ -40,5 +44,4 @@ $output .= '<' . $font_container_data['values']['tag'] . ' ' . $style . ' >';
 $output .= $content;
 $output .= '</' . $font_container_data['values']['tag'] . '>';
 $output .= '</div>';
-$output .= $this->endBlockComment( $this->getShortcode() );
 echo $output;

@@ -2,15 +2,25 @@
   background-color: #fff;
   border-color: #fff;
 }
+.navbar-inverse .navbar-brand {
+  float: left;
+  color: #3bb0c9;
+}
+.navbar-inverse .navbar-brand:hover {
+  color: mediumvioletred;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #3bb0c9;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: mediumvioletred;
+}
 .navbar-inverse .navbar-toggle {
   border-color: #fff;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #000;
+  background-color: #3bb0c9;
 }
 .navbar-inverse .navbar-toggle:hover .icon-bar {
-  background-color: #fff;
-}
-.navbar-inverse .navbar-collapse {
-  background-color: #467879;
+  background-color: mediumvioletred;
 }
