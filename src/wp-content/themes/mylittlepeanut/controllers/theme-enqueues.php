@@ -61,6 +61,7 @@ class Theme_Enqueues extends Base_Factory {
 					'mobile-menu',
 					'gravity-forms',
 					'forms',
+					'home-page',
 				) );
 
 				// components

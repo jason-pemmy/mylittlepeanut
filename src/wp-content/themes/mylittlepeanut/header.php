@@ -12,14 +12,14 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand navbar-left" href="#">WebSiteName</a>
+					<a class="navbar-brand navbar-left" href="<?php echo get_home_url(); ?>">WebSiteName</a>
 				</div>
 				<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 					<?php

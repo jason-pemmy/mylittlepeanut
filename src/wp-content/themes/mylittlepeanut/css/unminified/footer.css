@@ -16,7 +16,8 @@
 .footer-nav-container .footer-menu li:last-child:after {
   content: '';
 }
-.footer-nav-container .footer-menu li a:hover {
+.footer-nav-container .footer-menu li a:hover,
+.footer-nav-container .footer-menu li a:focus {
   color: mediumvioletred;
 }
 .footer-sm-link-container {
@@ -24,6 +25,7 @@
   text-align: center;
   font-size: 1.2em;
 }
-.footer-sm-link-container a:hover {
+.footer-sm-link-container a:hover,
+.footer-sm-link-container a:focus {
   color: mediumvioletred;
 }

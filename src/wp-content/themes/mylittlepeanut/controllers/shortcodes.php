@@ -19,8 +19,7 @@ class TBK_Shortcodes extends Base_Factory {
 		$this->register( 'hero-banner', false );
 		$this->register( 'form-sample', false );
 		$this->register( 'frontend-tool', false );
-		$this->register( 'security-monitor-navbar', true );
-		$this->register( 'security-monitor-content-list', true );
+		$this->register( 'product-features-column-container', true );
 
 		//styling elements
 		$this->register( 'style-guide', array(
@@ -243,12 +242,8 @@ class TBK_Shortcodes extends Base_Factory {
 		return TBK_Render::shortcode_view( 'frontend-tool' );
 	}
 	
-	function security_monitor_navbar() {
-		return TBK_Render::shortcode_view( 'security-monitor-navbar' );
-	}
-	
-	function security_monitor_content_list() {
-		return TBK_Render::shortcode_view( 'security-monitor-content-list' );
+	function product_features_columns() {
+		return TBK_Render::shortcode_view( 'product-features-column-container' );
 	}
 }
 

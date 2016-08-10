@@ -16,7 +16,7 @@
 									));
 								?>	
 							</div>
-							<div class="col-xs-12 col-sm-6 footer-sm-link-container">
+							<div class="col-xs-12 col-md-6 footer-sm-link-container">
 								<a href="<?php the_field('facebook_link', 'option'); ?>" target="_blank">
 									<span class="<?php the_field('facebook_icon', 'option'); ?>"></span>
 								</a>
