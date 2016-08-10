@@ -6,7 +6,8 @@
   float: left;
   color: #3bb0c9;
 }
-.navbar-inverse .navbar-brand:hover {
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:active {
   color: mediumvioletred;
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -20,6 +21,9 @@
 }
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #3bb0c9;
+}
+.navbar-inverse .navbar-toggle:hover {
+  background-color: beige;
 }
 .navbar-inverse .navbar-toggle:hover .icon-bar {
   background-color: mediumvioletred;

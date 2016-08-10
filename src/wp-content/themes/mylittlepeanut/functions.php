@@ -93,11 +93,8 @@ class The_Theme extends TBK_Theme {
 		if ( ! is_admin() ) {		
 			wp_enqueue_script( 'tbk-bootstrap-js', $js_directory . 'vendor/bootstrap.min.js' );
 			wp_enqueue_script( 'typekit', '//use.typekit.net/ynv5tpe.js' );
-			wp_enqueue_script( 'modernizr', $js_directory . 'vendor/modernizr.js' );	
-			wp_enqueue_script( 'angular-controllers', $js_directory . 'tbk-security.js' );
-			wp_enqueue_script( 'angular-directives', $js_directory . 'tbk-security-directives.js' );
-			wp_enqueue_script( 'main-scripts', $js_directory . 'scripts.js' );
-			
+			wp_enqueue_script( 'modernizr', $js_directory . 'vendor/modernizr.js' );
+			wp_enqueue_script( 'main-scripts', $js_directory . 'scripts.js' );			
 		}
 
 		wp_localize_script( 'main-scripts', 'baseURL', home_url() );
