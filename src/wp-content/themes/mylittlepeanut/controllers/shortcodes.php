@@ -19,7 +19,6 @@ class TBK_Shortcodes extends Base_Factory {
 		$this->register( 'hero-banner', false );
 		$this->register( 'form-sample', false );
 		$this->register( 'frontend-tool', false );
-		$this->register( 'product-features-column-container', true );
 
 		//styling elements
 		$this->register( 'style-guide', array(
@@ -116,7 +115,20 @@ class TBK_Shortcodes extends Base_Factory {
 			),
 			'js_view' => 'VcColumnView',
 		) );
-	}
+		
+		
+		$this->register( 'product-feature', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+			),
+		) );
+				
+	}		
 
 	public function register( $tag, $vc_map = array() ) {
 		add_shortcode( $tag, array( &$this, strtolower( str_replace( '-', '_', $tag ) ) ) );
@@ -222,7 +234,7 @@ class TBK_Shortcodes extends Base_Factory {
 		}
 
 		return TBK_Render::shortcode_view( 'button', $atts );
-	}
+	}	
 
 	function image_bar( $atts ) {
 		$atts = shortcode_atts( array(
@@ -245,6 +257,24 @@ class TBK_Shortcodes extends Base_Factory {
 	function product_features_columns() {
 		return TBK_Render::shortcode_view( 'product-features-column-container' );
 	}
+	
+	function product_feature( $atts ) {
+		$atts = shortcode_atts( array(
+			'image' => null,
+		), $atts );
+
+		/*if ( ! empty( $atts['image'] ) ) {
+			//$atts['image'] = explode( ',', $atts['images'] );
+
+			return TBK_Render::shortcode_view( 'product-feature', $atts );
+		}*/
+		
+		if( ! empty( $atts['image'] ) ) {
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'thumb');
+		}
+
+		return TBK_Render::shortcode_view( 'product-feature', $atts );
+	}	
 }
 
 TBK_Shortcodes::instantiate();
@@ -301,5 +331,5 @@ if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
 
 			return parent::content( $atts, $content, $view );
 		}
-	}
+	}	
 }

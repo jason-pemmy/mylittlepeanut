@@ -83,7 +83,9 @@ class The_Theme extends TBK_Theme {
 		self::create_image_sizes( 'desktop-sm', 992, 9999, true );
 		self::create_image_sizes( 'tablet', 768, 500, true );
 		self::create_image_sizes( 'mobile-lg', 500, 300, true );
+		self::create_image_sizes( 'product-feature-image', 500, 300, true );
 		self::create_image_sizes( 'mobile-sm', 380, 300, true );
+		self::create_image_sizes( 'sponsor-logo', 323, 162, true );
 
 	}
 		
