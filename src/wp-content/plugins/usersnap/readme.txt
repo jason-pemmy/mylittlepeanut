@@ -4,7 +4,7 @@ Donate link: http://usersnap.com/
 Tags: feedback, visual feedback, bug tracking, screenshot, image, images, plugin, bug, bugs, typo, screenshots, widget, bugtracking, issue tracking, project management, project tracking, bug tracker, development, testing, browser testing, website testing, wp plugin, acceptance test, acceptance testing, user testing, quality assurance, website widget, feedback widget, customer support, customer widget, survey form, screenshot widget, browser screenshot widget, usersnap, bug reporter, qa, google, page, trello, JIRA, asana, basecamp, admin, administration, chat, slack, hipchat, hall, contact, form, dashboard, ecommerce, edit, content, css button, button, plugins, shortcode, fogbugz, redmine, github, desk, evernote, intercom, kanbanize, kanban, pivotal tracker, tracker, trac, bug tracker, bugs, feedback forms, notifications, notification, page screenshot, page previews, screenshot, screenshots, web page previews, visual items, user acceptance testing, uat, browser shots, browser shot, browser screenshots, browser screenshot, cross browser, cross browser testing, cross browser test
 Requires at least: 3.0
 Tested up to: 4.4
-Stable tag: 4.3
+Stable tag: 4.4
 
 Improve your Wordpress website with screenshots, bug reports and visual feedback from Usersnap.
 Usersnap helps you to get visual feedback from your users easily.
@@ -97,7 +97,7 @@ If the screen size exceeds the corresponding maximum screen resolution, your ima
 Usersnap supports embedded Flash on your pages. However, it's currently not possible to capture the state of those Flash objects itself (e.g. video position, ...).
 
 = Where do I get a Usersnap API key? =
-Either directly in your wordpress plugin or go to http://usersnap.com and sign up! 
+Either directly in your wordpress plugin or go to http://usersnap.com and sign up!
 You can create and manage your API keys for your site after you've logged in.
 
 = Can I customize the Usersnap widget? =
@@ -128,6 +128,9 @@ For further questions please refer to our <a href="https://usersnap.com/help/tro
 5. Get screenshots and bug reports from your users & clients with additional meta information (such as browser version, screen size, installed plugins,...)
 
 == Changelog ==
+
+= 4.4 =
+* changed signup url
 
 = 4.3 =
 * updated signup ui + readme + tested to newest wordpress
@@ -191,54 +194,54 @@ For further questions please refer to our <a href="https://usersnap.com/help/tro
 * bug fix for double account creation
 
 = 3.0 =
-* IMPORTANT: updated to the new Usersnap widget. If you want to continue with the old widget please do not update the plugin! 
+* IMPORTANT: updated to the new Usersnap widget. If you want to continue with the old widget please do not update the plugin!
 * Now you can specify who is allowed to see the Usersnap widget!
 * All configuration is now easily done with a configurator directly on usersnap.com
 
-= 2.4 = 
+= 2.4 =
 * added hide button option
 
-= 2.3 = 
+= 2.3 =
 * fixed php issset check
 
-= 2.2 = 
+= 2.2 =
 * storing api key problem solved!
 
-= 2.1 = 
+= 2.1 =
 * small hotfixes
 
-= 2.0 = 
+= 2.0 =
 * setup a usersnap account directly in your wordpress
 
-= 1.11 = 
+= 1.11 =
 * changed search tags
 
-= 1.10 = 
+= 1.10 =
 * added a few option fixes
 
-= 1.9 = 
+= 1.9 =
 * added a few langauges, added custom button text attribute, added shortcut feature
 
-= 1.8 = 
+= 1.8 =
 * added the new arrow feature.
 
-= 1.7 = 
+= 1.7 =
 * added new features as config options, now with more languages, emailbox and commentbox, and customizable tool selection, hotfix: screenshots and icons.
 
-= 1.6 = 
-* hotfixes with images. 
+= 1.6 =
+* hotfixes with images.
 
-= 1.5 = 
+= 1.5 =
 * added new features as config options, now with more languages, emailbox and commentbox, and customizable tool selection.
 
-= 1.1 = 
+= 1.1 =
 * spelling issue fixed.
 
-= 1.0 = 
+= 1.0 =
 * enough testing done, now we can release version 1.0
 
 = 0.9 =
-* added language support to configuration page 
+* added language support to configuration page
 
 = 0.8 =
 * now only middle and bottom alignment for the usersnap button is available

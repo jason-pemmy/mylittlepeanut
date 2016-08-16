@@ -3,13 +3,13 @@
 Plugin Name: Usersnap
 Plugin URI: http://www.usersnap.com
 Description: Usersnap helps website owners to get feedback in form of screenshots from their customers, readers or users.
-Version: 4.3
+Version: 4.4
 Author: Usersnap
 Author URI: http://usersnap.com
 License: GPL v2
 */
 
-define('USERSNAP_VERSION', '4.3');
+define('USERSNAP_VERSION', '4.4');
 define('USERSNAP_POINTER_VERSION', '0_1');
 define('USERSNAP_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 
@@ -36,7 +36,7 @@ function us_add_js() {
 			if (is_user_logged_in()) {
 				$dispUS = true;
 			}
-		} else if ($options['visible-for']=="roles") {	
+		} else if ($options['visible-for']=="roles") {
 			if ( is_user_logged_in() ) {
 				$user = new WP_User(get_current_user_id());
 				if (!empty($user->roles) && is_array($user->roles)) {
@@ -79,7 +79,7 @@ function us_add_js() {
 		</script>
 		<?php
 	}
-} 
+}
 
 /**
 * add js code to admin page
@@ -87,9 +87,9 @@ function us_add_js() {
 function us_add_js_admin() {
 	$options = get_option('usersnap_options');
 	//check if we should display usersnap
-	if (isset($options['api-key']) && 
-	(strlen($options['api-key'])>0) && 
-	isset($options['visible-for-backend']) && 
+	if (isset($options['api-key']) &&
+	(strlen($options['api-key'])>0) &&
+	isset($options['visible-for-backend']) &&
 	($options['visible-for-backend']=='backend')) {
 		?>
 		<script type="text/javascript" data-cfasync="false">
@@ -112,7 +112,7 @@ function us_add_js_admin() {
 		</script>
 		<?php
 	}
-} 
+}
 
 /**
 * build settings menu
@@ -132,7 +132,7 @@ function us_register_settings() {
 	register_setting( 'usersnap_options', 'usersnap_options', 'usersnap_options_validate');
 	add_settings_section('usersnap_main', '', 'usersnap_section_text', 'usersnap');
 	add_settings_field('us-api-key', 'Enter your Usersnap API key', 'usersnap_input_text', 'usersnap', 'usersnap_main');
-	
+
 	//page usersnap_pg_new
 	add_settings_section('usersnap_new', 'Create your Usersnap account', 'usersnap_section_new', 'usersnap_pg_new');
 	add_settings_field('us-user-name', 'Your name', 'usersnap_input_user_name', 'usersnap_pg_new', 'usersnap_new');
@@ -140,7 +140,7 @@ function us_register_settings() {
 	add_settings_field('us-user-url', 'Blog URL', 'usersnap_input_user_url', 'usersnap_pg_new', 'usersnap_new');
 	add_settings_field('us-user-pwd', 'Choose a password', 'usersnap_input_user_pwd', 'usersnap_pg_new', 'usersnap_new');
 	add_settings_field('us-user-pwd2', 'Retype your password', 'usersnap_input_user_pwd2', 'usersnap_pg_new', 'usersnap_new');
-	
+
 
 	//add css
 	wp_register_style('usersnapAdminStyle', plugins_url('style.css', __FILE__));
@@ -183,13 +183,13 @@ function usersnap_input_user_url() {
 
 function usersnap_section_text() {
 	?>
-    <div class="us-box">Manage and configure the button theme and settings on your <a href="https://usersnap.com/a/" target="_blank">Usersnap site configuration</a>.</div>  
+    <div class="us-box">Manage and configure the button theme and settings on your <a href="https://usersnap.com/a/" target="_blank">Usersnap site configuration</a>.</div>
 	<?php
 }
 
 function usersnap_section_new() {
 	?>
-    <div class="us-box">Screenshots of your WordPress site will help you improve your site and communicate with your readers. Promised.<br/><a href="https://usersnap.com/wordpress?gat=wpplugin" target="_blank">Learn more about Usersnap here</a></div>  
+    <div class="us-box">Screenshots of your WordPress site will help you improve your site and communicate with your readers. Promised.<br/><a href="https://usersnap.com/wordpress?gat=wpplugin" target="_blank">Learn more about Usersnap here</a></div>
 	<?php
 }
 
@@ -207,7 +207,7 @@ function usersnap_input_text() {
 			<a href="https://usersnap.com/a/#/company/p/<?php echo $key; ?>/edit" target="_blank">Account</a> and add the blog URL to your project settings.</i></p><?php
 	}
 }
-		
+
 
 
 function usersnap_options_validate($input) {
@@ -227,7 +227,7 @@ function usersnap_options_validate($input) {
 		$pwd = $input["user-pwd"];
 		$url = $input["user-url"];
 		$name = $input["user-name"];
-		$data = http_build_query( 
+		$data = http_build_query(
 			array('email' => $email,
               'url' => $url,
               'password' => $pwd,
@@ -239,7 +239,7 @@ function usersnap_options_validate($input) {
               'package' => 'Company',
               'payment' => "oneyear")
 		);
-		
+
 		$opts = array(
 		    'http' => array(
 		        'Content-Type: text/html; charset=utf-8',
@@ -249,11 +249,11 @@ function usersnap_options_validate($input) {
 		        'content' => $data
 		     )
 		);
-		
+
 		$context = stream_context_create($opts);
 		$error = false;
 		$msg = "";
-		$fp = @fopen('https://usersnap.com/signup/signup_external', 'r', false, $context);
+		$fp = @fopen('https://d.usersnap.com/signup/signup_external', 'r', false, $context);
 		if (!$fp) {
 			$msg = "HTTP Error";
 			$error = true;
@@ -277,9 +277,9 @@ function usersnap_options_validate($input) {
 			}
 			fclose($fp);
 		}
-		
+
 		//var_dump($errorMsg);
-		
+
 		if (!$error) {
 			//no error valid api key
 			$input["api-key"] = $apikey;
@@ -289,7 +289,7 @@ function usersnap_options_validate($input) {
 			$input["message"] .= $msg."<br/>";
 			$input["error"] = true;
 		}
-		
+
 	} else {
 		$input["usersnap-api-requ"] = false;
 	}
@@ -297,7 +297,7 @@ function usersnap_options_validate($input) {
 }
 
 function us_option_tab_menu($current = "newusersnap", $tabs) {
-	?>	
+	?>
 	<div id="icon-usersnap" class="icon32"><br></div>
 	<h2 class="nav-tab-wrapper">
 	<?php
@@ -350,7 +350,7 @@ function us_create_visibility_form() {
 			$roles = $wp_roles->get_names();
 			$ctn = 0;
 			$check = false;
-		 
+
 			foreach ($roles as $role_value => $role_name) {
 				$check = false;
 				foreach($options['visible-for-roles'] as $lurole) {
@@ -369,7 +369,7 @@ function us_create_visibility_form() {
 		  	}
 			?>
 			</div>
-		  
+
 		</td>
 		<tr>
 			<th scope="row">
@@ -380,7 +380,7 @@ function us_create_visibility_form() {
 					<input type="checkbox" <?php echo ($options['visible-for-frontend']=="frontend"?"checked":"")?> name="usersnap_options[visible-for-frontend]" value="frontend" id="us-visible-for-frontend"/>
 					<label for="us-visible-for-frontend">Visible for Frontend</label>
 				</p>-->
-				
+
 				<p>
 					<input type="checkbox" <?php echo ($options['visible-for-backend']=="backend"?"checked":"")?> name="usersnap_options[visible-for-backend]" value="backend" id="us-visible-for-backend"/>
 					<label for="us-visible-for-backend">Visible in Administration Backend</label>
@@ -431,17 +431,17 @@ function us_option_page() {
 	}
 	?>
 	<div class="wrap">
-	
+
 	<h2 class="us-headline"><?php _e( 'Settings' ); ?> › Usersnap</h2>
-	
+
 	<?php
 	if (isset($_GET['tab'])) {
 		$currenttab = $_GET['tab'];
 	}
-	
+
 	if(count($tabs) > 1) us_option_tab_menu($currenttab, $tabs);
-	
-	?>	
+
+	?>
 	<?php
 	if ($options["error"] == true) {
 		?><div class="error below-h2"><p><?php echo $options["message"]; ?></p></p></div><?php
@@ -484,8 +484,8 @@ function us_option_page() {
 				}
 				jQuery('#us-btn-setup').attr("disabled", true).val("<?php _e('Please wait...') ?>");
 			});
-			
-			
+
+
 			jQuery.post( ajaxurl, {
               pointer: '<?php echo $pointer; ?>',
               action: 'dismiss-wp-pointer'
@@ -521,15 +521,15 @@ function us_option_page() {
 					jQuery('#us-btn-save').click();
 				});
 			});
-			
+
 			jQuery.post( ajaxurl, {
                   pointer: '<?php echo $pointer; ?>',
                   action: 'dismiss-wp-pointer'
             } );
-			
+
 			</script>
 			<?php
-			break; 
+			break;
 	}
 	?>
 	</form>
@@ -555,12 +555,12 @@ function usersnap_admin_pointer_header() {
 function usersnap_admin_pointer_check() {
 	$pointer = 'usersnap_admin_pointer' . USERSNAP_POINTER_VERSION . '_new_items';
 	$dismissed = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
-	
+
 	//don't show the pointe if we are in the usersnap settings page
 	if(!is_admin()) return false;
 	if(get_current_screen()->base == 'settings_page_usersnap/usersnap') {
 		$options = get_option('usersnap_options');
-		
+
 		//remove the pointer if usersnap has been set up
 		if (isset($options['api-key']) && strlen($options['api-key']) > 0 ) {
 			$pointer = 'usersnap_admin_pointer' . USERSNAP_POINTER_VERSION . '_new_items';
@@ -571,13 +571,13 @@ function usersnap_admin_pointer_check() {
 				$users = get_users();
 				update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $dismissed );
 			}
-			
+
 		}
-		
+
 		return false;
 	}
-	
-	
+
+
    $admin_pointers = usersnap_admin_pointer();
    foreach ( $admin_pointers as $pointer => $array ) {
       if ( $array['active'] )
@@ -623,7 +623,7 @@ function usersnap_admin_pointer() {
    $dismissed = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
    $version = USERSNAP_POINTER_VERSION; // version of this pointer - change to view again after update
    $prefix = 'usersnap_admin_pointer' . $version . '_';
-   
+
    if (isset($options['api-key']) && strlen($options['api-key'])>0) {
    		$new_pointer_content = '<h3>' . __( 'Usersnap Settings have moved.' ) . '</h3>';
    		$new_pointer_content .= '<p>' . __( 'You can now find your Usersnap settings in the settings menu.' ) . '</p>';
@@ -644,5 +644,5 @@ function usersnap_admin_pointer() {
 }
 
 function usersnap_admin_pointer_hide($pointer_id) {
-	
+
 }
