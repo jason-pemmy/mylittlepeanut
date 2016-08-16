@@ -254,7 +254,7 @@ class TBK_Shortcodes extends Base_Factory {
 		), $atts );
 
 		if ( ! empty( $atts['copy'] ) ) {
-			$atts['copy'] = vc_build_link( $atts['copy'] );
+			//$atts['copy'] = vc_build_link( $atts['copy'] );
 		}
 
 		if( ! empty( $atts['image'] ) ) {
