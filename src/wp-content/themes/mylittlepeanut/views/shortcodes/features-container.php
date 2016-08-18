@@ -1,5 +1,5 @@
-<div class="container-fluid product-feature-containers">
-	<div class="container <?php echo $classes; ?>">
+<div class="product-feature-container">
+	<div class="<?php echo $classes; ?>">
 		<div class="col-sm-12">
 			<div class="product-feature-content">
 				{content}

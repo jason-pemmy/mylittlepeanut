@@ -27,10 +27,6 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
-.vc_row {
-  margin-left: 0;
-  margin-right: 0;
-}
 p:empty {
   display: none;
 }
