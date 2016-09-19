@@ -1,38 +1,45 @@
 @import '../utils/utils.less';
 
-.footer-nav-container {
-	padding-top: 10px;
-	text-align: center;
-	
-	.footer-menu {	
-		margin: 0;
-		padding: 0;
-		list-style-type: none;	
+.page-footer {
+	.navbar {
+		margin-bottom: 0;
+		
+		.footer-nav-container {
+			padding-top: 10px;
+			text-align: center;
 
-		li {
-			display: inline;
+			.footer-menu {	
+				margin: 0;
+				padding: 0;
+				list-style-type: none;	
 
-			&:after {
-				content: " | ";
-			}
+				li {
+					display: inline;
 
-			&:last-child:after {
-			  content: '';
-			}
-			
-			a:hover, a:focus{		
-				color: mediumvioletred;
+					&:after {
+						content: " | ";
+					}
+
+					&:last-child:after {
+					  content: '';
+					}
+
+					a:hover, a:focus{		
+						color: mediumvioletred;
+					}
+				}
 			}
 		}
-	}
+
+		.footer-sm-link-container {
+			padding-top: 10px;
+			text-align: center;
+			font-size: 1.2em;
+
+			a:hover, a:focus {
+				color: mediumvioletred;
+			}
+		}	
+	}		
 }
 
-.footer-sm-link-container {
-	padding-top: 10px;
-	text-align: center;
-	font-size: 1.2em;
-	
-	a:hover, a:focus {
-		color: mediumvioletred;
-	}
-}

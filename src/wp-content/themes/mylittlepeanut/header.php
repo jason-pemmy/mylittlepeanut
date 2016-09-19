@@ -19,21 +19,23 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand navbar-left" href="<?php echo get_home_url(); ?>">WebSiteName</a>
-				</div>
-				<div class="collapse navbar-collapse navbar-right" id="myNavbar">
-					<?php
-						wp_nav_menu( array(
-							'container' => false,
-							'menu' => 'MainMenu',
-							'menu_class' => 'nav navbar-nav peanut-nav',
-							'menu_id' => 'main-menu',
-							'link_before' => '',
-							'link_after' => '',
-							'walker' => '',
-						));
-					?>
-				</div>
+					<a class="navbar-brand navbar-left" href="<?php echo get_home_url(); ?>">
+						<img class="logo" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name');?>">
+					</a>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<?php
+							wp_nav_menu( array(
+								'container' => false,
+								'menu' => 'MainMenu',
+								'menu_class' => 'nav navbar-nav peanut-nav',
+								'menu_id' => 'main-menu',
+								'link_before' => '',
+								'link_after' => '',
+								'walker' => '',
+							));
+						?>
+					</div>
+				</div>				
 			</div>
 		</nav>
 		

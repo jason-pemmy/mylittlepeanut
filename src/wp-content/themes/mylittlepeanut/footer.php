@@ -1,6 +1,6 @@
 		</main>
 			<footer class="page-footer">			
-				<nav class="navbar navbar-default navbar-fixed-bottom">
+				<nav class="navbar navbar-default">
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12 col-md-6 footer-nav-container">
