@@ -62,6 +62,7 @@ class Theme_Enqueues extends Base_Factory {
 					'gravity-forms',
 					'forms',
 					'home-page',
+                    'hero-banner',
 				) );
 
 				// components

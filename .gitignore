@@ -45,7 +45,7 @@ Thumbs.db
 # uploads folder in wp #
 ########################
 __archives
-src/wp-content/**/__uploads
+#src/wp-content/**/__uploads
 src/wp-content/**/__exports
 src/wp-content/brochure
 src/nbproject/private/

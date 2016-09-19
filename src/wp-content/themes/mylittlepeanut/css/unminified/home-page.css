@@ -20,28 +20,3 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
-.home-hero-img {
-  margin-bottom: 35px;
-}
-.product-feature-container {
-  margin-right: 0;
-  margin-left: 0;
-  margin-top: 30px;
-}
-@media screen and (min-width: 1200px) {
-  .product-feature-container {
-    margin-right: 10%;
-    margin-left: 10%;
-  }
-}
-.product-feature-container .product-feature-content {
-  padding-left: 0;
-  padding-right: 0;
-}
-.product-feature-container .product-feature {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.product-feature-container .product-feature img {
-  width: 100%;
-}
