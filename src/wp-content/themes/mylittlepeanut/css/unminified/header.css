@@ -1,16 +1,22 @@
 .navbar-inverse {
+  margin-bottom: 0;
+  height: 110px;
   background-color: #fff;
   border-color: #fff;
 }
 .navbar-inverse .container .navbar-header .logo {
   width: 380px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 .navbar-inverse .container .navbar-header .navbar-collapse {
   margin-top: 50px;
 }
 .navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav {
-  margin-top: 30px;
+  margin-top: 40px;
+  padding-left: 0;
 }
-.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav .menu-item a:hover {
+.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav .menu-item a:hover,
+.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav .menu-item a:focus {
   color: blue;
 }
