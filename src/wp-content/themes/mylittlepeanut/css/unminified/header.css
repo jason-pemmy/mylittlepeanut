@@ -4,10 +4,27 @@
   background-color: #fff;
   border-color: #fff;
 }
+.navbar-inverse .container .navbar-header .navbar-toggle {
+  margin-right: 25px;
+  margin-top: 27px;
+}
+.navbar-inverse .container .navbar-header .navbar-toggle .icon-bar {
+  background-color: #5b3f38;
+}
+.navbar-inverse .container .navbar-header .navbar-toggle:hover .icon-bar {
+  background-color: #fff;
+}
 .navbar-inverse .container .navbar-header .logo {
-  width: 380px;
-  margin-top: 20px;
-  margin-left: 30px;
+  width: 230px;
+  margin-top: 30px;
+  margin-left: 5px;
+}
+@media screen and (min-width: 480px) {
+  .navbar-inverse .container .navbar-header .logo {
+    width: 380px;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
 }
 .navbar-inverse .container .navbar-header .navbar-collapse {
   margin-top: 50px;

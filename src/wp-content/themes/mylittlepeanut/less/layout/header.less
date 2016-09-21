@@ -1,3 +1,5 @@
+@import '../utils/utils.less';
+
 .navbar-inverse {
     margin-bottom: 0;
     height: 110px;
@@ -7,10 +9,30 @@
 	.container {
 		.navbar-header {
 			
+			.navbar-toggle {
+				margin-right: 25px;
+				margin-top: 27px;
+				
+				.icon-bar {
+					background-color: #5b3f38; 					
+				}
+				
+				&:hover
+					.icon-bar {
+						background-color: #fff;
+					}
+			}
+			
             .logo {
-				width: 380px;
-                margin-top: 20px;
-                margin-left: 30px;
+				width: 230px;
+                margin-top: 30px;
+                margin-left: 5px;
+				
+				@media @mq-xs-min {
+					width: 380px;
+					margin-left: 30px;
+					margin-top: 20px;
+				}
 			}
             
 			.navbar-collapse {

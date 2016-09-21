@@ -19,7 +19,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 					</button>
-					<a class="navbar-brand navbar-left" href="<?php echo get_home_url(); ?>">
+					<a class="navbar-left" href="<?php echo get_home_url(); ?>">
 						<img class="logo" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name');?>">
 					</a>
 					<div class="collapse navbar-collapse" id="myNavbar">
