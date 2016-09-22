@@ -14,7 +14,7 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<button type="button" class="navbar-toggle" data-toggle="collapse-side" data-target="#myNavbar">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
@@ -22,7 +22,7 @@
 					<a class="navbar-left" href="<?php echo get_home_url(); ?>">
 						<img class="logo" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name');?>">
 					</a>
-					<div class="collapse navbar-collapse" id="myNavbar">
+					<div class="side-collapse in activated" id="myNavbar">
 						<?php
 							wp_nav_menu( array(
 								'container' => false,
@@ -37,5 +37,4 @@
 					</div>
 				</div>				
 			</div>
-		</nav>
-		
+		</nav>		

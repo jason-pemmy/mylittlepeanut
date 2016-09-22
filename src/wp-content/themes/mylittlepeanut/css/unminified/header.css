@@ -1,8 +1,31 @@
+/*// @screen-xs-min = 420px
+@mq-xs-min: ~"screen and (min-width: @{screen-xs-min})";
+
+// @screen-sm-min = 768px
+@mq-sm-min: ~"screen and (min-width: @{screen-sm-min})";
+
+// @screen-md-min = 992px
+@mq-md-min: ~"screen and (min-width: @{screen-md-min})";
+
+// @screen-lg-min = 1200px
+@mq-lg-min: ~"screen and (min-width: @{screen-lg-min})";
+
+// @screen-xl-min = 1400px
+@mq-xl-min: ~"screen and (min-width: @{screen-xl-min})";
+
+// @screen-xxl-min = 1600px
+@mq-xxl-min: ~"screen and (min-width: @{screen-xxl-min})";
+
+// @screen-xxl-min = 1800px
+@mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";*/
 .navbar-inverse {
   margin-bottom: 0;
   height: 110px;
   background-color: #fff;
   border-color: #fff;
+}
+.navbar-inverse .container .navbar-header {
+  margin-left: -16px;
 }
 .navbar-inverse .container .navbar-header .navbar-toggle {
   margin-right: 25px;
@@ -11,29 +34,71 @@
 .navbar-inverse .container .navbar-header .navbar-toggle .icon-bar {
   background-color: #5b3f38;
 }
-.navbar-inverse .container .navbar-header .navbar-toggle:hover .icon-bar {
+.navbar-inverse .container .navbar-header .navbar-toggle:hover .icon-bar,
+.navbar-inverse .container .navbar-header .navbar-toggle:focus .icon-bar {
   background-color: #fff;
 }
 .navbar-inverse .container .navbar-header .logo {
   width: 230px;
   margin-top: 30px;
-  margin-left: 5px;
+  margin-left: 5%;
 }
 @media screen and (min-width: 480px) {
   .navbar-inverse .container .navbar-header .logo {
-    width: 380px;
+    width: 320px;
     margin-left: 30px;
     margin-top: 20px;
   }
 }
-.navbar-inverse .container .navbar-header .navbar-collapse {
-  margin-top: 50px;
+.navbar-inverse .container .navbar-header .side-collapse {
+  position: fixed;
+  top: 104px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow-x: hidden;
+  transition: none;
+  background-color: #bfaea4;
+  z-index: 1;
 }
-.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav {
-  margin-top: 40px;
-  padding-left: 0;
+@media screen and (min-width: 992px) {
+  .navbar-inverse .container .navbar-header .side-collapse {
+    position: inherit;
+    background-color: transparent;
+  }
 }
-.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav .menu-item a:hover,
-.navbar-inverse .container .navbar-header .navbar-collapse .navbar-nav .menu-item a:focus {
-  color: blue;
+.navbar-inverse .container .navbar-header .side-collapse .navbar-nav a {
+  width: 100%;
+  height: 50px;
+  margin-left: 15px;
+  color: #fff;
+}
+.navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:hover,
+.navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:focus {
+  background-color: #593d36;
+}
+@media screen and (min-width: 992px) {
+  .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a {
+    width: 100%;
+    height: 50px;
+    margin-left: 15px;
+    color: #593d36;
+  }
+  .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:hover,
+  .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:focus {
+    background-color: #fff;
+    color: #bfaea4;
+  }
+}
+.navbar-inverse .container .navbar-header .side-collapse.in {
+  width: 0;
+}
+@media screen and (min-width: 992px) {
+  .navbar-inverse .container .navbar-header .side-collapse.in {
+    width: 100%;
+    margin-left: 15px;
+  }
+}
+.navbar-inverse .container .navbar-header .side-collapse.activated {
+  transition: width .4s;
 }

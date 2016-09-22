@@ -63,6 +63,7 @@ class Theme_Enqueues extends Base_Factory {
 					'forms',
 					'home-page',
                     'hero-banner',
+					'product-feature',
 				) );
 
 				// components
