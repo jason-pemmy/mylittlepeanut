@@ -22,6 +22,7 @@
 					<a class="navbar-left" href="<?php echo get_home_url(); ?>">
 						<img class="logo" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name');?>">
 					</a>
+                    <div class="logo-right"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/peanut.png" alt="<?php bloginfo('name');?>"></div>
 					<div class="side-collapse in activated" id="myNavbar">
 						<?php
 							wp_nav_menu( array(
@@ -37,4 +38,4 @@
 					</div>
 				</div>				
 			</div>
-		</nav>		
+		</nav>
