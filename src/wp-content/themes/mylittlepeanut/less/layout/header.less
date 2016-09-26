@@ -47,7 +47,7 @@
 			}
 			
             .logo {
-				width: 230px;
+				width: 200px;
                 margin-top: 30px;
                 margin-left: 5%;
 				
@@ -56,9 +56,18 @@
 					margin-left: 30px;
 					margin-top: 20px;
 				}
+                
+                @media @mq-md-min {
+                    width: 320px;
+                }
+                
+                @media @mq-lg-min {
+                    width: 400px;
+                }
 			}
             
             .logo-right {
+                display: none;
                 position: absolute;
                 width: -52px;
                 right: 15px;
@@ -67,6 +76,10 @@
                 
                 img {
                     width: 150px;
+                }
+                
+                @media @mq-md-min {
+                    display: block;    
                 }
             }
 			
@@ -117,7 +130,7 @@
 
 				@media @mq-md-min {
 					width: 100%;
-					margin-left: 15px;
+					//margin-left: 15px;
 				}
 			}
 

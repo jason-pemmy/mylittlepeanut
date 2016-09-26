@@ -1,0 +1,127 @@
+@import '../utils/utils.less';
+
+/*
+// @screen-xs-min = 420px
+@mq-xs-min: ~"screen and (min-width: @{screen-xs-min})";
+
+// @screen-sm-min = 768px
+@mq-sm-min: ~"screen and (min-width: @{screen-sm-min})";
+
+// @screen-md-min = 992px
+@mq-md-min: ~"screen and (min-width: @{screen-md-min})";
+
+// @screen-lg-min = 1200px
+@mq-lg-min: ~"screen and (min-width: @{screen-lg-min})";
+
+// @screen-xl-min = 1400px
+@mq-xl-min: ~"screen and (min-width: @{screen-xl-min})";
+
+// @screen-xxl-min = 1600px
+@mq-xxl-min: ~"screen and (min-width: @{screen-xxl-min})";
+
+// @screen-xxl-min = 1800px
+@mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
+*/
+
+.about-section-container {
+    .about-image-container {        
+        margin-top: 30px;   
+        
+        @media @mq-xs-min {            
+            width: 100%;
+            max-width: 440px; 
+            margin: 0 auto;
+        }
+        
+        @media @mq-sm-min {                          
+        }
+        
+        @media @mq-md-min {            
+            float: left;
+            margin-left: 50px;
+            margin-top: -85px;    
+        }
+        
+        @media @mq-lg-min {
+            margin-left: 100px;      
+        }
+        
+        img {
+            display: none;
+            width: 100%;
+            
+             @media @mq-md-min {            
+                display: block;
+            }
+        }
+    }
+    
+    .about-text-container {
+        float: none;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 40px;
+        font-size: 25px;
+        
+        @media @mq-md-min {            
+            float: left;
+            width: 40%;
+            margin-left: 25px;
+            font-size: 30px;
+        }
+        
+         @media @mq-lg-min {
+            margin-left: 80px;
+            margin-top: 80px;
+            font-size: 40px; 
+        }
+
+        .about-heading {
+
+        }
+    }
+}
+
+.about-signature {
+    display: none;
+    position: absolute;
+    bottom: 15;
+    left: 125px;
+    p {
+        font-size: 14px;
+        line-height: 23px;
+    }
+    
+     @media @mq-md-min {
+        display: block; 
+    }
+}
+
+.about-copy {    
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    
+    @media @mq-md-min {
+        float: left;
+        width: 45%;
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+    
+    @media @mq-lg-min {        
+        margin-left: 80px;
+        margin-top: 30px;
+    }    
+}
+
+.about-tagline {
+    clear: both;
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    
+    p {
+        font-size: 30px;
+    }
+}

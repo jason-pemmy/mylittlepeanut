@@ -35,8 +35,8 @@
         .hero-copy {
             position: absolute;
 			bottom: 0;
-            right: 50px;
-			width: 50%;
+            right: 10px;
+			width: 90%;
 			margin-bottom: 20px;
 			font-size: 20px;
             font-weight: bolder;
@@ -45,19 +45,40 @@
             text-shadow: 1px 1px #000;
 			
 			@media @mq-xs-min {
-				margin-bottom: 30px;
-				font-size: 25px;				
+                right: 20px;
+                width: 80%;
+				margin-bottom: 20px;
+				font-size: 30px;				
+			}
+            
+            @media @mq-sm-min {
+                right: 50px;
+                width: 80%;
+				margin-bottom: 20px;
+				font-size: 30px;				
 			}
 			
 			@media @mq-md-min {
+				margin-bottom: 50px;
+				font-size: 35px;
+			}
+            
+            @media @mq-lg-min {
+                width: 60%;
 				margin-bottom: 100px;
-				font-size: 63px;
+				font-size: 55px;
+			}
+            
+            @media @mq-xl-min {
+                width: 60%;
+				margin-bottom: 100px;
+				font-size: 60px;
 			}
         }
     }
 }
 
-.after-hero-textblock {    
+/*.after-hero-textblock {    
     width: 95%;
     margin: 0 auto;
 	padding-top: 50px;
@@ -69,4 +90,4 @@
 		padding-top: 100px;
     	padding-bottom: 100px;
 	}
-}
+}*/

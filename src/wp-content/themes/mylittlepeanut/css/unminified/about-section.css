@@ -1,0 +1,118 @@
+/*
+// @screen-xs-min = 420px
+@mq-xs-min: ~"screen and (min-width: @{screen-xs-min})";
+
+// @screen-sm-min = 768px
+@mq-sm-min: ~"screen and (min-width: @{screen-sm-min})";
+
+// @screen-md-min = 992px
+@mq-md-min: ~"screen and (min-width: @{screen-md-min})";
+
+// @screen-lg-min = 1200px
+@mq-lg-min: ~"screen and (min-width: @{screen-lg-min})";
+
+// @screen-xl-min = 1400px
+@mq-xl-min: ~"screen and (min-width: @{screen-xl-min})";
+
+// @screen-xxl-min = 1600px
+@mq-xxl-min: ~"screen and (min-width: @{screen-xxl-min})";
+
+// @screen-xxl-min = 1800px
+@mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
+*/
+.about-section-container .about-image-container {
+  margin-top: 30px;
+}
+@media screen and (min-width: 480px) {
+  .about-section-container .about-image-container {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .about-section-container .about-image-container {
+    float: left;
+    margin-left: 50px;
+    margin-top: -85px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .about-section-container .about-image-container {
+    margin-left: 100px;
+  }
+}
+.about-section-container .about-image-container img {
+  display: none;
+  width: 100%;
+}
+@media screen and (min-width: 992px) {
+  .about-section-container .about-image-container img {
+    display: block;
+  }
+}
+.about-section-container .about-text-container {
+  float: none;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  font-size: 25px;
+}
+@media screen and (min-width: 992px) {
+  .about-section-container .about-text-container {
+    float: left;
+    width: 40%;
+    margin-left: 25px;
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .about-section-container .about-text-container {
+    margin-left: 80px;
+    margin-top: 80px;
+    font-size: 40px;
+  }
+}
+.about-signature {
+  display: none;
+  position: absolute;
+  bottom: 15;
+  left: 125px;
+}
+.about-signature p {
+  font-size: 14px;
+  line-height: 23px;
+}
+@media screen and (min-width: 992px) {
+  .about-signature {
+    display: block;
+  }
+}
+.about-copy {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+@media screen and (min-width: 992px) {
+  .about-copy {
+    float: left;
+    width: 45%;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .about-copy {
+    margin-left: 80px;
+    margin-top: 30px;
+  }
+}
+.about-tagline {
+  clear: both;
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-tagline p {
+  font-size: 30px;
+}
