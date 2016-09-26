@@ -187,6 +187,11 @@ class TBK_Shortcodes extends Base_Factory {
 					'heading' => 'Classes',
 					'param_name' => 'classes',
 				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+				),
 			),
 			'js_view' => 'VcColumnView',
 		) );        
@@ -392,6 +397,7 @@ if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
 		protected function content( $atts = null, $content = null, $view = 'features-container' ) {
 			$atts = shortcode_atts( array(
 				'classes' => null,
+				'heading' => null,
 			), $atts );
 			return parent::content( $atts, $content, $view );
 		}

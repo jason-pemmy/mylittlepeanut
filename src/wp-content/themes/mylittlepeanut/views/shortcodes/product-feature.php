@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-6 col-md-4 product-feature-container">
+<div class="col-xs-12 col-sm-6 col-md-4 product-feature">
 	<div class="feature-image-container">
 		<img class="" src="<?php echo $image; ?>" alt=""/>	
 	</div>	
