@@ -3,6 +3,7 @@
 		<div class="col-sm-12">
 			<div class="product-feature-content">
 				<div class="product-feature-header"><?php echo $heading; ?></div>
+				<div class="header-underline"></div>
 				{content}
 			</div>
 		</div>

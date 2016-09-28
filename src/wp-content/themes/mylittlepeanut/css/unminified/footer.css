@@ -19,16 +19,22 @@
 .page-footer .navbar .footer-nav-container .footer-menu li:last-child:after {
   content: '';
 }
+.page-footer .navbar .footer-nav-container .footer-menu li a {
+  color: #60463f;
+}
 .page-footer .navbar .footer-nav-container .footer-menu li a:hover,
 .page-footer .navbar .footer-nav-container .footer-menu li a:focus {
-  color: mediumvioletred;
+  color: #c0b0a6;
 }
 .page-footer .navbar .footer-sm-link-container {
   padding-top: 10px;
   text-align: center;
   font-size: 1.2em;
 }
+.page-footer .navbar .footer-sm-link-container a {
+  color: #60463f;
+}
 .page-footer .navbar .footer-sm-link-container a:hover,
 .page-footer .navbar .footer-sm-link-container a:focus {
-  color: mediumvioletred;
+  color: #c0b0a6;
 }
