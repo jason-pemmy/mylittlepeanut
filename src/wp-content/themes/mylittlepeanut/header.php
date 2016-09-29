@@ -30,9 +30,6 @@
 								'menu' => 'MainMenu',
 								'menu_class' => 'nav navbar-nav peanut-nav',
 								'menu_id' => 'main-menu',
-								'link_before' => '',
-								'link_after' => '',
-								'walker' => '',
 							));
 						?>
 					</div>

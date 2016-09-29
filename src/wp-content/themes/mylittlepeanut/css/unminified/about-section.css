@@ -51,6 +51,20 @@
     display: block;
   }
 }
+.about-section-container .about-image-container .about-signature {
+  display: none;
+  width: 100%;
+  margin-left: 25px;
+  margin-top: -100px;
+  font-size: 14px;
+  line-height: 23px;
+  color: #fff;
+}
+@media screen and (min-width: 992px) {
+  .about-section-container .about-image-container .about-signature {
+    display: block;
+  }
+}
 .about-section-container .about-text-container {
   float: none;
   width: 80%;
@@ -73,22 +87,8 @@
     font-size: 40px;
   }
 }
-.about-signature {
-  display: none;
-  position: absolute;
-  bottom: 45px;
-  left: 125px;
-}
-.about-signature p {
-  font-size: 14px;
-  line-height: 23px;
-}
-@media screen and (min-width: 992px) {
-  .about-signature {
-    display: block;
-  }
-}
 .about-copy {
+  float: none;
   width: 80%;
   margin: 0 auto;
   margin-top: 25px;

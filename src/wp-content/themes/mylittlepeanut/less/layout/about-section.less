@@ -24,18 +24,19 @@
 */
 
 .about-section-container {
-    .about-image-container {        
-        margin-top: 30px;   
-        
-        @media @mq-xs-min {            
-            width: 100%;
-            max-width: 440px; 
-            margin: 0 auto;
+	.about-image-container {        
+		margin-top: 30px;
+
+		@media @mq-xs-min {
+			width: 100%;
+			max-width: 440px;
+			margin: 0 auto;
         }
         
-        @media @mq-sm-min {                          
-        }
-        
+		@media @mq-sm-min {
+			
+		}
+		
         @media @mq-md-min {            
             float: left;
             margin-left: 50px;
@@ -54,6 +55,20 @@
                 display: block;
             }
         }
+		
+		.about-signature {
+			display: none;
+			width: 100%;
+			margin-left: 25px;
+			margin-top: -100px;
+			font-size: 14px;
+			line-height: 23px;
+			color: #fff;
+
+			@media @mq-md-min {
+				display: block;
+			}
+		}
     }
     
     .about-text-container {
@@ -82,46 +97,32 @@
     }
 }
 
-.about-signature {
-    display: none;
-    position: absolute;
-    bottom: 45px;
-    left: 125px;
-    p {
-        font-size: 14px;
-        line-height: 23px;
-    }
-    
-    @media @mq-md-min {
-        display: block; 
-    }
-}
-
-.about-copy {    
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 25px;
-    
-    @media @mq-md-min {
-        float: left;
-        width: 45%;
-        margin-left: 25px;
-        margin-top: 25px;
-    }
-    
-    @media @mq-lg-min {        
-        margin-left: 80px;
-        margin-top: 30px;
-    }    
+.about-copy {
+	float: none;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 25px;
+	
+	@media @mq-md-min {
+		float: left;
+		width: 45%;
+		margin-left: 25px;
+		margin-top: 25px;
+	}
+	
+	@media @mq-lg-min {
+		margin-left: 80px;
+		margin-top: 30px;
+	}
 }
 
 .about-tagline {
-    clear: both;
-    width: 95%;
-    margin: 0 auto;
-    text-align: center;
-    
-    p {
-        font-size: 30px;
-    }
+	clear: both;
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+
+	p {
+		font-size: 30px;
+	}
 }

@@ -96,9 +96,9 @@ class TBK_Shortcodes extends Base_Factory {
 					'param_name' => 'heading',
 				),
                 array(
-					'type' => 'textfield',
-					'heading' => 'Tag',
-					'param_name' => 'tag',
+					'type' => 'textarea',
+					'heading' => 'Signature',
+					'param_name' => 'signature',
 				),
 			),
 		) );
@@ -335,7 +335,7 @@ class TBK_Shortcodes extends Base_Factory {
 			'image' => null,
 			'copy' => null,
             'heading' => null,
-            'tag' => null,
+            'signature' => null,
 		), $atts );
 
 		if( ! empty( $atts['image'] ) ) {
