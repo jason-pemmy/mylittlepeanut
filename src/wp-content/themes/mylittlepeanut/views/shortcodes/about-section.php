@@ -1,4 +1,4 @@
-<div class="about-section-container">
+<div class="about-section-container" id="about">
 	<div class="about-image-container">
 		<img class="" src="<?php echo $image; ?>" alt=""/>	
 	</div>	
