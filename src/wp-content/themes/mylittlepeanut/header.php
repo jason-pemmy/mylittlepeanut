@@ -30,8 +30,10 @@
 								'menu' => 'MainMenu',
 								'menu_class' => 'nav navbar-nav peanut-nav',
 								'menu_id' => 'main-menu',
+								'walker' => new wp_bootstrap_navwalker()
 							));
 						?>
+						<div class="mobile-image-bottom"></div>
 					</div>
 				</div>				
 			</div>

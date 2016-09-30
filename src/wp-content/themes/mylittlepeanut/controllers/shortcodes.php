@@ -76,8 +76,40 @@ class TBK_Shortcodes extends Base_Factory {
 				),
 			) ),
 		) );
+		
+		$this->register( 'contact-section', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+				),
+			),
+		) );
         
-        $this->register( 'about-section', array(
+        $this->register( 'product-feature', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Copy',
+					'param_name' => 'copy',
+				),
+			),
+		) );
+		
+		$this->register( 'about-section', array(
 			'show_settings_on_create' => true,
 			'params' => array(
 				array(
@@ -101,23 +133,7 @@ class TBK_Shortcodes extends Base_Factory {
 					'param_name' => 'signature',
 				),
 			),
-		) );
-        
-        $this->register( 'product-feature', array(
-			'show_settings_on_create' => true,
-			'params' => array(
-				array(
-					'heading' => 'Image',
-					'param_name' => 'image',
-					'type' => 'attach_image',
-				),
-                array(
-					'type' => 'textfield',
-					'heading' => 'Copy',
-					'param_name' => 'copy',
-				),
-			),
-		) );
+		) );        
         
         $this->register( 'hero-banner', array(
 			'show_settings_on_create' => true,
@@ -328,6 +344,19 @@ class TBK_Shortcodes extends Base_Factory {
 		}
 
 		return TBK_Render::shortcode_view( 'product-feature', $atts );
+	}
+	
+	function contact_section( $atts ) {
+		$atts = shortcode_atts( array(
+			'image' => null,			
+            'heading' => null,            
+		), $atts );
+
+		if( ! empty( $atts['image'] ) ) {
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'contact-section' );
+		}
+
+		return TBK_Render::shortcode_view( 'contact-section', $atts );
 	}
     
     function about_section( $atts ) {

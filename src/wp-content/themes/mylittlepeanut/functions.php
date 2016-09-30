@@ -3,6 +3,7 @@ define( 'THEME_PATH', dirname( __FILE__ ) . '/' );
 define( 'THEME_URL', trailingslashit( get_stylesheet_directory_uri() ) );
 
 require_once THEME_PATH . '/lib/class.TBK-Theme.php';
+require_once('wp_bootstrap_navwalker.php');
 
 class The_Theme extends TBK_Theme {
 
