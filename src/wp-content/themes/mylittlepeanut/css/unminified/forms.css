@@ -2,7 +2,7 @@
 .gform_wrapper form {
   padding: 30px;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: rgba(191, 174, 164, 0.05);
   margin-bottom: 50px;
 }
 .form:before,
@@ -498,7 +498,7 @@
   letter-spacing: -0.005em;
   padding: 17px 70px;
   text-transform: none;
-  background-color: #80bd01;
+  background-color: #593d36;
   border: 0;
   border-radius: 0;
 }
@@ -512,7 +512,7 @@
 .gform_wrapper .gform_page_footer .button:hover,
 .gform_wrapper .gform_footer .button:focus,
 .gform_wrapper .gform_page_footer .button:focus {
-  background-color: #092e6e;
+  background-color: #c0afa5;
   outline: 0;
   border: 0;
 }
