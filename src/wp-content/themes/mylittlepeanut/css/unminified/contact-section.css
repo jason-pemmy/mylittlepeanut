@@ -34,3 +34,6 @@
   margin-bottom: 10px;
   background-color: #5f443e;
 }
+.contact-section-container .contact-image-container img {
+  max-width: 500px;
+}
