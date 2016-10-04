@@ -77,6 +77,27 @@ class TBK_Shortcodes extends Base_Factory {
 			) ),
 		) );
 		
+		$this->register( 'wtb-section', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Copy',
+					'param_name' => 'copy',
+				),
+			),
+		) );
+		
 		$this->register( 'contact-section', array(
 			'show_settings_on_create' => true,
 			'params' => array(
@@ -357,6 +378,20 @@ class TBK_Shortcodes extends Base_Factory {
 		}
 
 		return TBK_Render::shortcode_view( 'contact-section', $atts );
+	}
+	
+	function wtb_section( $atts ) {
+		$atts = shortcode_atts( array(
+			'image' => null,			
+            'heading' => null,            
+			'copy' => null,            
+		), $atts );
+
+		if( ! empty( $atts['image'] ) ) {
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'wtb-section' );
+		}
+
+		return TBK_Render::shortcode_view( 'wtb-section', $atts );
 	}
     
     function about_section( $atts ) {

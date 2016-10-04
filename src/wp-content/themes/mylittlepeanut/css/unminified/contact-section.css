@@ -34,6 +34,13 @@
   margin-bottom: 10px;
   background-color: #5f443e;
 }
+.contact-section-container .contact-image-container {
+  margin-top: 40px;
+  text-align: center;
+}
 .contact-section-container .contact-image-container img {
   max-width: 500px;
+}
+.contact-section-container .contact-form-container {
+  margin: 0 auto;
 }

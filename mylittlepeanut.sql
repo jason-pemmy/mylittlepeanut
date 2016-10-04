@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2016 at 12:05 PM
--- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- Generation Time: Oct 04, 2016 at 08:39 PM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,15 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `wp_commentmeta`
 --
 
-DROP TABLE IF EXISTS `wp_commentmeta`;
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `comment_id` (`comment_id`),
-  KEY `meta_key` (`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -43,9 +39,8 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- Table structure for table `wp_comments`
 --
 
-DROP TABLE IF EXISTS `wp_comments`;
-CREATE TABLE IF NOT EXISTS `wp_comments` (
-  `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL,
   `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `comment_author` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -59,14 +54,8 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_agent` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  PRIMARY KEY (`comment_ID`),
-  KEY `comment_post_ID` (`comment_post_ID`),
-  KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
-  KEY `comment_date_gmt` (`comment_date_gmt`),
-  KEY `comment_parent` (`comment_parent`),
-  KEY `comment_author_email` (`comment_author_email`(10))
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -74,9 +63,8 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
 -- Table structure for table `wp_links`
 --
 
-DROP TABLE IF EXISTS `wp_links`;
-CREATE TABLE IF NOT EXISTS `wp_links` (
-  `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -88,9 +76,7 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_notes` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_rss` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`link_id`),
-  KEY `link_visible` (`link_visible`)
+  `link_rss` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -99,15 +85,12 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Table structure for table `wp_options`
 --
 
-DROP TABLE IF EXISTS `wp_options`;
-CREATE TABLE IF NOT EXISTS `wp_options` (
-  `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes',
-  PRIMARY KEY (`option_id`),
-  UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=497 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -217,10 +200,10 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (101, 'widget_calendar', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (102, 'widget_tag_cloud', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (103, 'widget_nav_menu', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
-(104, 'cron', 'a:4:{i:1475586887;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1475611994;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1475612071;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
+(104, 'cron', 'a:4:{i:1475655194;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1475673287;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1475698471;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (117, 'auth_key', 'SS>3[9f^LX!meI X|wg=3 w^qb{XO#00Mv-,s&wO@BbwA<M1Dz}Pl;BL{^oKmi-b', 'yes'),
-(489, '_site_transient_timeout_theme_roots', '1475584482', 'yes'),
-(490, '_site_transient_theme_roots', 'a:1:{s:14:"mylittlepeanut";s:7:"/themes";}', 'yes'),
+(502, '_site_transient_timeout_theme_roots', '1475613871', 'yes'),
+(503, '_site_transient_theme_roots', 'a:1:{s:14:"mylittlepeanut";s:7:"/themes";}', 'yes'),
 (232, 'license_key_token', '1471286293|minzp59NG49vxHsVPXGL', 'yes'),
 (118, 'auth_salt', ' <A!SM+rB;&%97oW{l`yDCDsyh_@`-Iys+i[Gu:,*c1sD=me}osn4WvzLu:NVckY', 'yes'),
 (119, 'logged_in_key', '3H^KoE>LzS.cej!_{/$KV>$=oTq?bqM[E^ri`n9LU5X{]u9rC%@N68!)t2?nA!DW', 'yes'),
@@ -256,11 +239,11 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (178, '_options_pinterest_link', 'field_57aa11208c6f6', 'no'),
 (317, '_site_transient_timeout_browser_4c9717c179f154741a00df005d8e11d2', '1474896530', 'yes'),
 (485, '_transient_timeout_acf_pro_get_remote_info', '1475625881', 'no'),
-(486, '_transient_acf_pro_get_remote_info', 'a:15:{s:4:"name";s:26:"Advanced Custom Fields PRO";s:4:"slug";s:26:"advanced-custom-fields-pro";s:8:"homepage";s:37:"https://www.advancedcustomfields.com/";s:7:"version";s:5:"5.4.6";s:6:"author";s:13:"Elliot Condon";s:10:"author_url";s:28:"http://www.elliotcondon.com/";s:12:"contributors";s:12:"elliotcondon";s:8:"requires";s:5:"3.6.0";s:6:"tested";s:5:"4.7.0";s:4:"tags";a:46:{i:0;s:5:"5.4.5";i:1;s:5:"5.4.4";i:2;s:5:"5.4.3";i:3;s:5:"5.4.2";i:4;s:5:"5.4.1";i:5;s:5:"5.4.0";i:6;s:5:"5.3.8";i:7;s:5:"5.3.7";i:8;s:5:"5.3.6";i:9;s:5:"5.3.5";i:10;s:5:"5.3.4";i:11;s:5:"5.3.3";i:12;s:5:"5.3.2";i:13;s:6:"5.3.10";i:14;s:5:"5.3.1";i:15;s:5:"5.3.0";i:16;s:5:"5.2.9";i:17;s:5:"5.2.8";i:18;s:5:"5.2.7";i:19;s:5:"5.2.6";i:20;s:5:"5.2.5";i:21;s:5:"5.2.4";i:22;s:5:"5.2.3";i:23;s:5:"5.2.2";i:24;s:5:"5.2.1";i:25;s:5:"5.2.0";i:26;s:5:"5.1.9";i:27;s:5:"5.1.8";i:28;s:5:"5.1.7";i:29;s:5:"5.1.6";i:30;s:5:"5.1.5";i:31;s:5:"5.1.4";i:32;s:5:"5.1.3";i:33;s:5:"5.1.2";i:34;s:5:"5.1.1";i:35;s:5:"5.1.0";i:36;s:5:"5.0.9";i:37;s:5:"5.0.8";i:38;s:5:"5.0.7";i:39;s:5:"5.0.6";i:40;s:5:"5.0.5";i:41;s:5:"5.0.4";i:42;s:5:"5.0.3";i:43;s:5:"5.0.2";i:44;s:5:"5.0.1";i:45;s:5:"5.0.0";}s:6:"tagged";s:123:"acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit";s:11:"description";s:4337:"<p>Advanced Custom Fields is the perfect solution for any WordPress website which needs more flexible data like other Content Management Systems. </p>\n<ul><li>Visually create your Fields</li><li>Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)</li><li>Assign your fields to multiple edit pages (via custom location rules)</li><li>Easily load data through a simple and friendly API</li><li>Uses the native WordPress custom post type for ease of use and fast processing</li><li>Uses the native WordPress metadata for ease of use and fast processing</li></ul>\n<h4> Field Types </h4>\n<ul><li>Text (type text, api returns text)</li><li>Text Area (type text, api returns text)</li><li>Number (type number, api returns integer)</li><li>Email (type email, api returns text)</li><li>Password (type password, api returns text)</li><li>WYSIWYG (a WordPress wysiwyg editor, api returns html)</li><li>Image (upload an image, api returns the url)</li><li>File (upload a file, api returns the url)</li><li>Select (drop down list of choices, api returns chosen item)</li><li>Checkbox (tickbox list of choices, api returns array of choices)</li><li>Radio Buttons ( radio button list of choices, api returns chosen item)</li><li>True / False (tick box with message, api returns true or false)</li><li>Page Link (select 1 or more page, post or custom post types, api returns the selected url)</li><li>Post Object (select 1 or more page, post or custom post types, api returns the selected post objects)</li><li>Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)</li><li>Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)</li><li>User (select 1 or more WP users, api returns the selected user objects)</li><li>Google Maps (interactive map, api returns lat,lng,address data)</li><li>Date Picker (jquery date picker, options for format, api returns string)</li><li>Color Picker (WP color swatch picker)</li><li>Tab (Group fields into tabs)</li><li>Message (Render custom messages into the fields)</li><li>Repeater (ability to create repeatable blocks of fields!)</li><li>Flexible Content (ability to create flexible blocks of fields!)</li><li>Gallery (Add, edit and order multiple images in 1 simple field)</li><li>[Custom](<a href="https://www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/)">www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/)</a> (Create your own field type!)</li></ul>\n<h4> Tested on </h4>\n<ul><li>Mac Firefox 	:)</li><li>Mac Safari 	:)</li><li>Mac Chrome	:)</li><li>PC Safari 	:)</li><li>PC Chrome		:)</li><li>PC Firefox	:)</li><li>iPhone Safari :)</li><li>iPad Safari 	:)</li><li>PC ie7		:S</li></ul>\n<h4> Website </h4>\n<p><a href="https://www.advancedcustomfields.com/">www.advancedcustomfields.com/</a></p>\n<h4> Documentation </h4>\n<ul><li>[Getting Started](<a href="https://www.advancedcustomfields.com/resources/#getting-started)">www.advancedcustomfields.com/resources/#getting-started)</a></li><li>[Field Types](<a href="https://www.advancedcustomfields.com/resources/#field-types)">www.advancedcustomfields.com/resources/#field-types)</a></li><li>[Functions](<a href="https://www.advancedcustomfields.com/resources/#functions)">www.advancedcustomfields.com/resources/#functions)</a></li><li>[Actions](<a href="https://www.advancedcustomfields.com/resources/#actions)">www.advancedcustomfields.com/resources/#actions)</a></li><li>[Filters](<a href="https://www.advancedcustomfields.com/resources/#filters)">www.advancedcustomfields.com/resources/#filters)</a></li><li>[How to guides](<a href="https://www.advancedcustomfields.com/resources/#how-to)">www.advancedcustomfields.com/resources/#how-to)</a></li><li>[Tutorials](<a href="https://www.advancedcustomfields.com/resources/#tutorials)">www.advancedcustomfields.com/resources/#tutorials)</a></li></ul>\n<h4> Bug Submission and Forum Support </h4>\n<p><a href="http://support.advancedcustomfields.com/">support.advancedcustomfields.com/</a></p>\n<h4> Please Vote and Enjoy </h4>\n<p>Your votes really make a difference! Thanks.</p>\n";s:12:"installation";s:467:"<ol><li>Upload <code>advanced-custom-fields</code> to the <code>/wp-content/plugins/</code> directory</li><li>Activate the plugin through the <code>Plugins</code> menu in WordPress</li><li>Click on the new menu item "Custom Fields" and create your first Custom Field Group!</li><li>Your custom field group will now appear on the page / post / template you specified in the field group''s location rules!</li><li>Read the documentation to display your data: </li></ol>\n";s:9:"changelog";s:3871:"<h4> 5.4.6 </h4>\n<ul><li>Gallery field: Fixed bug where open sidebar fields were saved to post</li><li>Flexible Content field: Fixed bug causing Google map render issue within collapsed layout</li><li>Flexible Content field: Fixed bug during <code>duplicate layout</code> where radio input values were lost</li><li>API: Fixed bug causing `get_row(true)` to return incorrect values</li><li>Core: Fixed bug where preview values did not load for a draft post</li><li>Core: Added notice when PRO license fails to validate URL</li><li>Core: Fixed bug where conditional logic would incorrectly enable select elements</li><li>Core: Minor fixes and improvements</li></ul>\n<h4> 5.4.5 </h4>\n<ul><li>API: Fixed bug in `acf_form()` where AJAX validation ignored <code>post_title</code></li><li>API: Improved `update_field()` when saving a new value (when reference value does not yet exist)</li><li>Core: Added search input & toggle to admin field groups list</li><li>Core: Fixed bug where preview values did not load for a draft post</li></ul>\n<h4> 5.4.4 </h4>\n<ul><li>WYSIWYG field: Fixed JS error when <code>Disable the visual editor when writing</code> is checked</li></ul>\n<h4> 5.4.3 </h4>\n<ul><li>WYSIWYG field: Fixed JS bug (since WP 4.6) causing conflicts with editor plugins</li><li>Google Maps field: Fixed JS error conflict with Divi theme</li><li>Radio field: Fixed bug (Chrome only) ignoring default values in cloned sub fields</li><li>Core: Fixed `wp_get_sites()` deprecated error (since WP 4.6) shown in network admin</li></ul>\n<h4> 5.4.2 </h4>\n<ul><li>API: Fixed bug preventing post_title and post_content values saving in `acf_form()`</li></ul>\n<h4> 5.4.1 </h4>\n<ul><li>API: Fixed bug causing `get_fields(<code>options</code>)` to return false</li><li>Core: Fixed bug causing `get_current_screen()` to throw PHP error</li><li>Core: Fixed bug causing <code>Preview Post</code> to load empty field values</li></ul>\n<h4> 5.4.0 </h4>\n<ul><li>Clone field: Added new field type (<a href="https://www.advancedcustomfields.com/resources/clone/)">www.advancedcustomfields.com/resources/clone/)</a></li><li>Gallery field: Removed <code>Preview Size</code> setting and improved UI</li><li>Taxonomy field: Added compatibility to save/load terms to user object</li><li>Select field: Added new <code>Return Format</code> setting</li><li>Radio field: Added new <code>Return Format</code> setting</li><li>Checkbox field: Added new <code>Return Format</code> setting</li><li>Page link field: Added new <code>Allow Archives URLs</code> setting</li><li>Core: Fixed plugin update bug delaying updates</li><li>Core: Fixed bug when editing field settings in Chrome causing required setting to self toggle</li><li>Core: Improved speed and fixed bugs when creating and restoring revisions</li><li>Core: Minor fixes and improvements</li><li>Language: Updated Portuguese translation - thanks to Pedro Mendonca</li><li>Language: Updated Brazilian Portuguese translation - thanks to Augusto Simão</li><li>Language: Updated Dutch translation - thanks to Derk Oosterveld</li><li>Language: Updated Persian translation - thanks to Kamel</li><li>Language: Updated German translation - thanks to Ralf Koller</li><li>Language: Updated Swiss German translation - thanks to Raphael Hüni</li></ul>\n<h4> 5.3.10 </h4>\n<ul><li>Core: Added new <code>google_api_key</code> and <code>google_api_client</code> global settings</li><li>Google Map: Added new <code>acf/fields/google_map/api</code> filter</li></ul>\n<h4> 5.3.9.2 </h4>\n<ul><li>Time Picker field: Added compatibility with previous 3rd party field settings</li><li>Core: Fixed JS error setting l10n for Select2 with 3rd party libraries</li></ul>\n<h4> 5.3.9.1 </h4>\n<ul><li>Time Picker field: Fixed bug causing value to appear as current time</li><li>API: Fixed bug causing `have_rows()` to fail when using an object as $post_id parameter</li></ul>\n";s:14:"upgrade_notice";s:551:"<h4> 5.2.7 </h4>\n<ul><li>Field class names have changed slightly in v5.2.7 from `field_type-{$type}` to `acf-field-{$type}`. This change was introduced to better optimise JS performance. The previous class names can be added back in with the following filter: <a href="https://www.advancedcustomfields.com/resources/acfcompatibility/">www.advancedcustomfields.com/resources/acfcompatibility/</a></li></ul>\n<h4> 3.0.0 </h4>\n<ul><li>Editor is broken in WordPress 3.3</li></ul>\n<h4> 2.1.4 </h4>\n<ul><li>Adds post_id column back into acf_values</li></ul>\n";}', 'no'),
+(486, '_transient_acf_pro_get_remote_info', 'a:15:{s:4:"name";s:26:"Advanced Custom Fields PRO";s:4:"slug";s:26:"advanced-custom-fields-pro";s:8:"homepage";s:37:"https://www.advancedcustomfields.com/";s:7:"version";s:5:"5.4.6";s:6:"author";s:13:"Elliot Condon";s:10:"author_url";s:28:"http://www.elliotcondon.com/";s:12:"contributors";s:12:"elliotcondon";s:8:"requires";s:5:"3.6.0";s:6:"tested";s:5:"4.7.0";s:4:"tags";a:46:{i:0;s:5:"5.4.5";i:1;s:5:"5.4.4";i:2;s:5:"5.4.3";i:3;s:5:"5.4.2";i:4;s:5:"5.4.1";i:5;s:5:"5.4.0";i:6;s:5:"5.3.8";i:7;s:5:"5.3.7";i:8;s:5:"5.3.6";i:9;s:5:"5.3.5";i:10;s:5:"5.3.4";i:11;s:5:"5.3.3";i:12;s:5:"5.3.2";i:13;s:6:"5.3.10";i:14;s:5:"5.3.1";i:15;s:5:"5.3.0";i:16;s:5:"5.2.9";i:17;s:5:"5.2.8";i:18;s:5:"5.2.7";i:19;s:5:"5.2.6";i:20;s:5:"5.2.5";i:21;s:5:"5.2.4";i:22;s:5:"5.2.3";i:23;s:5:"5.2.2";i:24;s:5:"5.2.1";i:25;s:5:"5.2.0";i:26;s:5:"5.1.9";i:27;s:5:"5.1.8";i:28;s:5:"5.1.7";i:29;s:5:"5.1.6";i:30;s:5:"5.1.5";i:31;s:5:"5.1.4";i:32;s:5:"5.1.3";i:33;s:5:"5.1.2";i:34;s:5:"5.1.1";i:35;s:5:"5.1.0";i:36;s:5:"5.0.9";i:37;s:5:"5.0.8";i:38;s:5:"5.0.7";i:39;s:5:"5.0.6";i:40;s:5:"5.0.5";i:41;s:5:"5.0.4";i:42;s:5:"5.0.3";i:43;s:5:"5.0.2";i:44;s:5:"5.0.1";i:45;s:5:"5.0.0";}s:6:"tagged";s:123:"acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit";s:11:"description";s:4337:"<p>Advanced Custom Fields is the perfect solution for any WordPress website which needs more flexible data like other Content Management Systems. </p>\n<ul><li>Visually create your Fields</li><li>Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)</li><li>Assign your fields to multiple edit pages (via custom location rules)</li><li>Easily load data through a simple and friendly API</li><li>Uses the native WordPress custom post type for ease of use and fast processing</li><li>Uses the native WordPress metadata for ease of use and fast processing</li></ul>\n<h4> Field Types </h4>\n<ul><li>Text (type text, api returns text)</li><li>Text Area (type text, api returns text)</li><li>Number (type number, api returns integer)</li><li>Email (type email, api returns text)</li><li>Password (type password, api returns text)</li><li>WYSIWYG (a WordPress wysiwyg editor, api returns html)</li><li>Image (upload an image, api returns the url)</li><li>File (upload a file, api returns the url)</li><li>Select (drop down list of choices, api returns chosen item)</li><li>Checkbox (tickbox list of choices, api returns array of choices)</li><li>Radio Buttons ( radio button list of choices, api returns chosen item)</li><li>True / False (tick box with message, api returns true or false)</li><li>Page Link (select 1 or more page, post or custom post types, api returns the selected url)</li><li>Post Object (select 1 or more page, post or custom post types, api returns the selected post objects)</li><li>Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)</li><li>Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)</li><li>User (select 1 or more WP users, api returns the selected user objects)</li><li>Google Maps (interactive map, api returns lat,lng,address data)</li><li>Date Picker (jquery date picker, options for format, api returns string)</li><li>Color Picker (WP color swatch picker)</li><li>Tab (Group fields into tabs)</li><li>Message (Render custom messages into the fields)</li><li>Repeater (ability to create repeatable blocks of fields!)</li><li>Flexible Content (ability to create flexible blocks of fields!)</li><li>Gallery (Add, edit and order multiple images in 1 simple field)</li><li>[Custom](<a href="https://www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/)">www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/)</a> (Create your own field type!)</li></ul>\n<h4> Tested on </h4>\n<ul><li>Mac Firefox 	:)</li><li>Mac Safari 	:)</li><li>Mac Chrome	:)</li><li>PC Safari 	:)</li><li>PC Chrome		:)</li><li>PC Firefox	:)</li><li>iPhone Safari :)</li><li>iPad Safari 	:)</li><li>PC ie7		:S</li></ul>\n<h4> Website </h4>\n<p><a href="https://www.advancedcustomfields.com/">www.advancedcustomfields.com/</a></p>\n<h4> Documentation </h4>\n<ul><li>[Getting Started](<a href="https://www.advancedcustomfields.com/resources/#getting-started)">www.advancedcustomfields.com/resources/#getting-started)</a></li><li>[Field Types](<a href="https://www.advancedcustomfields.com/resources/#field-types)">www.advancedcustomfields.com/resources/#field-types)</a></li><li>[Functions](<a href="https://www.advancedcustomfields.com/resources/#functions)">www.advancedcustomfields.com/resources/#functions)</a></li><li>[Actions](<a href="https://www.advancedcustomfields.com/resources/#actions)">www.advancedcustomfields.com/resources/#actions)</a></li><li>[Filters](<a href="https://www.advancedcustomfields.com/resources/#filters)">www.advancedcustomfields.com/resources/#filters)</a></li><li>[How to guides](<a href="https://www.advancedcustomfields.com/resources/#how-to)">www.advancedcustomfields.com/resources/#how-to)</a></li><li>[Tutorials](<a href="https://www.advancedcustomfields.com/resources/#tutorials)">www.advancedcustomfields.com/resources/#tutorials)</a></li></ul>\n<h4> Bug Submission and Forum Support </h4>\n<p><a href="http://support.advancedcustomfields.com/">support.advancedcustomfields.com/</a></p>\n<h4> Please Vote and Enjoy </h4>\n<p>Your votes really make a difference! Thanks.</p>\n";s:12:"installation";s:467:"<ol><li>Upload <code>advanced-custom-fields</code> to the <code>/wp-content/plugins/</code> directory</li><li>Activate the plugin through the <code>Plugins</code> menu in WordPress</li><li>Click on the new menu item "Custom Fields" and create your first Custom Field Group!</li><li>Your custom field group will now appear on the page / post / template you specified in the field group\'s location rules!</li><li>Read the documentation to display your data: </li></ol>\n";s:9:"changelog";s:3871:"<h4> 5.4.6 </h4>\n<ul><li>Gallery field: Fixed bug where open sidebar fields were saved to post</li><li>Flexible Content field: Fixed bug causing Google map render issue within collapsed layout</li><li>Flexible Content field: Fixed bug during <code>duplicate layout</code> where radio input values were lost</li><li>API: Fixed bug causing `get_row(true)` to return incorrect values</li><li>Core: Fixed bug where preview values did not load for a draft post</li><li>Core: Added notice when PRO license fails to validate URL</li><li>Core: Fixed bug where conditional logic would incorrectly enable select elements</li><li>Core: Minor fixes and improvements</li></ul>\n<h4> 5.4.5 </h4>\n<ul><li>API: Fixed bug in `acf_form()` where AJAX validation ignored <code>post_title</code></li><li>API: Improved `update_field()` when saving a new value (when reference value does not yet exist)</li><li>Core: Added search input & toggle to admin field groups list</li><li>Core: Fixed bug where preview values did not load for a draft post</li></ul>\n<h4> 5.4.4 </h4>\n<ul><li>WYSIWYG field: Fixed JS error when <code>Disable the visual editor when writing</code> is checked</li></ul>\n<h4> 5.4.3 </h4>\n<ul><li>WYSIWYG field: Fixed JS bug (since WP 4.6) causing conflicts with editor plugins</li><li>Google Maps field: Fixed JS error conflict with Divi theme</li><li>Radio field: Fixed bug (Chrome only) ignoring default values in cloned sub fields</li><li>Core: Fixed `wp_get_sites()` deprecated error (since WP 4.6) shown in network admin</li></ul>\n<h4> 5.4.2 </h4>\n<ul><li>API: Fixed bug preventing post_title and post_content values saving in `acf_form()`</li></ul>\n<h4> 5.4.1 </h4>\n<ul><li>API: Fixed bug causing `get_fields(<code>options</code>)` to return false</li><li>Core: Fixed bug causing `get_current_screen()` to throw PHP error</li><li>Core: Fixed bug causing <code>Preview Post</code> to load empty field values</li></ul>\n<h4> 5.4.0 </h4>\n<ul><li>Clone field: Added new field type (<a href="https://www.advancedcustomfields.com/resources/clone/)">www.advancedcustomfields.com/resources/clone/)</a></li><li>Gallery field: Removed <code>Preview Size</code> setting and improved UI</li><li>Taxonomy field: Added compatibility to save/load terms to user object</li><li>Select field: Added new <code>Return Format</code> setting</li><li>Radio field: Added new <code>Return Format</code> setting</li><li>Checkbox field: Added new <code>Return Format</code> setting</li><li>Page link field: Added new <code>Allow Archives URLs</code> setting</li><li>Core: Fixed plugin update bug delaying updates</li><li>Core: Fixed bug when editing field settings in Chrome causing required setting to self toggle</li><li>Core: Improved speed and fixed bugs when creating and restoring revisions</li><li>Core: Minor fixes and improvements</li><li>Language: Updated Portuguese translation - thanks to Pedro Mendonca</li><li>Language: Updated Brazilian Portuguese translation - thanks to Augusto Simão</li><li>Language: Updated Dutch translation - thanks to Derk Oosterveld</li><li>Language: Updated Persian translation - thanks to Kamel</li><li>Language: Updated German translation - thanks to Ralf Koller</li><li>Language: Updated Swiss German translation - thanks to Raphael Hüni</li></ul>\n<h4> 5.3.10 </h4>\n<ul><li>Core: Added new <code>google_api_key</code> and <code>google_api_client</code> global settings</li><li>Google Map: Added new <code>acf/fields/google_map/api</code> filter</li></ul>\n<h4> 5.3.9.2 </h4>\n<ul><li>Time Picker field: Added compatibility with previous 3rd party field settings</li><li>Core: Fixed JS error setting l10n for Select2 with 3rd party libraries</li></ul>\n<h4> 5.3.9.1 </h4>\n<ul><li>Time Picker field: Fixed bug causing value to appear as current time</li><li>API: Fixed bug causing `have_rows()` to fail when using an object as $post_id parameter</li></ul>\n";s:14:"upgrade_notice";s:551:"<h4> 5.2.7 </h4>\n<ul><li>Field class names have changed slightly in v5.2.7 from `field_type-{$type}` to `acf-field-{$type}`. This change was introduced to better optimise JS performance. The previous class names can be added back in with the following filter: <a href="https://www.advancedcustomfields.com/resources/acfcompatibility/">www.advancedcustomfields.com/resources/acfcompatibility/</a></li></ul>\n<h4> 3.0.0 </h4>\n<ul><li>Editor is broken in WordPress 3.3</li></ul>\n<h4> 2.1.4 </h4>\n<ul><li>Adds post_id column back into acf_values</li></ul>\n";}', 'no'),
 (318, '_site_transient_browser_4c9717c179f154741a00df005d8e11d2', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"52.0.2743.116";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
-(494, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:4:{i:0;O:8:"stdClass":10:{s:8:"response";s:7:"upgrade";s:8:"download";s:65:"https://downloads.wordpress.org/release/en_CA/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_CA";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:65:"https://downloads.wordpress.org/release/en_CA/wordpress-4.6.1.zip";s:10:"no_content";b:0;s:11:"new_bundled";b:0;s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}i:1;O:8:"stdClass":10:{s:8:"response";s:7:"upgrade";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.6.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.6.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}i:2;O:8:"stdClass":11:{s:8:"response";s:10:"autoupdate";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.6.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.6.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";s:9:"new_files";s:1:"1";}i:3;O:8:"stdClass":11:{s:8:"response";s:10:"autoupdate";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.5.4.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.5.4.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.5.4-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.5.4-new-bundled.zip";s:7:"partial";s:69:"https://downloads.wordpress.org/release/wordpress-4.5.4-partial-3.zip";s:8:"rollback";s:70:"https://downloads.wordpress.org/release/wordpress-4.5.4-rollback-3.zip";}s:7:"current";s:5:"4.5.4";s:7:"version";s:5:"4.5.4";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:5:"4.5.3";s:9:"new_files";s:0:"";}}s:12:"last_checked";i:1475582684;s:15:"version_checked";s:5:"4.5.3";s:12:"translations";a:0:{}}', 'yes'),
-(495, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1475582687;s:7:"checked";a:1:{s:14:"mylittlepeanut";s:5:"1.0.1";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes'),
-(496, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1475582685;s:8:"response";a:5:{s:30:"advanced-custom-fields/acf.php";O:8:"stdClass":8:{s:2:"id";s:5:"21367";s:4:"slug";s:22:"advanced-custom-fields";s:6:"plugin";s:30:"advanced-custom-fields/acf.php";s:11:"new_version";s:6:"4.4.10";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-custom-fields/";s:7:"package";s:72:"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.10.zip";s:6:"tested";s:5:"4.7.0";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":8:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.5.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.1.zip";s:6:"tested";s:5:"4.6.1";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":8:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"3.6.1";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.3.6.1.zip";s:6:"tested";s:5:"4.6.1";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:34:"advanced-custom-fields-pro/acf.php";O:8:"stdClass":5:{s:4:"slug";s:26:"advanced-custom-fields-pro";s:6:"plugin";s:34:"advanced-custom-fields-pro/acf.php";s:11:"new_version";s:5:"5.4.6";s:3:"url";s:37:"https://www.advancedcustomfields.com/";s:7:"package";s:0:"";}s:27:"js_composer/js_composer.php";O:8:"stdClass":5:{s:4:"slug";s:11:"js_composer";s:11:"new_version";s:6:"4.12.1";s:3:"url";s:0:"";s:7:"package";b:0;s:4:"name";s:24:"WPBakery Visual Composer";}}s:12:"translations";a:2:{i:0;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:11:"theme-check";s:8:"language";s:5:"en_CA";s:7:"version";s:10:"20160523.1";s:7:"updated";s:19:"2016-06-05 13:02:17";s:7:"package";s:83:"https://downloads.wordpress.org/translation/plugin/theme-check/20160523.1/en_CA.zip";s:10:"autoupdate";b:1;}i:1;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:13:"wordpress-seo";s:8:"language";s:5:"en_CA";s:7:"version";s:5:"3.4.2";s:7:"updated";s:19:"2016-07-05 01:50:57";s:7:"package";s:80:"https://downloads.wordpress.org/translation/plugin/wordpress-seo/3.4.2/en_CA.zip";s:10:"autoupdate";b:1;}}s:9:"no_update";a:13:{s:69:"add-descendants-as-submenu-items/add-descendants-as-submenu-items.php";O:8:"stdClass":7:{s:2:"id";s:5:"25326";s:4:"slug";s:32:"add-descendants-as-submenu-items";s:6:"plugin";s:69:"add-descendants-as-submenu-items/add-descendants-as-submenu-items.php";s:11:"new_version";s:5:"1.2.0";s:3:"url";s:63:"https://wordpress.org/plugins/add-descendants-as-submenu-items/";s:7:"package";s:75:"https://downloads.wordpress.org/plugin/add-descendants-as-submenu-items.zip";s:14:"upgrade_notice";s:18:"Various bug fixes.";}s:49:"advanced-browser-check/advanced-browser-check.php";O:8:"stdClass":6:{s:2:"id";s:5:"35031";s:4:"slug";s:22:"advanced-browser-check";s:6:"plugin";s:49:"advanced-browser-check/advanced-browser-check.php";s:11:"new_version";s:5:"4.4.1";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-browser-check/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/advanced-browser-check.4.4.1.zip";}s:49:"ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php";O:8:"stdClass":6:{s:2:"id";s:5:"10675";s:4:"slug";s:22:"ajax-thumbnail-rebuild";s:6:"plugin";s:49:"ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php";s:11:"new_version";s:4:"1.12";s:3:"url";s:53:"https://wordpress.org/plugins/ajax-thumbnail-rebuild/";s:7:"package";s:70:"https://downloads.wordpress.org/plugin/ajax-thumbnail-rebuild.1.12.zip";}s:29:"better-lorem/better-lorem.php";O:8:"stdClass":6:{s:2:"id";s:5:"18021";s:4:"slug";s:12:"better-lorem";s:6:"plugin";s:29:"better-lorem/better-lorem.php";s:11:"new_version";s:7:"0.9.3.7";s:3:"url";s:43:"https://wordpress.org/plugins/better-lorem/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/better-lorem.0.9.3.7.zip";}s:32:"disqus-comment-system/disqus.php";O:8:"stdClass":6:{s:2:"id";s:4:"4500";s:4:"slug";s:21:"disqus-comment-system";s:6:"plugin";s:32:"disqus-comment-system/disqus.php";s:11:"new_version";s:4:"2.85";s:3:"url";s:52:"https://wordpress.org/plugins/disqus-comment-system/";s:7:"package";s:64:"https://downloads.wordpress.org/plugin/disqus-comment-system.zip";}s:33:"duplicate-post/duplicate-post.php";O:8:"stdClass":7:{s:2:"id";s:4:"1295";s:4:"slug";s:14:"duplicate-post";s:6:"plugin";s:33:"duplicate-post/duplicate-post.php";s:11:"new_version";s:3:"2.6";s:3:"url";s:45:"https://wordpress.org/plugins/duplicate-post/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/duplicate-post.2.6.zip";s:14:"upgrade_notice";s:90:"PHP 5.4 (Strict Standards) compatible + Fixed possible XSS and SQL injections + other bugs";}s:43:"font-awesome-4-menus/n9m-font-awesome-4.php";O:8:"stdClass":7:{s:2:"id";s:5:"46072";s:4:"slug";s:20:"font-awesome-4-menus";s:6:"plugin";s:43:"font-awesome-4-menus/n9m-font-awesome-4.php";s:11:"new_version";s:7:"4.6.3.3";s:3:"url";s:51:"https://wordpress.org/plugins/font-awesome-4-menus/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/font-awesome-4-menus.zip";s:14:"upgrade_notice";s:71:"Fixes an error experienced by some users when menu items are not arrays";}s:39:"manual-image-crop/manual-image-crop.php";O:8:"stdClass":6:{s:2:"id";s:5:"44373";s:4:"slug";s:17:"manual-image-crop";s:6:"plugin";s:39:"manual-image-crop/manual-image-crop.php";s:11:"new_version";s:4:"1.12";s:3:"url";s:48:"https://wordpress.org/plugins/manual-image-crop/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/manual-image-crop.1.12.zip";}s:32:"slickplan-importer/slickplan.php";O:8:"stdClass":6:{s:2:"id";s:5:"33015";s:4:"slug";s:18:"slickplan-importer";s:6:"plugin";s:32:"slickplan-importer/slickplan.php";s:11:"new_version";s:3:"2.1";s:3:"url";s:49:"https://wordpress.org/plugins/slickplan-importer/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/slickplan-importer.zip";}s:27:"theme-check/theme-check.php";O:8:"stdClass":6:{s:2:"id";s:5:"18487";s:4:"slug";s:11:"theme-check";s:6:"plugin";s:27:"theme-check/theme-check.php";s:11:"new_version";s:10:"20160523.1";s:3:"url";s:42:"https://wordpress.org/plugins/theme-check/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/theme-check.20160523.1.zip";}s:33:"theme-my-login/theme-my-login.php";O:8:"stdClass":6:{s:2:"id";s:4:"7109";s:4:"slug";s:14:"theme-my-login";s:6:"plugin";s:33:"theme-my-login/theme-my-login.php";s:11:"new_version";s:5:"6.4.5";s:3:"url";s:45:"https://wordpress.org/plugins/theme-my-login/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/theme-my-login.6.4.5.zip";}s:21:"usersnap/usersnap.php";O:8:"stdClass":6:{s:2:"id";s:5:"26910";s:4:"slug";s:8:"usersnap";s:6:"plugin";s:21:"usersnap/usersnap.php";s:11:"new_version";s:3:"4.4";s:3:"url";s:39:"https://wordpress.org/plugins/usersnap/";s:7:"package";s:55:"https://downloads.wordpress.org/plugin/usersnap.4.4.zip";}s:41:"wordpress-importer/wordpress-importer.php";O:8:"stdClass":6:{s:2:"id";s:5:"14975";s:4:"slug";s:18:"wordpress-importer";s:6:"plugin";s:41:"wordpress-importer/wordpress-importer.php";s:11:"new_version";s:5:"0.6.3";s:3:"url";s:49:"https://wordpress.org/plugins/wordpress-importer/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/wordpress-importer.0.6.3.zip";}}}', 'yes'),
+(505, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:4:{i:0;O:8:"stdClass":10:{s:8:"response";s:7:"upgrade";s:8:"download";s:65:"https://downloads.wordpress.org/release/en_CA/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_CA";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:65:"https://downloads.wordpress.org/release/en_CA/wordpress-4.6.1.zip";s:10:"no_content";b:0;s:11:"new_bundled";b:0;s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}i:1;O:8:"stdClass":10:{s:8:"response";s:7:"upgrade";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.6.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.6.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}i:2;O:8:"stdClass":11:{s:8:"response";s:10:"autoupdate";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.6.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.6.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.6.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.6.1";s:7:"version";s:5:"4.6.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";s:9:"new_files";s:1:"1";}i:3;O:8:"stdClass":11:{s:8:"response";s:10:"autoupdate";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.5.4.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.5.4.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.5.4-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.5.4-new-bundled.zip";s:7:"partial";s:69:"https://downloads.wordpress.org/release/wordpress-4.5.4-partial-3.zip";s:8:"rollback";s:70:"https://downloads.wordpress.org/release/wordpress-4.5.4-rollback-3.zip";}s:7:"current";s:5:"4.5.4";s:7:"version";s:5:"4.5.4";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:5:"4.5.3";s:9:"new_files";s:0:"";}}s:12:"last_checked";i:1475612077;s:15:"version_checked";s:5:"4.5.3";s:12:"translations";a:0:{}}', 'yes'),
+(506, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1475612083;s:7:"checked";a:1:{s:14:"mylittlepeanut";s:5:"1.0.1";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes'),
+(507, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1475612081;s:8:"response";a:5:{s:30:"advanced-custom-fields/acf.php";O:8:"stdClass":8:{s:2:"id";s:5:"21367";s:4:"slug";s:22:"advanced-custom-fields";s:6:"plugin";s:30:"advanced-custom-fields/acf.php";s:11:"new_version";s:6:"4.4.10";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-custom-fields/";s:7:"package";s:72:"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.10.zip";s:6:"tested";s:5:"4.7.0";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":8:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.5.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.1.zip";s:6:"tested";s:5:"4.6.1";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":8:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"3.6.1";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.3.6.1.zip";s:6:"tested";s:5:"4.6.1";s:13:"compatibility";O:8:"stdClass":1:{s:6:"scalar";O:8:"stdClass":1:{s:6:"scalar";b:0;}}}s:34:"advanced-custom-fields-pro/acf.php";O:8:"stdClass":5:{s:4:"slug";s:26:"advanced-custom-fields-pro";s:6:"plugin";s:34:"advanced-custom-fields-pro/acf.php";s:11:"new_version";s:5:"5.4.6";s:3:"url";s:37:"https://www.advancedcustomfields.com/";s:7:"package";s:0:"";}s:27:"js_composer/js_composer.php";O:8:"stdClass":5:{s:4:"slug";s:11:"js_composer";s:11:"new_version";s:6:"4.12.1";s:3:"url";s:0:"";s:7:"package";b:0;s:4:"name";s:24:"WPBakery Visual Composer";}}s:12:"translations";a:2:{i:0;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:11:"theme-check";s:8:"language";s:5:"en_CA";s:7:"version";s:10:"20160523.1";s:7:"updated";s:19:"2016-06-05 13:02:17";s:7:"package";s:83:"https://downloads.wordpress.org/translation/plugin/theme-check/20160523.1/en_CA.zip";s:10:"autoupdate";b:1;}i:1;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:13:"wordpress-seo";s:8:"language";s:5:"en_CA";s:7:"version";s:5:"3.4.2";s:7:"updated";s:19:"2016-07-05 01:50:57";s:7:"package";s:80:"https://downloads.wordpress.org/translation/plugin/wordpress-seo/3.4.2/en_CA.zip";s:10:"autoupdate";b:1;}}s:9:"no_update";a:13:{s:69:"add-descendants-as-submenu-items/add-descendants-as-submenu-items.php";O:8:"stdClass":7:{s:2:"id";s:5:"25326";s:4:"slug";s:32:"add-descendants-as-submenu-items";s:6:"plugin";s:69:"add-descendants-as-submenu-items/add-descendants-as-submenu-items.php";s:11:"new_version";s:5:"1.2.0";s:3:"url";s:63:"https://wordpress.org/plugins/add-descendants-as-submenu-items/";s:7:"package";s:75:"https://downloads.wordpress.org/plugin/add-descendants-as-submenu-items.zip";s:14:"upgrade_notice";s:18:"Various bug fixes.";}s:49:"advanced-browser-check/advanced-browser-check.php";O:8:"stdClass":6:{s:2:"id";s:5:"35031";s:4:"slug";s:22:"advanced-browser-check";s:6:"plugin";s:49:"advanced-browser-check/advanced-browser-check.php";s:11:"new_version";s:5:"4.4.1";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-browser-check/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/advanced-browser-check.4.4.1.zip";}s:49:"ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php";O:8:"stdClass":6:{s:2:"id";s:5:"10675";s:4:"slug";s:22:"ajax-thumbnail-rebuild";s:6:"plugin";s:49:"ajax-thumbnail-rebuild/ajax-thumbnail-rebuild.php";s:11:"new_version";s:4:"1.12";s:3:"url";s:53:"https://wordpress.org/plugins/ajax-thumbnail-rebuild/";s:7:"package";s:70:"https://downloads.wordpress.org/plugin/ajax-thumbnail-rebuild.1.12.zip";}s:29:"better-lorem/better-lorem.php";O:8:"stdClass":6:{s:2:"id";s:5:"18021";s:4:"slug";s:12:"better-lorem";s:6:"plugin";s:29:"better-lorem/better-lorem.php";s:11:"new_version";s:7:"0.9.3.7";s:3:"url";s:43:"https://wordpress.org/plugins/better-lorem/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/better-lorem.0.9.3.7.zip";}s:32:"disqus-comment-system/disqus.php";O:8:"stdClass":6:{s:2:"id";s:4:"4500";s:4:"slug";s:21:"disqus-comment-system";s:6:"plugin";s:32:"disqus-comment-system/disqus.php";s:11:"new_version";s:4:"2.85";s:3:"url";s:52:"https://wordpress.org/plugins/disqus-comment-system/";s:7:"package";s:64:"https://downloads.wordpress.org/plugin/disqus-comment-system.zip";}s:33:"duplicate-post/duplicate-post.php";O:8:"stdClass":7:{s:2:"id";s:4:"1295";s:4:"slug";s:14:"duplicate-post";s:6:"plugin";s:33:"duplicate-post/duplicate-post.php";s:11:"new_version";s:3:"2.6";s:3:"url";s:45:"https://wordpress.org/plugins/duplicate-post/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/duplicate-post.2.6.zip";s:14:"upgrade_notice";s:90:"PHP 5.4 (Strict Standards) compatible + Fixed possible XSS and SQL injections + other bugs";}s:43:"font-awesome-4-menus/n9m-font-awesome-4.php";O:8:"stdClass":7:{s:2:"id";s:5:"46072";s:4:"slug";s:20:"font-awesome-4-menus";s:6:"plugin";s:43:"font-awesome-4-menus/n9m-font-awesome-4.php";s:11:"new_version";s:7:"4.6.3.3";s:3:"url";s:51:"https://wordpress.org/plugins/font-awesome-4-menus/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/font-awesome-4-menus.zip";s:14:"upgrade_notice";s:71:"Fixes an error experienced by some users when menu items are not arrays";}s:39:"manual-image-crop/manual-image-crop.php";O:8:"stdClass":6:{s:2:"id";s:5:"44373";s:4:"slug";s:17:"manual-image-crop";s:6:"plugin";s:39:"manual-image-crop/manual-image-crop.php";s:11:"new_version";s:4:"1.12";s:3:"url";s:48:"https://wordpress.org/plugins/manual-image-crop/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/manual-image-crop.1.12.zip";}s:32:"slickplan-importer/slickplan.php";O:8:"stdClass":6:{s:2:"id";s:5:"33015";s:4:"slug";s:18:"slickplan-importer";s:6:"plugin";s:32:"slickplan-importer/slickplan.php";s:11:"new_version";s:3:"2.1";s:3:"url";s:49:"https://wordpress.org/plugins/slickplan-importer/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/slickplan-importer.zip";}s:27:"theme-check/theme-check.php";O:8:"stdClass":6:{s:2:"id";s:5:"18487";s:4:"slug";s:11:"theme-check";s:6:"plugin";s:27:"theme-check/theme-check.php";s:11:"new_version";s:10:"20160523.1";s:3:"url";s:42:"https://wordpress.org/plugins/theme-check/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/theme-check.20160523.1.zip";}s:33:"theme-my-login/theme-my-login.php";O:8:"stdClass":6:{s:2:"id";s:4:"7109";s:4:"slug";s:14:"theme-my-login";s:6:"plugin";s:33:"theme-my-login/theme-my-login.php";s:11:"new_version";s:5:"6.4.5";s:3:"url";s:45:"https://wordpress.org/plugins/theme-my-login/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/theme-my-login.6.4.5.zip";}s:21:"usersnap/usersnap.php";O:8:"stdClass":6:{s:2:"id";s:5:"26910";s:4:"slug";s:8:"usersnap";s:6:"plugin";s:21:"usersnap/usersnap.php";s:11:"new_version";s:3:"4.4";s:3:"url";s:39:"https://wordpress.org/plugins/usersnap/";s:7:"package";s:55:"https://downloads.wordpress.org/plugin/usersnap.4.4.zip";}s:41:"wordpress-importer/wordpress-importer.php";O:8:"stdClass":6:{s:2:"id";s:5:"14975";s:4:"slug";s:18:"wordpress-importer";s:6:"plugin";s:41:"wordpress-importer/wordpress-importer.php";s:11:"new_version";s:5:"0.6.3";s:3:"url";s:49:"https://wordpress.org/plugins/wordpress-importer/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/wordpress-importer.0.6.3.zip";}}}', 'yes'),
 (407, '_site_transient_timeout_browser_12ee80464124007ce3c672f15bcfa96b', '1475758509', 'yes'),
 (408, '_site_transient_browser_12ee80464124007ce3c672f15bcfa96b', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"53.0.2785.116";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (410, '_site_transient_timeout_poptags_40cd750bba9870f18aada2478b24840a', '1475189914', 'yes');
@@ -272,8 +255,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (437, 'gform_enable_background_updates', '', 'yes'),
 (438, 'gform_longtext_ready', '1', 'yes'),
 (439, 'rg_form_version', '1.9.14.28', 'yes'),
-(465, '_transient_timeout_gform_update_info', '1475586660', 'no'),
-(466, '_transient_gform_update_info', 'a:5:{s:7:"headers";a:8:{s:4:"date";s:29:"Mon, 03 Oct 2016 13:11:00 GMT";s:6:"server";s:12:"Apache/2.4.7";s:12:"x-powered-by";s:21:"PHP/5.5.9-1ubuntu4.19";s:4:"vary";s:15:"Accept-Encoding";s:16:"content-encoding";s:4:"gzip";s:14:"content-length";s:3:"491";s:10:"connection";s:5:"close";s:12:"content-type";s:9:"text/html";}s:4:"body";s:2710:"{"is_valid_key":"0","expiration_time":0,"version":"2.0.7","url":"","offerings":{"gravityforms":{"is_available":false,"version":"2.0.7"},"gravityforms-beta":{"is_available":false,"version":"2.0-rc-1"},"gravityformsactivecampaign":{"is_available":false,"version":"1.4"},"gravityformsagilecrm":{"is_available":false,"version":"1.1"},"gravityformsauthorizenet":{"is_available":false,"version":"2.3"},"gravityformsaweber":{"is_available":false,"version":"2.4"},"gravityformsbatchbook":{"is_available":false,"version":"1.1"},"gravityformsbreeze":{"is_available":false,"version":"1.1"},"gravityformscampaignmonitor":{"is_available":false,"version":"3.4.1"},"gravityformscampfire":{"is_available":false,"version":"1.1"},"gravityformscapsulecrm":{"is_available":false,"version":"1.1"},"gravityformscleverreach":{"is_available":false,"version":"1.2"},"gravityformscoupons":{"is_available":false,"version":"2.3"},"gravityformsdebug":{"is_available":false,"version":""},"gravityformsdropbox":{"is_available":false,"version":"1.1.1"},"gravityformsemma":{"is_available":false,"version":"1.1"},"gravityformsfreshbooks":{"is_available":false,"version":"2.3"},"gravityformsgetresponse":{"is_available":false,"version":"1.1"},"gravityformshelpscout":{"is_available":false,"version":"1.3"},"gravityformshighrise":{"is_available":false,"version":"1.1"},"gravityformshipchat":{"is_available":false,"version":"1.1"},"gravityformsicontact":{"is_available":false,"version":"1.2"},"gravityformslogging":{"is_available":false,"version":"1.0"},"gravityformsmadmimi":{"is_available":false,"version":"1.1"},"gravityformsmailchimp":{"is_available":false,"version":"3.7.1"},"gravityformspartialentries":{"is_available":false,"version":"1.0"},"gravityformspaypal":{"is_available":false,"version":"2.7"},"gravityformspaypalexpresscheckout":{"is_available":false,"version":""},"gravityformspaypalpaymentspro":{"is_available":false,"version":"2.1"},"gravityformspaypalpro":{"is_available":false,"version":"1.7"},"gravityformspicatcha":{"is_available":false,"version":"2.0"},"gravityformspolls":{"is_available":false,"version":"3.1"},"gravityformsquiz":{"is_available":false,"version":"3.1"},"gravityformssignature":{"is_available":false,"version":"3.2"},"gravityformsslack":{"is_available":false,"version":"1.5"},"gravityformsstripe":{"is_available":false,"version":"2.1"},"gravityformssurvey":{"is_available":false,"version":"3.1"},"gravityformstrello":{"is_available":false,"version":"1.1"},"gravityformstwilio":{"is_available":false,"version":"2.2"},"gravityformsuserregistration":{"is_available":false,"version":"3.4"},"gravityformszapier":{"is_available":false,"version":"2.0"},"gravityformszohocrm":{"is_available":false,"version":"1.3"}}}";s:8:"response";a:2:{s:4:"code";i:200;s:7:"message";s:2:"OK";}s:7:"cookies";a:0:{}s:8:"filename";N;}', 'no'),
+(497, '_transient_timeout_gform_update_info', '1475673091', 'no'),
+(498, '_transient_gform_update_info', 'a:5:{s:7:"headers";a:8:{s:4:"date";s:29:"Tue, 04 Oct 2016 13:11:30 GMT";s:6:"server";s:12:"Apache/2.4.7";s:12:"x-powered-by";s:21:"PHP/5.5.9-1ubuntu4.19";s:4:"vary";s:15:"Accept-Encoding";s:16:"content-encoding";s:4:"gzip";s:14:"content-length";s:3:"491";s:10:"connection";s:5:"close";s:12:"content-type";s:9:"text/html";}s:4:"body";s:2710:"{"is_valid_key":"0","expiration_time":0,"version":"2.0.7","url":"","offerings":{"gravityforms":{"is_available":false,"version":"2.0.7"},"gravityforms-beta":{"is_available":false,"version":"2.0-rc-1"},"gravityformsactivecampaign":{"is_available":false,"version":"1.4"},"gravityformsagilecrm":{"is_available":false,"version":"1.1"},"gravityformsauthorizenet":{"is_available":false,"version":"2.3"},"gravityformsaweber":{"is_available":false,"version":"2.4"},"gravityformsbatchbook":{"is_available":false,"version":"1.1"},"gravityformsbreeze":{"is_available":false,"version":"1.1"},"gravityformscampaignmonitor":{"is_available":false,"version":"3.4.1"},"gravityformscampfire":{"is_available":false,"version":"1.1"},"gravityformscapsulecrm":{"is_available":false,"version":"1.1"},"gravityformscleverreach":{"is_available":false,"version":"1.2"},"gravityformscoupons":{"is_available":false,"version":"2.3"},"gravityformsdebug":{"is_available":false,"version":""},"gravityformsdropbox":{"is_available":false,"version":"1.1.1"},"gravityformsemma":{"is_available":false,"version":"1.1"},"gravityformsfreshbooks":{"is_available":false,"version":"2.3"},"gravityformsgetresponse":{"is_available":false,"version":"1.1"},"gravityformshelpscout":{"is_available":false,"version":"1.3"},"gravityformshighrise":{"is_available":false,"version":"1.1"},"gravityformshipchat":{"is_available":false,"version":"1.1"},"gravityformsicontact":{"is_available":false,"version":"1.2"},"gravityformslogging":{"is_available":false,"version":"1.0"},"gravityformsmadmimi":{"is_available":false,"version":"1.1"},"gravityformsmailchimp":{"is_available":false,"version":"3.7.1"},"gravityformspartialentries":{"is_available":false,"version":"1.0"},"gravityformspaypal":{"is_available":false,"version":"2.7"},"gravityformspaypalexpresscheckout":{"is_available":false,"version":""},"gravityformspaypalpaymentspro":{"is_available":false,"version":"2.1"},"gravityformspaypalpro":{"is_available":false,"version":"1.7"},"gravityformspicatcha":{"is_available":false,"version":"2.0"},"gravityformspolls":{"is_available":false,"version":"3.1"},"gravityformsquiz":{"is_available":false,"version":"3.1"},"gravityformssignature":{"is_available":false,"version":"3.2"},"gravityformsslack":{"is_available":false,"version":"1.5"},"gravityformsstripe":{"is_available":false,"version":"2.1"},"gravityformssurvey":{"is_available":false,"version":"3.1"},"gravityformstrello":{"is_available":false,"version":"1.1"},"gravityformstwilio":{"is_available":false,"version":"2.2"},"gravityformsuserregistration":{"is_available":false,"version":"3.4"},"gravityformszapier":{"is_available":false,"version":"2.0"},"gravityformszohocrm":{"is_available":false,"version":"1.3"}}}";s:8:"response";a:2:{s:4:"code";i:200;s:7:"message";s:2:"OK";}s:7:"cookies";a:0:{}s:8:"filename";N;}', 'no'),
 (451, 'category_children', 'a:0:{}', 'yes'),
 (448, 'rg_gforms_currency', 'CAD', 'yes'),
 (446, 'gform_enable_noconflict', '0', 'yes'),
@@ -289,16 +272,12 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_postmeta`
 --
 
-DROP TABLE IF EXISTS `wp_postmeta`;
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `post_id` (`post_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=764 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -312,7 +291,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (457, 104, 'dropdown_menu_icon', ''),
 (455, 104, 'dropdown_menu_image', ''),
 (9, 5, '_edit_last', '1'),
-(10, 5, '_edit_lock', '1475525634:1'),
+(10, 5, '_edit_lock', '1475612841:1'),
 (11, 5, '_wp_page_template', 'default'),
 (12, 7, '_edit_last', '1'),
 (13, 7, '_wp_page_template', 'default'),
@@ -960,7 +939,23 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (759, 142, '_menu_item_xfn', ''),
 (760, 142, '_menu_item_url', '#contact'),
 (762, 143, '_wp_attached_file', '2016/10/IMG_1722-1.jpg'),
-(763, 143, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:1000;s:6:"height";i:1333;s:4:"file";s:22:"2016/10/IMG_1722-1.jpg";s:5:"sizes";a:10:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"IMG_1722-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"IMG_1722-1-225x300.jpg";s:5:"width";i:225;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:23:"IMG_1722-1-768x1024.jpg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:23:"IMG_1722-1-768x1024.jpg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:10:"desktop-sm";a:4:{s:4:"file";s:23:"IMG_1722-1-992x1333.jpg";s:5:"width";i:992;s:6:"height";i:1333;s:9:"mime-type";s:10:"image/jpeg";}s:6:"tablet";a:4:{s:4:"file";s:22:"IMG_1722-1-768x500.jpg";s:5:"width";i:768;s:6:"height";i:500;s:9:"mime-type";s:10:"image/jpeg";}s:9:"mobile-lg";a:4:{s:4:"file";s:22:"IMG_1722-1-500x300.jpg";s:5:"width";i:500;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:21:"product-feature-image";a:4:{s:4:"file";s:22:"IMG_1722-1-500x300.jpg";s:5:"width";i:500;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"mobile-sm";a:4:{s:4:"file";s:22:"IMG_1722-1-380x300.jpg";s:5:"width";i:380;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"sponsor-logo";a:4:{s:4:"file";s:22:"IMG_1722-1-323x162.jpg";s:5:"width";i:323;s:6:"height";i:162;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:3:"2.4";s:6:"credit";s:0:"";s:6:"camera";s:8:"iPhone 5";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1432905340";s:9:"copyright";s:0:"";s:12:"focal_length";s:4:"4.12";s:3:"iso";s:2:"50";s:13:"shutter_speed";s:18:"0.0010905125408942";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}');
+(763, 143, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:1000;s:6:"height";i:1333;s:4:"file";s:22:"2016/10/IMG_1722-1.jpg";s:5:"sizes";a:11:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"IMG_1722-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"IMG_1722-1-225x300.jpg";s:5:"width";i:225;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:23:"IMG_1722-1-768x1024.jpg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:23:"IMG_1722-1-768x1024.jpg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:10:"desktop-sm";a:4:{s:4:"file";s:23:"IMG_1722-1-992x1333.jpg";s:5:"width";i:992;s:6:"height";i:1333;s:9:"mime-type";s:10:"image/jpeg";}s:6:"tablet";a:4:{s:4:"file";s:22:"IMG_1722-1-768x500.jpg";s:5:"width";i:768;s:6:"height";i:500;s:9:"mime-type";s:10:"image/jpeg";}s:9:"mobile-lg";a:4:{s:4:"file";s:22:"IMG_1722-1-500x300.jpg";s:5:"width";i:500;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:21:"product-feature-image";a:4:{s:4:"file";s:22:"IMG_1722-1-500x300.jpg";s:5:"width";i:500;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"mobile-sm";a:4:{s:4:"file";s:22:"IMG_1722-1-380x300.jpg";s:5:"width";i:380;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"sponsor-logo";a:4:{s:4:"file";s:22:"IMG_1722-1-323x162.jpg";s:5:"width";i:323;s:6:"height";i:162;s:9:"mime-type";s:10:"image/jpeg";}s:15:"contact-section";a:4:{s:4:"file";s:24:"IMG_1722-1-1000x1333.jpg";s:5:"width";i:1000;s:6:"height";i:1333;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:3:"2.4";s:6:"credit";s:0:"";s:6:"camera";s:8:"iPhone 5";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1432905340";s:9:"copyright";s:0:"";s:12:"focal_length";s:4:"4.12";s:3:"iso";s:2:"50";s:13:"shutter_speed";s:18:"0.0010905125408942";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}'),
+(764, 144, 'dropdown_menu_image', ''),
+(765, 144, '_dropdown_menu_image', 'field_56bcbf1a4042f'),
+(766, 144, 'dropdown_menu_icon', ''),
+(767, 144, '_dropdown_menu_icon', 'field_dropdown_menu_icon'),
+(768, 144, 'dropdown_menu_description', ''),
+(769, 144, '_dropdown_menu_description', 'field_56bcbf3240430'),
+(770, 143, '_wp_attachment_backup_sizes', 'a:1:{s:15:"contact-section";a:4:{s:4:"file";s:24:"IMG_1722-1-1000x1333.jpg";s:5:"width";i:1000;s:6:"height";i:1333;s:9:"mime-type";s:10:"image/jpeg";}}'),
+(771, 145, '_wp_attached_file', '2016/10/peanut-clean.png'),
+(772, 145, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:270;s:6:"height";i:268;s:4:"file";s:24:"2016/10/peanut-clean.png";s:5:"sizes";a:3:{s:9:"thumbnail";a:4:{s:4:"file";s:24:"peanut-clean-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:12:"sponsor-logo";a:4:{s:4:"file";s:24:"peanut-clean-270x162.png";s:5:"width";i:270;s:6:"height";i:162;s:9:"mime-type";s:9:"image/png";}s:11:"wtb-section";a:4:{s:4:"file";s:24:"peanut-clean-270x268.png";s:5:"width";i:270;s:6:"height";i:268;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}'),
+(773, 146, 'dropdown_menu_image', ''),
+(774, 146, '_dropdown_menu_image', 'field_56bcbf1a4042f'),
+(775, 146, 'dropdown_menu_icon', ''),
+(776, 146, '_dropdown_menu_icon', 'field_dropdown_menu_icon'),
+(777, 146, 'dropdown_menu_description', ''),
+(778, 146, '_dropdown_menu_description', 'field_56bcbf3240430'),
+(779, 145, '_wp_attachment_backup_sizes', 'a:1:{s:11:"wtb-section";a:4:{s:4:"file";s:24:"peanut-clean-270x268.png";s:5:"width";i:270;s:6:"height";i:268;s:9:"mime-type";s:9:"image/png";}}');
 
 -- --------------------------------------------------------
 
@@ -968,9 +963,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
-DROP TABLE IF EXISTS `wp_posts`;
-CREATE TABLE IF NOT EXISTS `wp_posts` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -992,13 +986,8 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `menu_order` int(11) NOT NULL DEFAULT '0',
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `comment_count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `post_name` (`post_name`(191)),
-  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
-  KEY `post_parent` (`post_parent`),
-  KEY `post_author` (`post_author`)
-) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `comment_count` bigint(20) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -1007,7 +996,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (105, 1, '2016-09-19 09:41:36', '2016-09-19 13:41:36', '', 'hero', '', 'inherit', 'open', 'closed', '', 'hero-2', '', '', '2016-09-19 09:56:50', '2016-09-19 13:56:50', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/09/hero-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (106, 1, '2016-09-19 10:10:52', '2016-09-19 14:10:52', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][vc_column_text]\r\n<p style="text-align: center;">Hella XOXO fixie, cliche pour-over craft beer echo park DIY chia affogato pabst. Messenger bag wolf</p>\r\n[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container][product-feature image="100" copy="Authentic blog ethical leggings poutine. Salvia gastropub church-key flannel, pitchfork kickstarter selvage waistcoa"][product-feature image="94" copy="Hammock austin bushwick pug. Neutra VHS tousled, pork belly four loko mixtape next level ugh leggings DIY franzen cornhole drinking vinegar chicharrones biodiesel."][product-feature image="85" copy="Taxidermy 8-bit crucifix DIY messenger bag actually distillery chia swag church-key. Raw denim pork belly put a bird on it celiac, bitters truffaut kombucha YOLO fashion axe."][/features_container][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-09-19 10:10:52', '2016-09-19 14:10:52', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/09/19/5-revision-v1/', 0, 'revision', '', 0),
-(5, 1, '2016-08-08 09:15:24', '2016-08-08 13:15:24', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\r\nDesigner and Owner, my little peanut\r\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\r\n\r\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section image="79" heading="Contact Me"][/vc_column][/vc_row]', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '2016-09-30 15:41:27', '2016-09-30 19:41:27', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?page_id=5', 0, 'page', '', 0),
+(5, 1, '2016-08-08 09:15:24', '2016-08-08 13:15:24', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\r\nDesigner and Owner, my little peanut\r\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\r\n\r\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section image="143" heading="Contact Me"][/vc_column][/vc_row][vc_row][vc_column][wtb-section image="145" heading="Where To Buy" copy="Lorem Ipsum"][/vc_column][/vc_row]', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '2016-10-04 16:26:31', '2016-10-04 20:26:31', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?page_id=5', 0, 'page', '', 0),
 (135, 1, '2016-09-29 11:05:55', '2016-09-29 15:05:55', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\r\nDesigner and Owner, my little peanut\r\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\r\n\r\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-09-29 11:05:55', '2016-09-29 15:05:55', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/09/29/5-revision-v1/', 0, 'revision', '', 0),
 (104, 1, '2016-09-19 09:35:45', '2016-09-19 13:35:45', '[vc_row][vc_column][vc_column_text]\r\n<p style="text-align: center;">Hella XOXO fixie, cliche pour-over craft beer echo park DIY chia affogato pabst. Messenger bag wolf</p>\r\n[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container][product-feature image="100" copy="Authentic blog ethical leggings poutine. Salvia gastropub church-key flannel, pitchfork kickstarter selvage waistcoa"][product-feature image="94" copy="Hammock austin bushwick pug. Neutra VHS tousled, pork belly four loko mixtape next level ugh leggings DIY franzen cornhole drinking vinegar chicharrones biodiesel."][product-feature image="85" copy="Taxidermy 8-bit crucifix DIY messenger bag actually distillery chia swag church-key. Raw denim pork belly put a bird on it celiac, bitters truffaut kombucha YOLO fashion axe."][/features_container][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-09-19 09:35:45', '2016-09-19 13:35:45', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/09/19/5-revision-v1/', 0, 'revision', '', 0),
 (6, 1, '2016-08-08 09:15:24', '2016-08-08 13:15:24', '', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-08-08 09:15:24', '2016-08-08 13:15:24', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/08/08/5-revision-v1/', 0, 'revision', '', 0),
@@ -1024,7 +1013,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (18, 1, '2016-08-08 12:06:48', '2016-08-08 16:06:48', ' ', '', '', 'publish', 'closed', 'closed', '', '18', '', '', '2016-09-28 22:01:18', '2016-09-29 02:01:18', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?p=18', 3, 'nav_menu_item', '', 0),
 (121, 1, '2016-09-28 22:06:30', '2016-09-29 02:06:30', '', 'About', '', 'publish', 'closed', 'closed', '', 'about-2', '', '', '2016-10-03 16:30:43', '2016-10-03 20:30:43', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?p=121', 2, 'nav_menu_item', '', 0),
 (20, 1, '2016-08-08 12:06:48', '2016-08-08 16:06:48', ' ', '', '', 'publish', 'closed', 'closed', '', '20', '', '', '2016-09-28 22:01:18', '2016-09-29 02:01:18', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?p=20', 4, 'nav_menu_item', '', 0),
-(21, 1, '2016-09-30 15:33:01', '2016-09-30 19:33:01', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\nDesigner and Owner, my little peanut\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\n\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-autosave-v1', '', '', '2016-09-30 15:33:01', '2016-09-30 19:33:01', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/08/09/5-autosave-v1/', 0, 'revision', '', 0),
+(21, 1, '2016-10-04 16:24:03', '2016-10-04 20:24:03', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\nDesigner and Owner, my little peanut\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\n\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section image="143" heading="Contact Me"][/vc_column][/vc_row][vc_row][vc_column][wtb-section][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-autosave-v1', '', '', '2016-10-04 16:24:03', '2016-10-04 20:24:03', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/08/09/5-autosave-v1/', 0, 'revision', '', 0),
 (22, 1, '2016-08-09 13:16:08', '2016-08-09 17:16:08', 'a:7:{s:8:"location";a:1:{i:0;a:1:{i:0;a:3:{s:5:"param";s:12:"options_page";s:8:"operator";s:2:"==";s:5:"value";s:18:"acf-options-footer";}}}s:8:"position";s:6:"normal";s:5:"style";s:7:"default";s:15:"label_placement";s:3:"top";s:21:"instruction_placement";s:5:"label";s:14:"hide_on_screen";s:0:"";s:11:"description";s:0:"";}', 'Social Media Content', 'social-media-content', 'publish', 'closed', 'closed', '', 'group_57aa053b746eb', '', '', '2016-08-09 13:22:46', '2016-08-09 17:22:46', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?post_type=acf-field-group&#038;p=22', 0, 'acf-field-group', '', 0),
 (23, 1, '2016-08-09 13:16:08', '2016-08-09 17:16:08', 'a:12:{s:4:"type";s:4:"text";s:12:"instructions";s:0:"";s:8:"required";i:1;s:17:"conditional_logic";i:0;s:7:"wrapper";a:3:{s:5:"width";s:0:"";s:5:"class";s:0:"";s:2:"id";s:0:"";}s:13:"default_value";s:0:"";s:11:"placeholder";s:0:"";s:7:"prepend";s:0:"";s:6:"append";s:0:"";s:9:"maxlength";s:0:"";s:8:"readonly";i:0;s:8:"disabled";i:0;}', 'Facebook Icon', 'facebook_icon', 'publish', 'closed', 'closed', '', 'field_57aa059e454e1', '', '', '2016-08-09 13:22:44', '2016-08-09 17:22:44', '', 22, 'http://localhost/dev/mylittlepeanut.ca/src/?post_type=acf-field&#038;p=23', 0, 'acf-field', '', 0),
 (24, 1, '2016-08-09 13:16:09', '2016-08-09 17:16:09', 'a:12:{s:4:"type";s:4:"text";s:12:"instructions";s:0:"";s:8:"required";i:1;s:17:"conditional_logic";i:0;s:7:"wrapper";a:3:{s:5:"width";s:0:"";s:5:"class";s:0:"";s:2:"id";s:0:"";}s:13:"default_value";s:0:"";s:11:"placeholder";s:0:"";s:7:"prepend";s:0:"";s:6:"append";s:0:"";s:9:"maxlength";s:0:"";s:8:"readonly";i:0;s:8:"disabled";i:0;}', 'Facebook Link', 'facebook_link', 'publish', 'closed', 'closed', '', 'field_57aa0f87454e2', '', '', '2016-08-09 13:22:45', '2016-08-09 17:22:45', '', 22, 'http://localhost/dev/mylittlepeanut.ca/src/?post_type=acf-field&#038;p=24', 1, 'acf-field', '', 0),
@@ -1080,9 +1069,9 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (74, 1, '2016-08-16 11:51:42', '2016-08-16 15:51:42', '', '400-450', '', 'inherit', 'open', 'closed', '', '400-450', '', '', '2016-08-16 11:51:42', '2016-08-16 15:51:42', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/400-450.png', 0, 'attachment', 'image/png', 0),
 (75, 1, '2016-08-16 12:15:46', '2016-08-16 16:15:46', '[vc_row][vc_column][vc_single_image image="44" img_size="full" alignment="center" style="vc_box_shadow_border" el_class="home-hero-img"][vc_column_text]\r\n<p style="text-align: center;">Hella XOXO fixie, cliche pour-over craft beer echo park DIY chia affogato pabst. Messenger bag wolf</p>\r\n[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container][product-feature image="74" copy="Authentic blog ethical leggings poutine. Salvia gastropub church-key flannel, pitchfork kickstarter selvage waistcoa"][product-feature image="74" copy="Hammock austin bushwick pug. Neutra VHS tousled, pork belly four loko mixtape next level ugh leggings DIY franzen cornhole drinking vinegar chicharrones biodiesel."][product-feature image="48" copy="Taxidermy 8-bit crucifix DIY messenger bag actually distillery chia swag church-key. Raw denim pork belly put a bird on it celiac, bitters truffaut kombucha YOLO fashion axe."][/features_container][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-08-16 12:15:46', '2016-08-16 16:15:46', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/08/16/5-revision-v1/', 0, 'revision', '', 0),
 (76, 1, '2016-08-16 12:23:36', '2016-08-16 16:23:36', '[vc_row][vc_column][vc_single_image image="44" img_size="full" alignment="center" style="vc_box_shadow_border" el_class="home-hero-img"][vc_column_text]\r\n<p style="text-align: center;">Hella XOXO fixie, cliche pour-over craft beer echo park DIY chia affogato pabst. Messenger bag wolf</p>\r\n[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container][product-feature image="74" copy="Authentic blog ethical leggings poutine. Salvia gastropub church-key flannel, pitchfork kickstarter selvage waistcoa"][product-feature image="74" copy="Hammock austin bushwick pug. Neutra VHS tousled, pork belly four loko mixtape next level ugh leggings DIY franzen cornhole drinking vinegar chicharrones biodiesel."][product-feature image="74" copy="Taxidermy 8-bit crucifix DIY messenger bag actually distillery chia swag church-key. Raw denim pork belly put a bird on it celiac, bitters truffaut kombucha YOLO fashion axe."][/features_container][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-08-16 12:23:36', '2016-08-16 16:23:36', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/08/16/5-revision-v1/', 0, 'revision', '', 0),
-(77, 1, '2016-08-17 14:31:57', '2016-08-17 18:31:57', '', 'jules', '', 'inherit', 'open', 'closed', '', 'jules', '', '', '2016-09-23 20:55:14', '2016-09-24 00:55:14', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/jules.jpg', 0, 'attachment', 'image/jpeg', 0),
-(78, 1, '2016-08-17 14:31:58', '2016-08-17 18:31:58', '', 'logo', '', 'inherit', 'open', 'closed', '', 'logo', '', '', '2016-08-17 14:31:58', '2016-08-17 18:31:58', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/logo.png', 0, 'attachment', 'image/png', 0);
+(77, 1, '2016-08-17 14:31:57', '2016-08-17 18:31:57', '', 'jules', '', 'inherit', 'open', 'closed', '', 'jules', '', '', '2016-09-23 20:55:14', '2016-09-24 00:55:14', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/jules.jpg', 0, 'attachment', 'image/jpeg', 0);
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
+(78, 1, '2016-08-17 14:31:58', '2016-08-17 18:31:58', '', 'logo', '', 'inherit', 'open', 'closed', '', 'logo', '', '', '2016-08-17 14:31:58', '2016-08-17 18:31:58', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/logo.png', 0, 'attachment', 'image/png', 0),
 (79, 1, '2016-08-17 14:31:59', '2016-08-17 18:31:59', '', 'peanut-small', '', 'inherit', 'open', 'closed', '', 'peanut-small', '', '', '2016-08-17 14:31:59', '2016-08-17 18:31:59', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/peanut-small.png', 0, 'attachment', 'image/png', 0),
 (80, 1, '2016-08-17 14:32:11', '2016-08-17 18:32:11', '', 'bib0', '', 'inherit', 'open', 'closed', '', 'bib0', '', '', '2016-08-17 14:32:11', '2016-08-17 18:32:11', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/bib0.jpg', 0, 'attachment', 'image/jpeg', 0),
 (81, 1, '2016-08-17 14:32:13', '2016-08-17 18:32:13', '', 'bib1', '', 'inherit', 'open', 'closed', '', 'bib1', '', '', '2016-08-17 14:32:13', '2016-08-17 18:32:13', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/08/bib1.jpg', 0, 'attachment', 'image/jpeg', 0),
@@ -1135,7 +1124,10 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (139, 1, '2016-09-29 11:22:45', '2016-09-29 15:22:45', ' ', '', '', 'publish', 'closed', 'closed', '', '139', '', '', '2016-10-03 16:30:45', '2016-10-03 20:30:45', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?p=139', 4, 'nav_menu_item', '', 0),
 (141, 1, '2016-09-30 16:10:29', '2016-09-30 20:10:29', '', 'peanut', '', 'inherit', 'open', 'closed', '', 'peanut', '', '', '2016-09-30 16:10:29', '2016-09-30 20:10:29', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/09/peanut.png', 0, 'attachment', 'image/png', 0),
 (142, 1, '2016-10-03 16:30:49', '2016-10-03 20:30:49', '', 'Contact', '', 'publish', 'closed', 'closed', '', 'contact', '', '', '2016-10-03 16:30:49', '2016-10-03 20:30:49', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/?p=142', 7, 'nav_menu_item', '', 0),
-(143, 1, '2016-10-04 08:05:26', '2016-10-04 12:05:26', '', 'IMG_1722', '', 'inherit', 'open', 'closed', '', 'img_1722', '', '', '2016-10-04 08:05:26', '2016-10-04 12:05:26', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/10/IMG_1722-1.jpg', 0, 'attachment', 'image/jpeg', 0);
+(143, 1, '2016-10-04 08:05:26', '2016-10-04 12:05:26', '', 'IMG_1722', '', 'inherit', 'open', 'closed', '', 'img_1722', '', '', '2016-10-04 08:05:26', '2016-10-04 12:05:26', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/10/IMG_1722-1.jpg', 0, 'attachment', 'image/jpeg', 0),
+(144, 1, '2016-10-04 09:31:50', '2016-10-04 13:31:50', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\r\nDesigner and Owner, my little peanut\r\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\r\n\r\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section image="143" heading="Contact Me"][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-10-04 09:31:50', '2016-10-04 13:31:50', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/10/04/5-revision-v1/', 0, 'revision', '', 0),
+(145, 1, '2016-10-04 11:03:51', '2016-10-04 15:03:51', '', 'peanut-clean', '', 'inherit', 'open', 'closed', '', 'peanut-clean', '', '', '2016-10-04 11:03:51', '2016-10-04 15:03:51', '', 0, 'http://localhost/dev/mylittlepeanut.ca/src/wp-content/uploads/2016/10/peanut-clean.png', 0, 'attachment', 'image/png', 0),
+(146, 1, '2016-10-04 16:26:31', '2016-10-04 20:26:31', '[vc_row][vc_column][hero-banner image="105" copy="Handmade organic cotton and bamboo outfits for your little peanut"][/vc_column][/vc_row][vc_row el_class="after-hero-textblock"][vc_column][about-section image="77" heading="Local, handmade, soft and comfortable. Totally unique at an incredible price. " signature="Julie Ward Pembleton\r\nDesigner and Owner, my little peanut\r\nOntario, Canada"][vc_column_text el_class="about-copy"]Hi, and welcome to my little peanut; <strong>handmade</strong> GOTS (Global Organic Textile Standards) <strong>certified organic cotton</strong> clothing especially made for your little ones. The idea for my little peanut was planted after my son was born. During my search for fun and comfortable clothing, I often returned empty-handed. With my background in fashion design, and my passion for <strong>soft, environmentally friendly fabrics</strong>, I knew that I was on to something.\r\n\r\nI sat down and started designing and searching for the right fabrics, created my first prototypes and <strong>my little peanut</strong> had sprouted.[/vc_column_text][vc_column_text el_class="about-tagline"]Help <b>my little peanut</b> grow![/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][features_container heading="Featured Products"][product-feature image="100" copy="Sleepsacks"][product-feature image="94" copy="Rompers"][product-feature image="85" copy="Bibs"][/features_container][/vc_column][/vc_row][vc_row][vc_column][contact-section image="143" heading="Contact Me"][/vc_column][/vc_row][vc_row][vc_column][wtb-section image="145" heading="Where To Buy" copy="Lorem Ipsum"][/vc_column][/vc_row]', 'Home', '', 'inherit', 'closed', 'closed', '', '5-revision-v1', '', '', '2016-10-04 16:26:31', '2016-10-04 20:26:31', '', 5, 'http://localhost/dev/mylittlepeanut.ca/src/2016/10/04/5-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1143,15 +1135,13 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_rg_form`
 --
 
-DROP TABLE IF EXISTS `wp_rg_form`;
-CREATE TABLE IF NOT EXISTS `wp_rg_form` (
-  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_form` (
+  `id` mediumint(8) UNSIGNED NOT NULL,
   `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_created` datetime NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
-  `is_trash` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `is_trash` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_rg_form`
@@ -1166,14 +1156,12 @@ INSERT INTO `wp_rg_form` (`id`, `title`, `date_created`, `is_active`, `is_trash`
 -- Table structure for table `wp_rg_form_meta`
 --
 
-DROP TABLE IF EXISTS `wp_rg_form_meta`;
-CREATE TABLE IF NOT EXISTS `wp_rg_form_meta` (
+CREATE TABLE `wp_rg_form_meta` (
   `form_id` mediumint(8) UNSIGNED NOT NULL,
   `display_meta` longtext COLLATE utf8mb4_unicode_ci,
   `entries_grid_meta` longtext COLLATE utf8mb4_unicode_ci,
   `confirmations` longtext COLLATE utf8mb4_unicode_ci,
-  `notifications` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`form_id`)
+  `notifications` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1189,16 +1177,13 @@ INSERT INTO `wp_rg_form_meta` (`form_id`, `display_meta`, `entries_grid_meta`, `
 -- Table structure for table `wp_rg_form_view`
 --
 
-DROP TABLE IF EXISTS `wp_rg_form_view`;
-CREATE TABLE IF NOT EXISTS `wp_rg_form_view` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_form_view` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `form_id` mediumint(8) UNSIGNED NOT NULL,
   `date_created` datetime NOT NULL,
   `ip` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `count` mediumint(8) UNSIGNED NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `form_id` (`form_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `count` mediumint(8) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_rg_form_view`
@@ -1214,17 +1199,14 @@ INSERT INTO `wp_rg_form_view` (`id`, `form_id`, `date_created`, `ip`, `count`) V
 -- Table structure for table `wp_rg_incomplete_submissions`
 --
 
-DROP TABLE IF EXISTS `wp_rg_incomplete_submissions`;
-CREATE TABLE IF NOT EXISTS `wp_rg_incomplete_submissions` (
+CREATE TABLE `wp_rg_incomplete_submissions` (
   `uuid` char(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `form_id` mediumint(8) UNSIGNED NOT NULL,
   `date_created` datetime NOT NULL,
   `ip` varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
   `source_url` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `submission` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`uuid`),
-  KEY `form_id` (`form_id`)
+  `submission` longtext COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1233,9 +1215,8 @@ CREATE TABLE IF NOT EXISTS `wp_rg_incomplete_submissions` (
 -- Table structure for table `wp_rg_lead`
 --
 
-DROP TABLE IF EXISTS `wp_rg_lead`;
-CREATE TABLE IF NOT EXISTS `wp_rg_lead` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_lead` (
+  `id` int(10) UNSIGNED NOT NULL,
   `form_id` mediumint(8) UNSIGNED NOT NULL,
   `post_id` bigint(20) UNSIGNED DEFAULT NULL,
   `date_created` datetime NOT NULL,
@@ -1253,10 +1234,7 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead` (
   `is_fulfilled` tinyint(1) DEFAULT NULL,
   `created_by` bigint(20) UNSIGNED DEFAULT NULL,
   `transaction_type` tinyint(1) DEFAULT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
-  PRIMARY KEY (`id`),
-  KEY `form_id` (`form_id`),
-  KEY `status` (`status`)
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1265,18 +1243,12 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead` (
 -- Table structure for table `wp_rg_lead_detail`
 --
 
-DROP TABLE IF EXISTS `wp_rg_lead_detail`;
-CREATE TABLE IF NOT EXISTS `wp_rg_lead_detail` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_lead_detail` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `lead_id` int(10) UNSIGNED NOT NULL,
   `form_id` mediumint(8) UNSIGNED NOT NULL,
   `field_number` float NOT NULL,
-  `value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`id`),
-  KEY `form_id` (`form_id`),
-  KEY `lead_id` (`lead_id`),
-  KEY `lead_field_number` (`lead_id`,`field_number`),
-  KEY `lead_field_value` (`value`(191))
+  `value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1285,11 +1257,9 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead_detail` (
 -- Table structure for table `wp_rg_lead_detail_long`
 --
 
-DROP TABLE IF EXISTS `wp_rg_lead_detail_long`;
-CREATE TABLE IF NOT EXISTS `wp_rg_lead_detail_long` (
+CREATE TABLE `wp_rg_lead_detail_long` (
   `lead_detail_id` bigint(20) UNSIGNED NOT NULL,
-  `value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`lead_detail_id`)
+  `value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1298,17 +1268,12 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead_detail_long` (
 -- Table structure for table `wp_rg_lead_meta`
 --
 
-DROP TABLE IF EXISTS `wp_rg_lead_meta`;
-CREATE TABLE IF NOT EXISTS `wp_rg_lead_meta` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_lead_meta` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `form_id` mediumint(8) UNSIGNED NOT NULL DEFAULT '0',
   `lead_id` bigint(20) UNSIGNED NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`id`),
-  KEY `meta_key` (`meta_key`(191)),
-  KEY `lead_id` (`lead_id`),
-  KEY `form_id_meta_key` (`form_id`,`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1317,18 +1282,14 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead_meta` (
 -- Table structure for table `wp_rg_lead_notes`
 --
 
-DROP TABLE IF EXISTS `wp_rg_lead_notes`;
-CREATE TABLE IF NOT EXISTS `wp_rg_lead_notes` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_rg_lead_notes` (
+  `id` int(10) UNSIGNED NOT NULL,
   `lead_id` int(10) UNSIGNED NOT NULL,
   `user_name` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   `date_created` datetime NOT NULL,
   `value` longtext COLLATE utf8mb4_unicode_ci,
-  `note_type` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `lead_id` (`lead_id`),
-  KEY `lead_user_key` (`lead_id`,`user_id`)
+  `note_type` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1337,15 +1298,11 @@ CREATE TABLE IF NOT EXISTS `wp_rg_lead_notes` (
 -- Table structure for table `wp_termmeta`
 --
 
-DROP TABLE IF EXISTS `wp_termmeta`;
-CREATE TABLE IF NOT EXISTS `wp_termmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_termmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `term_id` (`term_id`),
-  KEY `meta_key` (`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1354,16 +1311,12 @@ CREATE TABLE IF NOT EXISTS `wp_termmeta` (
 -- Table structure for table `wp_terms`
 --
 
-DROP TABLE IF EXISTS `wp_terms`;
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `term_group` bigint(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_id`),
-  KEY `slug` (`slug`(191)),
-  KEY `name` (`name`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `term_group` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_terms`
@@ -1380,13 +1333,10 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- Table structure for table `wp_term_relationships`
 --
 
-DROP TABLE IF EXISTS `wp_term_relationships`;
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
+CREATE TABLE `wp_term_relationships` (
   `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `term_order` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`object_id`,`term_taxonomy_id`),
-  KEY `term_taxonomy_id` (`term_taxonomy_id`)
+  `term_order` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1412,18 +1362,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
-DROP TABLE IF EXISTS `wp_term_taxonomy`;
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_taxonomy_id`),
-  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
-  KEY `taxonomy` (`taxonomy`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `count` bigint(20) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_term_taxonomy`
@@ -1440,16 +1386,12 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Table structure for table `wp_usermeta`
 --
 
-DROP TABLE IF EXISTS `wp_usermeta`;
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
-  `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`umeta_id`),
-  KEY `user_id` (`user_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_ci
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -1469,12 +1411,12 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (11, 1, 'wp_user_level', '10'),
 (12, 1, 'dismissed_wp_pointers', 'vc_pointers_backend_editor'),
 (13, 1, 'show_welcome_panel', '1'),
-(22, 1, 'session_tokens', 'a:2:{s:64:"bcddc6ef489a7360a2b939c65d9c97b433e2cc292701a6f68f0444289a3e24d1";a:4:{s:10:"expiration";i:1475698228;s:2:"ip";s:3:"::1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";s:5:"login";i:1475525428;}s:64:"365d1c26878ac9d8be15b7ca0d6520713b1eb3411032ae402a689d3abf78332d";a:4:{s:10:"expiration";i:1475755479;s:2:"ip";s:3:"::1";s:2:"ua";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";s:5:"login";i:1475582679;}}'),
+(22, 1, 'session_tokens', 'a:3:{s:64:"bcddc6ef489a7360a2b939c65d9c97b433e2cc292701a6f68f0444289a3e24d1";a:4:{s:10:"expiration";i:1475698228;s:2:"ip";s:3:"::1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";s:5:"login";i:1475525428;}s:64:"365d1c26878ac9d8be15b7ca0d6520713b1eb3411032ae402a689d3abf78332d";a:4:{s:10:"expiration";i:1475755479;s:2:"ip";s:3:"::1";s:2:"ua";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";s:5:"login";i:1475582679;}s:64:"24a28b6dc962df4a23602578cb80f349db18011aa33143e6ec5d2d4172a7d1f7";a:4:{s:10:"expiration";i:1475759303;s:2:"ip";s:3:"::1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";s:5:"login";i:1475586503;}}'),
 (15, 1, 'managenav-menuscolumnshidden', 'a:4:{i:0;s:11:"link-target";i:1;s:15:"title-attribute";i:2;s:3:"xfn";i:3;s:11:"description";}'),
 (16, 1, 'metaboxhidden_nav-menus', 'a:1:{i:0;s:12:"add-post_tag";}'),
 (17, 1, 'nav_menu_recently_edited', '2'),
-(18, 1, 'wp_user-settings', 'editor=tinymce&mfold=o&template_window_vcUIPanelWidth=995&template_window_vcUIPanelLeft=454px&template_window_vcUIPanelTop=74px&edit_element_vcUIPanelWidth=650&edit_element_vcUIPanelLeft=951px&edit_element_vcUIPanelTop=74px&libraryContent=browse'),
-(19, 1, 'wp_user-settings-time', '1470845219'),
+(18, 1, 'wp_user-settings', 'editor=tinymce&mfold=o&template_window_vcUIPanelWidth=995&template_window_vcUIPanelLeft=454px&template_window_vcUIPanelTop=74px&edit_element_vcUIPanelWidth=650&edit_element_vcUIPanelLeft=1237px&edit_element_vcUIPanelTop=155px&libraryContent=browse'),
+(19, 1, 'wp_user-settings-time', '1475593326'),
 (20, 1, 'closedpostboxes_page', 'a:1:{i:0;s:23:"acf-group_56bcbf0f33037";}'),
 (21, 1, 'metaboxhidden_page', 'a:9:{i:0;s:33:"acf-group_acf_contact-information";i:1;s:31:"acf-group_contact_form_settings";i:2;s:26:"acf-group_acf_site-options";i:3;s:23:"acf-group_57aa053b746eb";i:4;s:10:"postcustom";i:5;s:16:"commentstatusdiv";i:6;s:11:"commentsdiv";i:7;s:7:"slugdiv";i:8;s:9:"authordiv";}'),
 (23, 1, 'n9m-font-awesome-4-notice-hide', '1');
@@ -1485,9 +1427,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
-DROP TABLE IF EXISTS `wp_users`;
-CREATE TABLE IF NOT EXISTS `wp_users` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_pass` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1496,12 +1437,8 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
-  `display_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`ID`),
-  KEY `user_login_key` (`user_login`),
-  KEY `user_nicename` (`user_nicename`),
-  KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `display_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_users`
@@ -1510,6 +1447,265 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'tbkadmin', '$P$BN3ZKUw7jdI5tCW2R1H59Cj6/tYqTt.', 'tbkadmin', 'jason.pemmy@gmail.com', '', '2016-08-04 20:13:11', '', 0, 'tbkadmin');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `comment_post_ID` (`comment_post_ID`),
+  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
+  ADD KEY `comment_parent` (`comment_parent`),
+  ADD KEY `comment_author_email` (`comment_author_email`(10));
+
+--
+-- Indexes for table `wp_links`
+--
+ALTER TABLE `wp_links`
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `link_visible` (`link_visible`);
+
+--
+-- Indexes for table `wp_options`
+--
+ALTER TABLE `wp_options`
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`);
+
+--
+-- Indexes for table `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_name` (`post_name`(191)),
+  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  ADD KEY `post_parent` (`post_parent`),
+  ADD KEY `post_author` (`post_author`);
+
+--
+-- Indexes for table `wp_rg_form`
+--
+ALTER TABLE `wp_rg_form`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wp_rg_form_meta`
+--
+ALTER TABLE `wp_rg_form_meta`
+  ADD PRIMARY KEY (`form_id`);
+
+--
+-- Indexes for table `wp_rg_form_view`
+--
+ALTER TABLE `wp_rg_form_view`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_id` (`form_id`);
+
+--
+-- Indexes for table `wp_rg_incomplete_submissions`
+--
+ALTER TABLE `wp_rg_incomplete_submissions`
+  ADD PRIMARY KEY (`uuid`),
+  ADD KEY `form_id` (`form_id`);
+
+--
+-- Indexes for table `wp_rg_lead`
+--
+ALTER TABLE `wp_rg_lead`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_id` (`form_id`),
+  ADD KEY `status` (`status`);
+
+--
+-- Indexes for table `wp_rg_lead_detail`
+--
+ALTER TABLE `wp_rg_lead_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_id` (`form_id`),
+  ADD KEY `lead_id` (`lead_id`),
+  ADD KEY `lead_field_number` (`lead_id`,`field_number`),
+  ADD KEY `lead_field_value` (`value`(191));
+
+--
+-- Indexes for table `wp_rg_lead_detail_long`
+--
+ALTER TABLE `wp_rg_lead_detail_long`
+  ADD PRIMARY KEY (`lead_detail_id`);
+
+--
+-- Indexes for table `wp_rg_lead_meta`
+--
+ALTER TABLE `wp_rg_lead_meta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `meta_key` (`meta_key`(191)),
+  ADD KEY `lead_id` (`lead_id`),
+  ADD KEY `form_id_meta_key` (`form_id`,`meta_key`(191));
+
+--
+-- Indexes for table `wp_rg_lead_notes`
+--
+ALTER TABLE `wp_rg_lead_notes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lead_id` (`lead_id`),
+  ADD KEY `lead_user_key` (`lead_id`,`user_id`);
+
+--
+-- Indexes for table `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `term_id` (`term_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  ADD PRIMARY KEY (`term_id`),
+  ADD KEY `slug` (`slug`(191)),
+  ADD KEY `name` (`name`(191));
+
+--
+-- Indexes for table `wp_term_relationships`
+--
+ALTER TABLE `wp_term_relationships`
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
+
+--
+-- Indexes for table `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  ADD PRIMARY KEY (`term_taxonomy_id`),
+  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  ADD KEY `taxonomy` (`taxonomy`);
+
+--
+-- Indexes for table `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  ADD PRIMARY KEY (`umeta_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_users`
+--
+ALTER TABLE `wp_users`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_login_key` (`user_login`),
+  ADD KEY `user_nicename` (`user_nicename`),
+  ADD KEY `user_email` (`user_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `wp_links`
+--
+ALTER TABLE `wp_links`
+  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_options`
+--
+ALTER TABLE `wp_options`
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
+--
+-- AUTO_INCREMENT for table `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=780;
+--
+-- AUTO_INCREMENT for table `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+--
+-- AUTO_INCREMENT for table `wp_rg_form`
+--
+ALTER TABLE `wp_rg_form`
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `wp_rg_form_view`
+--
+ALTER TABLE `wp_rg_form_view`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `wp_rg_lead`
+--
+ALTER TABLE `wp_rg_lead`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_rg_lead_detail`
+--
+ALTER TABLE `wp_rg_lead_detail`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_rg_lead_meta`
+--
+ALTER TABLE `wp_rg_lead_meta`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_rg_lead_notes`
+--
+ALTER TABLE `wp_rg_lead_notes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `wp_users`
+--
+ALTER TABLE `wp_users`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
