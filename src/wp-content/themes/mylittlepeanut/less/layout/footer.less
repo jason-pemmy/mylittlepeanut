@@ -1,68 +1,100 @@
 @import '../utils/utils.less'; 
 
-.page-footer {
-    height: 200px;
+.page-footer {    
     padding-top: 25px;
     background-color: #7e7e7e;
 	
     .navbar {
 		margin-bottom: 0;
+		text-align: center;
 		
 		.footer-nav-container {
+			//height: 200px;
 			padding-top: 10px;
-			text-align: center;
+			padding-bottom: 30px;
+			
+			.footer-column-header {				
+				margin-bottom: 10px;
+				text-align: left;
+				color: #fff;
+			}
 
 			.footer-menu {	
 				margin: 0;
 				padding: 0;
 				list-style-type: none;	
+				text-align: left;
 
-				li {
-					display: inline;
-
-					&:after {
-						content: " | ";
-                        color: #fff;
-					}
-
-					&:last-child:after {
-					  content: '';
-					}
-					
+				li {					
 					a {
-						color: #fff;
+						color: #c0b0a6;
 					}
 
 					a:hover, a:focus{		
+						color: #fff;
+					}
+				} 
+			}			
+		}
+		
+		.footer-products-container {
+			padding-top: 10px;
+			padding-bottom: 30px;
+			
+			.footer-column-header {				
+				margin-bottom: 10px;
+				text-align: left;
+				color: #fff;
+			}
+			
+			.footer-product-menu {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;	
+				text-align: left;
+
+				li {					
+					a {
 						color: #c0b0a6;
 					}
-				}
-                
-                .dropdown-menu {
-                    background-color: #7e7e7e;
-                    
-                    li {
-                        &:after {
-                            content: "";                            
-                        }
-                    }
-                } 
-			}
+
+					a:hover, a:focus{		
+						color: #fff;
+					}
+				} 
+			}			
 		}
 
 		.footer-sm-link-container {
 			padding-top: 10px;
-			text-align: center;
+			padding-bottom: 30px;
+			text-align: left;
 			font-size: 1.2em;
 			
-			a {
+			.footer-column-header {				
+				margin-bottom: 10px;
+				text-align: left;
 				color: #fff;
+			}
+			
+			a {
+				color: #c0b0a6;
 			}
 
 			a:hover, a:focus {
-				color: #c0b0a6;
+				color: #fff;
 			}
 		}	
-	}		
+	}
+	
+	.footer-copyrite-section {
+		height: 50px;
+		padding-top: 20px;
+		padding-left: 30px;
+		text-align: left;
+		background-color: #fff;	
+		border-color: #fff;
+		font-size: 13px;
+	}
 }
 

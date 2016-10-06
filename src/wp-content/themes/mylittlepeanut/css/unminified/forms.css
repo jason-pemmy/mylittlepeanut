@@ -1,9 +1,13 @@
 .form,
 .gform_wrapper form {
-  padding: 30px;
   position: relative;
+  height: auto;
+  max-height: 600px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  margin-bottom: 36px;
   background-color: #f3f0ee;
-  margin-bottom: 50px;
 }
 .form:before,
 .form:after,
@@ -19,7 +23,8 @@
 @media screen and (min-width: 768px) {
   .form,
   .gform_wrapper form {
-    padding: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 .form .form-group,
