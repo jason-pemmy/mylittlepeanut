@@ -20,6 +20,9 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
+.contact-section-container {
+  margin-bottom: 50px;
+}
 .contact-section-container .contact-heading {
   width: 100%;
   margin-bottom: 10px;
@@ -43,4 +46,6 @@
 }
 .contact-section-container .contact-form-container {
   margin: 0 auto;
+  margin-bottom: 50px;
+  background-color: #f3f0ee;
 }

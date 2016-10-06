@@ -1,6 +1,6 @@
 		</main>
 			<footer class="page-footer">			
-				<nav class="navbar navbar-default">
+				<nav class="navbar">
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12 col-md-6 footer-nav-container">
@@ -12,7 +12,7 @@
 										'menu_id' => 'footer-menu',
 										'link_before' => '',
 										'link_after' => '',
-										'walker' => '',
+										'walker' => new wp_bootstrap_navwalker()
 									));
 								?>	
 							</div>
@@ -31,6 +31,6 @@
 					</div>
 				</nav>
 			</footer>
-		<?php wp_footer(); ?>
+		<?php wp_footer(); ?> 
 	</body>
-</html>
+</html> 
