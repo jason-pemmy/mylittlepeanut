@@ -1,5 +1,3 @@
- @import '../utils/utils.less';
-
 /*
 // @screen-xs-min = 420px
 @mq-xs-min: ~"screen and (min-width: @{screen-xs-min})";
@@ -22,39 +20,3 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
-
-.contact-section-container {	
-	margin-bottom: 50px;
-    margin-top: 40px;	
-	
-	.contact-heading {
-		width: 100%;
-		margin-bottom: 10px;
-		text-align: center;
-		font-size: 30px;
-		color: #5f443e;
-	}	
-	
-	.header-underline {
-		height: 3px;
-		width: 100px;
-		margin: 0 auto;
-		margin-bottom: 30px;
-        background-color: #5f443e;
-	}
-	
-	.contact-image-container {		
-		text-align: center;
-		
-		img {
-			width: 100%;
-            max-width: 500px;
-        }
-	}
-	
-	.contact-form-container {		
-        margin-bottom: 100px;
-        background-color: #f3f0ee;
-	}
-	
-}

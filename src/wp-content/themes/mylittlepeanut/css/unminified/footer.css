@@ -1,5 +1,5 @@
 .page-footer {
-  padding-top: 25px;
+  padding-top: 50px;
   background-color: #7e7e7e;
 }
 .page-footer .navbar {
@@ -8,7 +8,7 @@
 }
 .page-footer .navbar .footer-nav-container {
   padding-top: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 100px;
 }
 .page-footer .navbar .footer-nav-container .footer-column-header {
   margin-bottom: 10px;

@@ -130,6 +130,32 @@ class TBK_Shortcodes extends Base_Factory {
 			),
 		) );
 		
+		$this->register( 'product', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Name',
+					'param_name' => 'name',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Price',
+					'param_name' => 'price',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Description',
+					'param_name' => 'description',
+				),
+			),
+		) );
+		
 		$this->register( 'about-section', array(
 			'show_settings_on_create' => true,
 			'params' => array(
@@ -231,7 +257,29 @@ class TBK_Shortcodes extends Base_Factory {
 				),
 			),
 			'js_view' => 'VcColumnView',
-		) );        
+		) );
+		
+		$this->register( 'product-container', array(
+			'name' => 'Product Container',
+			'base' => 'product_container',
+			'as_parent' => array( 'only' => 'product' ),
+			'is_container' => true,
+			'content_element' => true,
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'type' => 'textfield',
+					'heading' => 'Classes',
+					'param_name' => 'classes',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+				),
+			),
+			'js_view' => 'VcColumnView',
+		) );
 	}
 	public function register( $tag, $vc_map = array() ) {
 		add_shortcode( $tag, array( &$this, strtolower( str_replace( '-', '_', $tag ) ) ) );
@@ -367,6 +415,21 @@ class TBK_Shortcodes extends Base_Factory {
 		return TBK_Render::shortcode_view( 'product-feature', $atts );
 	}
 	
+	function product( $atts ) {
+		$atts = shortcode_atts( array(
+			'image' => null,
+			'name' => null,
+			'price' => null,
+			'description' => null,
+		), $atts );
+
+		if( ! empty( $atts['image'] ) ) {
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'product' );
+		}
+
+		return TBK_Render::shortcode_view( 'product', $atts );
+	}
+	
 	function contact_section( $atts ) {
 		$atts = shortcode_atts( array(
 			'image' => null,			
@@ -459,6 +522,16 @@ if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
     
 	class WPBakeryShortCode_Features_Container extends TBKBakeryContainer {
 		protected function content( $atts = null, $content = null, $view = 'features-container' ) {
+			$atts = shortcode_atts( array(
+				'classes' => null,
+				'heading' => null,
+			), $atts );
+			return parent::content( $atts, $content, $view );
+		}
+	}
+	
+	class WPBakeryShortCode_Product_Container extends TBKBakeryContainer {
+		protected function content( $atts = null, $content = null, $view = 'product-container' ) {
 			$atts = shortcode_atts( array(
 				'classes' => null,
 				'heading' => null,

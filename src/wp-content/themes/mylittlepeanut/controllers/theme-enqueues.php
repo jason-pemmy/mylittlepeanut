@@ -67,6 +67,8 @@ class Theme_Enqueues extends Base_Factory {
                     'about-section',
 					'contact-section',
 					'wtb-section',
+					'product-container',	
+					'product',
 				) );
 
 				// components
