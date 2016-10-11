@@ -1,4 +1,4 @@
-		</main>
+		
 			<footer class="page-footer">			
 				<nav class="navbar">
 					<div class="container">

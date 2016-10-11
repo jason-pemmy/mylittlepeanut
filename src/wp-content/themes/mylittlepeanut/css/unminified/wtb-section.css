@@ -22,7 +22,7 @@
 */
 .wtb-section-container {
   width: 100%;
-  height: 300px;
+  height: 550px;
   margin-bottom: 100px;
   background-color: #7e7e7e;
 }
@@ -30,6 +30,7 @@
   .wtb-section-container {
     float: right;
     width: 80%;
+    height: 300px;
   }
 }
 .wtb-section-container .wtb-heading {
@@ -37,17 +38,44 @@
   width: 100%;
   margin-top: 30px;
   margin-bottom: 10px;
-  margin-left: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
   color: #fff;
   font-size: 30px;
 }
+@media screen and (min-width: 768px) {
+  .wtb-section-container .wtb-heading {
+    margin-left: 50px;
+  }
+}
 .wtb-section-container .wtb-copy-container {
-  margin-left: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .wtb-section-container .wtb-copy-container {
+    margin-left: 50px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wtb-section-container .wtb-copy-container {
+    width: 60%;
+  }
+}
+.wtb-section-container .wtb-copy-container .wtb-copy p {
   color: #fff;
   font-size: 18px;
 }
 .wtb-section-container .wtb-image-container {
+  display: none;
   position: absolute;
   right: 0;
   top: 60px;
+}
+@media screen and (min-width: 1200px) {
+  .wtb-section-container .wtb-image-container {
+    display: block;
+  }
 }

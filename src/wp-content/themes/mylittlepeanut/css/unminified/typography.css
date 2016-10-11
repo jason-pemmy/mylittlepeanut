@@ -86,9 +86,7 @@ h6 {
   color: #000;
 }
 p {
-  font-family: "acumin-pro", sans-serif;
-  font-style: normal;
-  font-weight: 400;
+  /*#acumin .regular;*/
   margin-bottom: 40px;
   line-height: 1.4;
   color: #161616;
