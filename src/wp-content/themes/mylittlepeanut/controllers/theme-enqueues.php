@@ -111,7 +111,7 @@ class Theme_Enqueues extends Base_Factory {
 
 		if ( ! is_admin() ) {
 			// all pages - 3rd party
-			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'jquery' );	
 			//wp_enqueue_script( 'columnizer', $js_directory . '.js', array( 'jquery' ), false, true );
 		}
 	}

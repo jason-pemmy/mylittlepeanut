@@ -16,4 +16,6 @@ jQuery(function ($){
 			$(".side-collapse").removeClass("activated");   
 		}		
 	});
+	
+	$('.product').equalize();
 });
