@@ -5,7 +5,11 @@
 				<div class="product-content">
 					<div class="product-container-header"><?php echo $heading; ?></div>
 					<div class="header-underline"></div>
-					{content}
+                    <div class="row">
+                        <div class="container">
+					       {content}
+                        </div>
+                    </div>    
 				</div>
 			</div>
 		</div>	
