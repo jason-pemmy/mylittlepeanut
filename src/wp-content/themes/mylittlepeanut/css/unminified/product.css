@@ -20,3 +20,6 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
+.product .product-image-container img {
+  width: 100%;
+}

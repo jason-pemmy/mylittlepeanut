@@ -20,6 +20,10 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
+.product-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .product-container .product-content .product-container-header {
   width: 100%;
   margin-bottom: 10px;
@@ -31,6 +35,6 @@
   height: 3px;
   width: 100px;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   background-color: #5f443e;
 }

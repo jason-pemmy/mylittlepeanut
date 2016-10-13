@@ -203,6 +203,27 @@ class TBK_Shortcodes extends Base_Factory {
 			),
 		) );
         
+        $this->register( 'secondary-hero-banner', array(
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'heading' => 'Background Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+                array(					
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+                    'type' => 'textfield',
+				),
+                array(					
+					'heading' => 'Copy',
+					'param_name' => 'copy',
+                    'type' => 'textfield',
+				),
+			),
+		) );
+        
 		$this->register( 'basic-container', array(
 			'name' => 'Basic Container',
 			'base' => 'basic_container',
@@ -394,8 +415,24 @@ class TBK_Shortcodes extends Base_Factory {
 		if( ! empty( $atts['image'] ) ) {
 			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'hero-banner' );
 		}
+        
+        if(is_front_page()){
+            return TBK_Render::shortcode_view( 'hero-banner', $atts );    
+        }		
+	}
+    
+    function secondary_hero_banner( $atts ) {
+		$atts = shortcode_atts( array(
+			'image' => null,
+			'heading' => null,
+            'copy' => null,
+		), $atts );
 
-		return TBK_Render::shortcode_view( 'hero-banner', $atts );
+		if( ! empty( $atts['image'] ) ) {
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'secondary-hero-banner' );
+		}
+
+		return TBK_Render::shortcode_view( 'secondary-hero-banner', $atts );
 	}
     
     function product_feature( $atts ) {
