@@ -20,6 +20,11 @@
 // @screen-xxl-min = 1800px
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
+.product {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
 .product .product-image-container {
   padding: 10px;
   border-style: solid;
@@ -30,14 +35,18 @@
   width: 95%;
 }
 .product .product-copy-container {
+  height: 235px;
   background-color: #f3f2f1;
   padding: 20px;
 }
 .product .product-copy-container .product-name-container {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
   color: #593d36;
 }
 .product .product-copy-container .product-price-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 18px;
   color: #593d36;
 }

@@ -17,5 +17,5 @@ jQuery(function ($){
 		}		
 	});
 	
-	$('.product').equalize();
+	//$('.product').equalize();
 });

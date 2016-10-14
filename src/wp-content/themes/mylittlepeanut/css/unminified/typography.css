@@ -2,7 +2,6 @@ body {
   font-size: 18px;
 }
 a:not([class]) {
-  color: #3bb0c9;
   text-decoration: none;
 }
 h1,
