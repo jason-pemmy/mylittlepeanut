@@ -17,5 +17,8 @@ jQuery(function ($){
 		}		
 	});
 	
-	//$('.product').equalize();
+	$('.navbar-nav').find('a').on('click', function(e){
+	  $('.navbar-toggle').trigger('click');
+	});
+	
 });
