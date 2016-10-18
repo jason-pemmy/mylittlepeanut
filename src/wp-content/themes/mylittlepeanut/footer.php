@@ -3,7 +3,7 @@
 				<nav class="navbar">
 					<div class="container">
 						<div class="row">
-							<div class="col-xs-12 col-md-4 footer-nav-container">
+							<div class="col-xs-6 col-md-4 footer-nav-container">
 								<div class="footer-column-header"><?php the_field('navigation_header', 'option'); ?></div>
 								<?php
 									wp_nav_menu( array(
@@ -17,7 +17,7 @@
 									));
 								?>	
 							</div>
-							<div class="col-xs-12 col-md-4 footer-products-container">
+							<div class="col-xs-6 col-md-4 footer-products-container">
 								<div class="footer-column-header"><?php the_field('products_header', 'option'); ?></div>
 								<?php
 									wp_nav_menu( array(
@@ -31,7 +31,7 @@
 									));
 								?>
 							</div>
-							<div class="col-xs-12 col-md-4 footer-sm-link-container">
+							<div class="col-xs-6 col-md-4 footer-sm-link-container">
 								<div class="footer-column-header"><?php the_field('social_header', 'option'); ?></div>
 								<a href="<?php the_field('facebook_link', 'option'); ?>" target="_blank">
 									<span class="<?php the_field('facebook_icon', 'option'); ?>"></span>

@@ -70,7 +70,12 @@
   width: 80%;
   margin: 0 auto;
   margin-top: 40px;
-  font-size: 25px;
+  font-size: 22px;
+}
+@media screen and (min-width: 480px) {
+  .about-section-container .about-text-container {
+    font-size: 25px;
+  }
 }
 @media screen and (min-width: 992px) {
   .about-section-container .about-text-container {
@@ -114,5 +119,10 @@
   text-align: center;
 }
 .about-tagline p {
-  font-size: 30px;
+  font-size: 25px;
+}
+@media screen and (min-width: 992px) {
+  .about-tagline p {
+    font-size: 30px;
+  }
 }

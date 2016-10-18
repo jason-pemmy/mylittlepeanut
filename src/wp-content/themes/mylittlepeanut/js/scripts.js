@@ -15,10 +15,12 @@ jQuery(function ($){
 		if(Modernizr.mq('(min-width:992px)')){
 			$(".side-collapse").removeClass("activated");   
 		}		
-	});
+	});    
 	
 	$('.navbar-nav').find('a').on('click', function(e){
-	  $('.navbar-toggle').trigger('click');
+        console.log($(this).parent().hasClass("menu-item-has-children"));
+        if(! $(this).parent().hasClass("menu-item-has-children")){
+            $('.navbar-toggle').trigger('click');    
+        }        
 	});
-	
 });
