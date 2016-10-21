@@ -13,7 +13,8 @@ jQuery(function ($){
 	
 	$(window).on('resize',function() {
 		if(Modernizr.mq('(min-width:992px)')){
-			$(".side-collapse").removeClass("activated");   
+			$(".side-collapse").removeClass("activated");
+            $("body").removeClass("disable-scrolling");
 		}		
 	});    
 	

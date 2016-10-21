@@ -1,6 +1,6 @@
 .page-footer {
   padding-top: 50px;
-  background-color: #7e7e7e;
+  background-color: #593d36;
 }
 .page-footer .navbar {
   margin-bottom: 0;
@@ -26,6 +26,9 @@
 .page-footer .navbar .footer-nav-container .footer-menu li a:hover,
 .page-footer .navbar .footer-nav-container .footer-menu li a:focus {
   color: #fff;
+}
+.page-footer .navbar .container .row {
+  margin-bottom: 125px;
 }
 .page-footer .navbar .footer-products-container {
   padding-top: 10px;
@@ -62,6 +65,10 @@
 .page-footer .navbar .footer-sm-link-container a {
   color: #c0b0a6;
 }
+.page-footer .navbar .footer-sm-link-container a span {
+  font-size: 30px;
+  margin-right: 10px;
+}
 .page-footer .navbar .footer-sm-link-container a:hover,
 .page-footer .navbar .footer-sm-link-container a:focus {
   color: #fff;
@@ -73,5 +80,5 @@
   text-align: left;
   background-color: #fff;
   border-color: #fff;
-  font-size: 13px;
+  font-size: 14px;
 }

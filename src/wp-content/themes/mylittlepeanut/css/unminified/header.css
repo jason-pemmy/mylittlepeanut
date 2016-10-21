@@ -108,6 +108,7 @@
 }
 .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a {
   margin-left: 5%;
+  margin-right: 1%;
   color: #fff;
 }
 .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:hover,
@@ -117,6 +118,7 @@
 @media screen and (min-width: 992px) {
   .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a {
     margin-left: 15px;
+    margin-right: 0;
     color: #593d36;
   }
   .navbar-inverse .container .navbar-header .side-collapse .navbar-nav a:hover,
@@ -126,6 +128,14 @@
   }
 }
 .navbar-inverse .container .navbar-header .side-collapse .navbar-nav .dropdown-menu > .active > a {
+  background-color: #7e7e7e;
+}
+@media screen and (min-width: 992px) {
+  .navbar-inverse .container .navbar-header .side-collapse .navbar-nav .dropdown-menu > .active > a {
+    background-color: #fff;
+  }
+}
+.navbar-inverse .container .navbar-header .side-collapse .navbar-nav .open > a {
   background-color: #fff;
 }
 .navbar-inverse .container .navbar-header .side-collapse.in {

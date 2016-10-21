@@ -112,24 +112,34 @@
 					width: 100%;					
 					a {
 						margin-left: 5%;
+                        margin-right: 1%;
 						color: @white;
-						
+                        
 						&:hover, &:focus {
 							background-color: #593d36;
 						}					
 						
 						@media @mq-md-min {
 							margin-left: 15px;
+							margin-right: 0;                            
 							color: #593d36;
-							
+                            
 							&:hover, &:focus {
-								background-color: @white;
+								background-color: #fff;
 								color: #bfaea4;
 							}
-						}						
+						}
 					}
                     
                     .dropdown-menu > .active > a {
+                        background-color: #7e7e7e;
+                        
+                        @media @mq-md-min {
+                            background-color: #fff;
+                        }
+                    }
+                    
+                    .open > a {
                         background-color: #fff;
                     }
 				}
