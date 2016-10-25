@@ -77,7 +77,7 @@ class TBK_Shortcodes extends Base_Factory {
 			) ),
 		) );
 		
-		$this->register( 'wtb-section', array(
+		$this->register( 'partner', array(
 			'show_settings_on_create' => true,
 			'params' => array(
 				array(
@@ -94,6 +94,11 @@ class TBK_Shortcodes extends Base_Factory {
 					'type' => 'textarea',
 					'heading' => 'Copy',
 					'param_name' => 'copy',
+				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Link',
+					'param_name' => 'link',
 				),
 			),
 		) );
@@ -301,6 +306,33 @@ class TBK_Shortcodes extends Base_Factory {
 			),
 			'js_view' => 'VcColumnView',
 		) );
+        
+        $this->register( 'wtb-container', array(
+			'name' => 'WTB Container',
+			'base' => 'wtb_container',
+			'as_parent' => array( 'only' => 'partner' ),
+			'is_container' => true,
+			'content_element' => true,
+			'show_settings_on_create' => true,
+			'params' => array(
+				array(
+					'type' => 'textfield',
+					'heading' => 'Classes',
+					'param_name' => 'classes',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Heading',
+					'param_name' => 'heading',
+				),
+                array(
+					'heading' => 'Image',
+					'param_name' => 'image',
+					'type' => 'attach_image',
+				),
+			),
+			'js_view' => 'VcColumnView',
+		) );
 	}
 	public function register( $tag, $vc_map = array() ) {
 		add_shortcode( $tag, array( &$this, strtolower( str_replace( '-', '_', $tag ) ) ) );
@@ -480,18 +512,19 @@ class TBK_Shortcodes extends Base_Factory {
 		return TBK_Render::shortcode_view( 'contact-section', $atts );
 	}
 	
-	function wtb_section( $atts ) {
+	function partner( $atts ) {
 		$atts = shortcode_atts( array(
 			'image' => null,			
             'heading' => null,            
 			'copy' => null,            
+            'link' => null,            
 		), $atts );
 
 		if( ! empty( $atts['image'] ) ) {
-			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'wtb-section' );
+			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'partner' );
 		}
 
-		return TBK_Render::shortcode_view( 'wtb-section', $atts );
+		return TBK_Render::shortcode_view( 'partner', $atts );
 	}
     
     function about_section( $atts ) {
@@ -573,6 +606,22 @@ if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
 				'classes' => null,
 				'heading' => null,
 			), $atts );
+			return parent::content( $atts, $content, $view );
+		}
+	}
+    
+    class WPBakeryShortCode_WTB_Container extends TBKBakeryContainer {
+		protected function content( $atts = null, $content = null, $view = 'wtb-container' ) {
+			$atts = shortcode_atts( array(
+                'image' => null,			
+				'classes' => null,
+				'heading' => null,
+			), $atts );
+            
+            if( ! empty( $atts['image'] ) ) {
+                $atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'wtb-container' );
+            }
+            
 			return parent::content( $atts, $content, $view );
 		}
 	}

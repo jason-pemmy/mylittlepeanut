@@ -4,22 +4,24 @@ jQuery(function ($){
 	var sel = sideslider.attr('data-target');
 	
 	sideslider.click(function(event) {
-		$(this).toggleClass("close-button");
-		$(this).toggleClass("collapsed");
-		$(sel).toggleClass('in');
-		$(sel).addClass("activated").toggleClass("active");
-		$("body").toggleClass("disable-scrolling");
+		if(Modernizr.mq('(max-width:992px)')){
+            $(this).toggleClass("close-button");
+            $(this).toggleClass("collapsed");		
+            $(sel).toggleClass('in');
+            $(sel).addClass("activated").toggleClass("active");
+            $("body").toggleClass("disable-scrolling");    
+        } 
 	});
 	
 	$(window).on('resize',function() {
 		if(Modernizr.mq('(min-width:992px)')){
-			$(".side-collapse").removeClass("activated");
-            $("body").removeClass("disable-scrolling");
+			$(".side-collapse").removeClass("activated");  
+            $("body").removeClass("disable-scrolling");    
 		}		
 	});    
 	
 	$('.navbar-nav').find('a').on('click', function(e){
-        console.log($(this).parent().hasClass("menu-item-has-children"));
+        //console.log($(this).parent().hasClass("menu-item-has-children"));
         if(! $(this).parent().hasClass("menu-item-has-children")){
             $('.navbar-toggle').trigger('click');    
         }        

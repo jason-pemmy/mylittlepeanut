@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Little Peanut: Handmade clothing for babies</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="Handmade, Organic Childrens clothing and accessories">
+	<meta name="Keywords" content="hand made organic baby clothes, baby clothing, organic baby clothing, organic children's clothing, childrens clothing, ">
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/themes/default/jquery.bxslider.css">
+	<link href="css/jquery.fancybox.css" type="text/css" rel="stylesheet"  media="screen" />
+	<link rel="stylesheet" media="(min-width: 1171px)" href="css/peanut-d.css" />	
+	<link rel="stylesheet" media="(min-width: 1020px) and (max-width: 1170px)" href="css/peanut-t.css" />
+	<link rel="stylesheet" media="(max-width: 1019px)" href="css/peanut-p.css" />	
+	<link rel="stylesheet" media="(max-width: 720px)" href="css/peanut-ps.css" />
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="js/peanut.js"></script>	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-63966218-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	<script type="text/javascript">
+		document.getElementById('ShopifyEmbedScript') || document.write('<script type="text/javascript" src="https://widgets.shopifyapps.com/assets/widgets/embed/client.js" id="ShopifyEmbedScript"><\/script>');
+	</script>
+</head>
+<body>
+	<div id="open" data-role="page" data-dialog="true"></div>
+	<script>
+		$(document).ready(function(){
+			for(var i=0;i<items.length;i++){
+				popData = "<div id='"+items[i].id+"' style=''>";
+				popData += "<div class='litebox-image-container'>";
+				popData += "<img src='images/inventory/"+items[i].image+"' width='100%'/></div>";
+				popData += "<div style='text-align:center'>"+items[i].details+"</div>"
+				popData += "<div id='item-title'style=''>";
+				popData +=  ""+items[i].title+"</div>";
+				popData += "<div id='item-price' style=''>"+items[i].price+"</div>";
+				popData += "<div id='litebox-container' style=''>";
+				popData += "<div id='litebox-cartbtn'><div class='buyit-btn' data-button_background_color='593d36' data-button_text_color='ffffff' data-buy_button_text='Add to cart' data-display_size='compact' data-embed_type='product' data-has_image='false' data-product_handle='"+items[i].shopifyID+"' data-product_name='"+items[i].title+"' data-redirect_to='cart' data-shop='my-little-peanut-2015.myshopify.com'></div></div>";
+				popData += "</div></div>";				
+			}	
+			console.log("popData: "+ popData);
+		});		
+	</script>
+</body>
+</html>
