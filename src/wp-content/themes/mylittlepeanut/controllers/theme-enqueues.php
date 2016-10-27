@@ -80,7 +80,6 @@ class Theme_Enqueues extends Base_Factory {
 				// pages
 				Theme_Enqueues::iterate_enqueue( array(
 				) );
-
 				// themes
 				Theme_Enqueues::iterate_enqueue( array(
 				) );
@@ -92,7 +91,8 @@ class Theme_Enqueues extends Base_Factory {
 
 			} else { // on prod/stage
 				Theme_Enqueues::iterate_enqueue( array(
-					'styles.1',
+					'styles.2',
+                    'styles.1',
 					'styles',
 				), true );
 			}

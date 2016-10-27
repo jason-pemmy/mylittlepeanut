@@ -3939,6 +3939,14 @@ option.wpb_video {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .vc_row.vc_row-flex > .vc_column_container > .vc_column-inner {
+    /* IE10+ specific styles */
+  }
+  .vc_row.vc_row-flex > .vc_column_container > .vc_column-inner > * {
+    min-height: 1em;
+  }
+}
 .vc_row.vc_row-flex::before,
 .vc_row.vc_row-flex::after {
   display: none;
@@ -19061,6 +19069,7 @@ body .wpb_gallery_slides ul li,
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   margin-top: 0;
+  margin-left: 0;
 }
 .vc_non_responsive .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-container,
 .vc_tta-o-non-responsive .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-container {
@@ -19068,6 +19077,11 @@ body .wpb_gallery_slides ul li,
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 @media (min-width: 768px) {
   .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-container {
@@ -19075,10 +19089,30 @@ body .wpb_gallery_slides ul li,
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-list {
   overflow: hidden;
+}
+.vc_non_responsive .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-list,
+.vc_tta-o-non-responsive .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-list {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+@media (min-width: 768px) {
+  .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tabs-list {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
 }
 .vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-tab {
   display: block;
@@ -19151,6 +19185,7 @@ body .wpb_gallery_slides ul li,
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   margin-top: 0;
+  margin-right: 0;
 }
 .vc_non_responsive .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-container,
 .vc_tta-o-non-responsive .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-container {
@@ -19158,6 +19193,11 @@ body .wpb_gallery_slides ul li,
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 @media (min-width: 768px) {
   .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-container {
@@ -19165,10 +19205,30 @@ body .wpb_gallery_slides ul li,
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-list {
   overflow: hidden;
+}
+.vc_non_responsive .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-list,
+.vc_tta-o-non-responsive .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-list {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+@media (min-width: 768px) {
+  .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tabs-list {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
 }
 .vc_tta-tabs.vc_tta-tabs-position-right .vc_tta-tab {
   display: block;
@@ -19655,6 +19715,11 @@ body .wpb_gallery_slides ul li,
   transform: translateY(-50%);
   right: 20px;
 }
+@media (max-width: 768px) {
+  .vc_tta-container .vc_tta:not([class*="vc_tta-pageable"]) .vc_pagination {
+    display: none;
+  }
+}
 .vc_general.vc_pagination {
   display: block;
   margin: 0;
@@ -19906,11 +19971,6 @@ body .wpb_gallery_slides ul li,
 }
 .vc_pagination-color-white.vc_pagination-style-flat .vc_pagination-trigger {
   background-color: #FFFFFF;
-}
-@media (max-width: 768px) {
-  .vc_tta-container .vc_tta:not([class*="vc_tta-pageable"]) .vc_pagination {
-    display: none;
-  }
 }
 .vc_grid.vc_row {
   padding-left: 0;
@@ -20165,7 +20225,7 @@ body .wpb_gallery_slides ul li,
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  background-clip: padding-box;
+  background-clip: border-box;
   box-sizing: border-box;
   overflow: hidden;
 }

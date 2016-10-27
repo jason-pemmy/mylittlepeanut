@@ -132,6 +132,11 @@ class TBK_Shortcodes extends Base_Factory {
 					'heading' => 'Copy',
 					'param_name' => 'copy',
 				),
+                array(
+					'type' => 'textfield',
+					'heading' => 'Link',
+					'param_name' => 'link',
+				),
 			),
 		) );
 		
@@ -471,11 +476,8 @@ class TBK_Shortcodes extends Base_Factory {
 		$atts = shortcode_atts( array(
 			'image' => null,
 			'copy' => null,
+            'link' => null,
 		), $atts );
-
-		if ( ! empty( $atts['copy'] ) ) {
-			//$atts['copy'] = vc_build_link( $atts['copy'] );
-		}
 
 		if( ! empty( $atts['image'] ) ) {
 			$atts['image'] = TBK_Theme::get_attachment_image_url( $atts['image'], 'product-feature' );

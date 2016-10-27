@@ -95,7 +95,7 @@ class The_Theme extends TBK_Theme {
 
 		if ( ! is_admin() ) {		
 			wp_enqueue_script( 'tbk-bootstrap-js', $js_directory . 'vendor/bootstrap.min.js' );
-			wp_enqueue_script( 'typekit', '//use.typekit.net/ynv5tpe.js' );
+			//wp_enqueue_script( 'typekit', '//use.typekit.net/ynv5tpe.js' );
 			wp_enqueue_script( 'modernizr', $js_directory . 'vendor/modernizr.js' );
             wp_enqueue_script( 'equalize', $js_directory . 'vendor/equalize.js' );
 			wp_enqueue_script( 'main-scripts', $js_directory . 'scripts.js' );			

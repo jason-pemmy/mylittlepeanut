@@ -126,8 +126,28 @@ module.exports = function (grunt){
 						'js_composer',
 
 						// base
+                        "base",
+                        "fonts",
+                        "icomoon",
+                        "typography",
 
 						// layout
+                        'header',
+                        'about-section',
+                        'contact-section',
+                        'forms',
+                        'gravity-forms',
+                        'hero-banner',
+                        'home-page',
+                        'mobile-menu',
+                        'partner',
+                        'product',
+                        'product-container',
+                        'product-feature',
+                        'secondary-hero-banner',
+                        'tabs',
+                        'wtb-container',
+                        'footer',
 
 						// components
 
