@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('../../fonts/icomoon.eot?rmi3vk');
-  src: url('../../fonts//icomoon.eot?rmi3vk#iefix') format('embedded-opentype'), url('../../fonts/icomoon.ttf?rmi3vk') format('truetype'), url('../../fonts/icomoon.woff?rmi3vk') format('woff'), url('../../fonts/icomoon.svg?rmi3vk#icomoon') format('svg');
+  src: url('../../fonts/icomoon.eot?xukzqc');
+  src: url('../../fonts/icomoon.eot?xukzqc#iefix') format('embedded-opentype'), url('../../fonts/icomoon.ttf?xukzqc') format('truetype'), url('../../fonts/icomoon.woff?xukzqc') format('woff'), url('../../fonts/icomoon.svg?xukzqc#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +19,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-cross:before {
+  content: "\ea0f";
+}
+.icon-play3:before {
+  content: "\ea1c";
+}
 .icon-facebook:before {
   content: "\ea90";
 }
@@ -27,7 +33,4 @@
 }
 .icon-pinterest:before {
   content: "\ead1";
-}
-.icon-play3:before {
-  content: "\ea1c";
 }

@@ -5,8 +5,10 @@ jQuery(function ($){
 	
 	sideslider.click(function(event) {
 		if(Modernizr.mq('(max-width:992px)')){
-            $(this).toggleClass("close-button");
-            $(this).toggleClass("collapsed");		
+            //$(this).toggleClass("close-text");
+            $("#navbar-hamburger").toggleClass("hidden");
+			$("#navbar-close").toggleClass("hidden");
+			$(this).toggleClass("collapsed");		
             $(sel).toggleClass('in');
             $(sel).addClass("activated").toggleClass("active");
             $("body").toggleClass("disable-scrolling");    
@@ -37,4 +39,4 @@ jQuery(function ($){
           console.log("BAM");
         }
     });
-});
+}); 

@@ -25,10 +25,21 @@
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse-side" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span> 
+						<div id="navbar-hamburger">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</div>	
+						<div id="navbar-close" class="hidden">
+							<span class="icon-cross"></span>
+						</div>
 					</button>
+					
+					<!--<div class="close-text">
+						<span class="icon-close icon"></span>
+						<p class="btn-text"><?php _e('Close', 'the-theme'); ?></p>
+					</div>-->
+					
 					<a class="navbar-left" href="<?php echo get_home_url(); ?>">
 						<img class="logo" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo('name');?>">
 					</a>

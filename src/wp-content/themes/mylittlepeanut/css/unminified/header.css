@@ -38,9 +38,19 @@
 .navbar-inverse .container .navbar-header .navbar-toggle {
   margin-right: 25px;
   margin-top: 27px;
+  width: 50px;
+  height: 40px;
 }
-.navbar-inverse .container .navbar-header .navbar-toggle .icon-bar {
+.navbar-inverse .container .navbar-header .navbar-toggle #navbar-hamburger {
+  padding-top: 2px;
+}
+.navbar-inverse .container .navbar-header .navbar-toggle #navbar-hamburger .icon-bar {
+  margin: 0 auto;
+  margin-bottom: 5px;
   background-color: #5b3f38;
+}
+.navbar-inverse .container .navbar-header .navbar-toggle #navbar-close {
+  color: #fff;
 }
 .navbar-inverse .container .navbar-header .navbar-toggle:hover .icon-bar,
 .navbar-inverse .container .navbar-header .navbar-toggle:focus .icon-bar {
@@ -86,7 +96,7 @@
 }
 .navbar-inverse .container .navbar-header .side-collapse {
   position: fixed;
-  top: 95px;
+  top: 75px;
   bottom: 0;
   right: 0;
   width: 100%;
