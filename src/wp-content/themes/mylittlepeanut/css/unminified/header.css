@@ -19,14 +19,17 @@
 // @screen-xxl-min = 1800px 
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";*/
 .navbar-inverse {
-  margin-bottom: 0;
+  position: fixed;
+  width: 100%;
   height: 75px;
+  margin-bottom: 0;
   background-color: #fff;
   border-color: #fff;
+  z-index: 200;
 }
 @media screen and (min-width: 992px) {
   .navbar-inverse {
-    height: 110px;
+    height: 130px;
   }
 }
 .navbar-inverse .container .navbar-header {

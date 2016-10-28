@@ -26,4 +26,15 @@ jQuery(function ($){
             $('.navbar-toggle').trigger('click');    
         }        
 	});
+    
+    //var element = $("#about").offset().top;
+    var trigger = 200;
+    $(window).scroll(function(){
+        var y = $(window).scrollTop();
+        console.log("y: "+ y);
+        //console.log("element: "+ element);
+        if (y >= trigger){
+          console.log("BAM");
+        }
+    });
 });
