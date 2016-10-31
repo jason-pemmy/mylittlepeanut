@@ -7303,10 +7303,8 @@ a.wpb_button_a:hover {
   text-align: justify;
 }
 
-.separator_align_center,
 .vc_general.vc_cta3.vc_cta3-icons-bottom .vc_cta3-icons,
-.vc_general.vc_cta3.vc_cta3-icons-top .vc_cta3-icons,
-.vc_pie_chart {
+.vc_general.vc_cta3.vc_cta3-icons-top .vc_cta3-icons {
   text-align: center;
 }
 
@@ -8390,6 +8388,11 @@ a.wpb_button_a:hover {
 .wpb_tour_next_prev_nav span.wpb_next_slide {
   text-align: right;
   float: right;
+}
+
+.separator_align_center,
+.vc_pie_chart {
+  text-align: center;
 }
 
 .wpb_accordion .wpb_accordion_wrapper .wpb_accordion_header {

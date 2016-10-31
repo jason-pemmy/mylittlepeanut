@@ -18,7 +18,10 @@ jQuery(function ($){
 	$(window).on('resize',function() {
 		if(Modernizr.mq('(min-width:992px)')){
 			$(".side-collapse").removeClass("activated");  
-            $("body").removeClass("disable-scrolling");    
+            $("body").removeClass("disable-scrolling");
+            $(sel).removeClass("compact-navbar");
+            $('.navbar-inverse').removeClass("compact");
+            $(".logo-right img").removeClass("compact");
 		}		
 	});    
 	
@@ -35,8 +38,16 @@ jQuery(function ($){
         var y = $(window).scrollTop();
         console.log("y: "+ y);
         //console.log("element: "+ element);
-        if (y >= trigger){
-          console.log("BAM");
+        if(Modernizr.mq('(min-width:992px)')){
+            if (y >= trigger){
+                $(sel).addClass("compact-navbar");
+                $('.navbar-inverse').addClass("compact");
+                $(".logo-right img").addClass("compact");
+            }else {
+                $(sel).removeClass("compact-navbar");
+                $('.navbar-inverse').removeClass("compact");
+                $(".logo-right img").removeClass("compact");
+            }
         }
     });
 }); 

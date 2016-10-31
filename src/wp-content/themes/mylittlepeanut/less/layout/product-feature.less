@@ -70,11 +70,11 @@
 			
 			.feature-image-container {
 				float: none;
-				padding-left: 20px;
-				
-				
+				padding-left: 0;
+                
 				@media @mq-sm-min {
 					float: left;	
+                    padding-left: 20px;
 				}
 				
 				img {
@@ -152,17 +152,19 @@
 					max-width: 485px;
 				}
 			}
-			
-			&:hover .overlay {
-				display: block;
-				-webkit-box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
-				-moz-box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
-				box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
-			}
-			
-			&:hover .feature-text-container {
-				color: #000;
-			}
+            
+            @media @mq-md-min {
+                &:hover .overlay {
+                    display: block;
+                    -webkit-box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
+                    -moz-box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
+                    box-shadow: 5px 5px 40px 0px rgba(189,185,189,0.66);
+                }
+
+                &:hover .feature-text-container {
+                    color: #000;
+                }   
+            }			
 		}
 	}
 }

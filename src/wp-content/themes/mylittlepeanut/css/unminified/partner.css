@@ -21,11 +21,9 @@
 @mq-xxxl-min: ~"screen and (min-width: @{screen-xxxl-min})";
 */
 .wtb-section-container {
-  margin-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 65px;
 }
 .wtb-section-container .wtb-copy-container {
-  margin-left: 10px;
   margin-right: 10px;
   color: #fff;
   font-size: 18px;
@@ -36,6 +34,7 @@
 }
 .wtb-section-container .wtb-copy-container a .wtb-heading {
   width: 100%;
+  padding-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
   color: #fff;
@@ -56,12 +55,14 @@
   width: 100%;
   height: auto;
   margin-top: 20px;
+  margin-bottom: 15px;
   margin-right: 20px;
 }
 @media screen and (min-width: 480px) {
   .wtb-section-container .wtb-image-container {
     width: auto;
     margin-top: 0;
+    height: 100px;
   }
 }
 .wtb-section-container .wtb-image-container:hover .wtb-heading {

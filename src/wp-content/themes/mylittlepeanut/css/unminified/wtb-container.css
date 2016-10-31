@@ -36,11 +36,19 @@
   float: left;
   width: 100%;
   margin-top: 30px;
-  margin-bottom: 10px;
-  margin-left: 40px;
-  margin-right: 10px;
+  margin-bottom: 35px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
   color: #fff;
   font-size: 30px;
+}
+@media screen and (min-width: 992px) {
+  .wtb-container .wtb-content .wtb-header {
+    margin-left: 40px;
+    margin-right: 10px;
+    text-align: left;
+  }
 }
 .wtb-container .wtb-content .accent-image {
   display: none;
