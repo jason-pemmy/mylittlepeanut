@@ -56,9 +56,6 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
-.product-feature-container .product-feature-content .product-feature:nth-child(even) {
-  background-color: rgba(191, 174, 164, 0.05);
-}
 @media screen and (min-width: 768px) {
   .product-feature-container .product-feature-content .product-feature {
     max-width: 485px;

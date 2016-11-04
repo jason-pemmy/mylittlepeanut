@@ -10289,10 +10289,6 @@ textarea.ginput_container textarea {
   cursor: pointer;
 }
 
-.product-feature-container .product-feature-content .product-feature:nth-child(even) {
-  background-color: rgba(191,174,164,.05);
-}
-
 .product-feature-container .product-feature-content .product-feature .feature-image-container {
   float: none;
   padding-left: 0;
